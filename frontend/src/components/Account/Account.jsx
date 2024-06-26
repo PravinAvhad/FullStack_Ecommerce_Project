@@ -1,40 +1,45 @@
 import React from 'react'
 import "./account.css"
+import { useSelector } from 'react-redux'
+import Loader from '../Layout/Loader/Loader';
+import { Link } from 'react-router-dom';
 
 const Account = () => {
+    const {loading,isAuthenticated,user} = useSelector((state)=> state.User);
     return (
         <div className='account'>
+            {loading ? (<Loader/>) :(
             <div className="accountsubsection">
                 <div className="section1">
                     <div className="detailsection">
                         <div className="subsection">
                             <h3>Full Name : </h3>
-                            <p>Pravin Avhad</p>
+                            <p>{user.user.name}</p>
                         </div>
                         <div className="subsection">
                             <h3>Email : </h3>
-                            <p>pravinavhad020@gmail.com</p>
+                            <p>{user.user.email}</p>
                         </div>
                         <div className="subsection">
                             <h3>Joined On :</h3>
-                            <p>25-07-2024</p>
+                            <p>{user.user.createdAt.substr(0,10)}</p>
                         </div>
                         <div className="subsection">
                             <h3>Role :</h3>
-                            <p>Customer</p>
+                            <p>{user.user.role}</p>
                         </div>
                     </div>
                     <div className="photosection">
-                        <img src="/Profile.jpeg" alt="User Profile Img" />
-                        <button>Edit Profile</button>
+                        <img src={user.user.profileImg.Url ? user.user.profileImg.Url : "/Profile.jpeg"} alt="User Profile Img" />
+                        <Link to="/myaccount/update" className='link'>Edit Profile</Link>
                     </div>
                 </div>
                 <div className="section2">
-                    <button className='section2btns'>My Orders</button>
-                    <button className='section2btns'>Change Password</button>
+                    <Link to="/orders" className='section2btns'>My Orders</Link>
+                    <Link to="/password/update" className='section2btns'>Change Password</Link>
                 </div>
             </div>
-
+            )}
         </div>
     )
 }

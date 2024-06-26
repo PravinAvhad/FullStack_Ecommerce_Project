@@ -47,6 +47,7 @@
 .subsection p{
     font-size: 1.3rem;
     font-weight: bold;
+    color: lightgrey;
 }
 .photosection{
     padding: 1rem;
@@ -61,7 +62,7 @@
     height: auto;
     border-radius: 50%;
 }
-.photosection button{
+.photosection .link{
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     background-color: tomato;
@@ -71,6 +72,9 @@
     border: none;
     padding: 6px 8px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+    text-align: center;
 }
 .photosection button:hover{
     color: white;
@@ -92,6 +96,12 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    text-decoration: none;
 }
 @media (max-width:639px) {
     .subsection{
@@ -106,7 +116,7 @@
         word-wrap: break-word;
         text-wrap: wrap;
     }
-    .photosection button{
+    .photosection .link{
         font-size: 1.2rem;
         padding: 5px 2px;
     }
@@ -139,7 +149,7 @@
     .subsection p{
         font-size: .8rem;
     }
-    .photosection button{
+    .photosection .link{
         font-size: 1rem;
     }
     .photosection img{
