@@ -10,16 +10,23 @@ import { useEffect } from 'react';
 import { loaduser } from './Actions/userActions.js';
 import { useDispatch, useSelector } from 'react-redux';
 import Account from "./components/Account/Account.jsx";
+import EditProfile from "./components/EditProfile/EditProfile.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, user } = useSelector((state) => state.User);
+  const { isAuthenticated, loading, user,error } = useSelector((state) => state.User);
   useEffect(() => {
-      dispatch(loaduser());
-  }, [dispatch]);
+    if(error){
+      toast.error(error);
+    }
+    dispatch(loaduser());
+  }, []);
 
   return (
     <div className="App">
+      <ToastContainer/>
       <BrowserRouter>
         <Header isAuthenticated={isAuthenticated} user={user} />
         <Routes>
@@ -29,8 +36,13 @@ function App() {
           <Route path='/products/:keyword' element={<Products />} />
           <Route path='/login' element={<LoginSignUp />} />
           <Route path='/password/forget' element={<Home />} />
-          <Route path="/myaccount" element={<Account/>} />
+          {!loading && isAuthenticated && (
+            <Route path="/myaccount" element={<Account />} />)}
+          {!loading && isAuthenticated && (
+            <Route path='/myaccount/update' element={<EditProfile />} />)}
+          
         </Routes>
+        {/* <ProtectedRoute exact path="/myaccount" component={<Account/>} /> */}
         <Footer />
       </BrowserRouter>
 
