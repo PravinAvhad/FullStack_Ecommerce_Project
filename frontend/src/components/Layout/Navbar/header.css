@@ -1,0 +1,280 @@
+.navbar{
+    background-color: skyblue;
+    padding: 8px 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+}
+.navbarsection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+.subpart1{
+    width: 30%;
+    /* background-color: tomato; */
+    padding-left: 2rem;
+}
+.heading{
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+    /* background-color: lightgrey; */
+    width: fit-content;
+    cursor: pointer;
+}
+.subpart2{
+    display: flex;
+    /* background-color: tomato; */
+    width: 40%;
+    justify-content:space-around;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.subpart3{
+    width: 30%;
+    /* background-color: gray; */
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-right: 2rem;
+}
+.searchbar{
+    background-color: gold;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 5px;
+    padding: 0px 8px 0px 0px;
+}
+#searchinput{
+    height: 100%;
+    outline: none;
+    text-decoration: none;
+    font-size: 1.3rem;
+    width: 14rem;
+    padding: 4px;
+    border-radius: 5px 0px 0px 5px ;
+    border: none;
+    /* border-radius: 5px; */
+}
+.navlinks{
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.icons{
+    cursor: pointer;
+}
+.iconname{
+    /* background-color: tomato; */
+    font-size: 1.15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.profileicon{
+    /* background-color: aqua; */
+    font-size: 1.4rem;
+    width: 100%;
+    align-self: center;
+}
+.hover:hover{
+    color: white;
+}
+#aside{
+    z-index: 500;
+    position: absolute;
+    top: 4.2rem;
+    right: .2rem;
+    width: 200px;
+    background-color: skyblue;
+    padding: .5rem .3rem;
+    display: none;
+}
+.asidesection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.sidebarbtns{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 4px 0px;
+    display: none;
+}
+.sidebarbtns2{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 4px 0px;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+.sidebarbtns:hover, .sidebarbtns2:hover{
+    background-color: black;
+    color: white;
+}
+
+#toggle1{
+    display: block;
+}
+#toggle2{
+    display: none;
+}
+.navbarsection2{
+    /* background-color: gray; */
+    padding: 0rem 1rem;
+    display: none;
+}
+.mobilesearchbar{
+    width: 100%;
+    display: flex;
+    background-color: gold;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 5px;
+    padding: 0px 8px 0px 0px;
+}
+#mobilesearchinput{
+    width: 90%;
+    height: 100%;
+    outline: none;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 4px;
+    border-radius: 5px 0px 0px 5px ;
+    border: none;
+}
+#mobilesearchbtn{
+    padding-right: .8rem;
+}
+.hellouser{
+    /* background-color: tomato; */
+    width: 100%;
+}
+.hellouser > h2{
+    font-size: 1.4rem;
+}
+.hellouser{
+    /* background-color: gray; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.hellouser > p{
+    font-size: .9rem;
+}
+.profileimg{
+    width: 2.6rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    margin-top:4px;
+}
+@media (max-width:1500px){
+    .subpart1{
+        width: 25%;
+    }
+    .subpart2{
+        width: 35%;
+    }
+    .searchbar{
+        width: 60%;
+    }
+    #searchinput{
+        width: 85%;
+    }
+}
+@media (max-width:1200px){
+    .subpart1{
+        padding-left: 1rem;
+    }
+    .subpart3{
+        padding-right: 1rem;
+        width: 35%;
+    }
+}
+@media (max-width:985px){
+    .navbar{
+        padding: 8px 0px;
+    }
+    #searchinput{
+        width: 8rem;
+    }
+}
+@media (max-width:895px){
+    .subpart2{
+        display: none;
+    }
+    .sidebarbtns{
+        display: block;
+    }
+    .searchbar{
+        width: 80%;
+    }
+    #searchinput{
+        width: 13rem;
+    }
+    .subpart1{
+        width: 35%;
+    }
+    .subpart3{
+        width: 44%;
+    }
+}
+@media (max-width:745px){
+    .subpart3{
+        width: 55%;
+    }
+    #searchinput{
+        width: 11rem;
+    }
+    .subpart3{
+        width: fit-content;
+    }
+}
+@media (max-width:586px){
+    .searchbar{
+        display: none;
+    }
+    .navbarsection2{
+        display: block;
+    }
+    #aside{
+        top: 6.9rem;
+    }
+}
+@media (max-width:450px){
+
+    #mobilesearchbtn{
+        padding-right: 7px;
+    }
+}
