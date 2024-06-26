@@ -52,7 +52,7 @@ const LoginSignUp = () => {
     const { loading, isAuthenticated, error } = useSelector((state) => state.User);
 
     useEffect(() => {
-        if (error && loading==="false") {
+        if (error) {
             console.log(error);
             toast.error(error);
         }

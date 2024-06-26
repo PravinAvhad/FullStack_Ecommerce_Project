@@ -1,3 +1,4 @@
+import { UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../Store/Slices/Profile";
 import { loginRequest,loginSuccess,loginFail, clearError, registerRequest, registerSuccess, registerFail, loadUserSuccess, loadUserRequest, loadUserFail, logoutUserSuccess, logoutUserFail } from "../Store/Slices/User"; 
 import axios from "axios"
 
@@ -57,4 +58,18 @@ export const logoutuser = ()=> async(dispatch) =>{
 //for Clearing Errors of User
 export const clearErrors = () => async(dispatch)=>{
     dispatch(clearError());
+}
+
+//for Updating Profile Details
+export const updateProfile = (name,email,avatar)=> async(dispatch) =>{
+    try {
+        dispatch(UpdateProfileRequest());
+        const config = {headers:{"Content-Type":"multipart/form-data"}};
+        console.log(name,email,avatar);
+        const {data} = await axios.put(`/api/v2/me/updateprofile`,{name,email,avatar},config);
+        // console.log(data);
+        dispatch(UpdateProfileSuccess(data));
+    } catch (error) {
+        dispatch(UpdateProfileFail(error.response.data.message));
+    }
 }
