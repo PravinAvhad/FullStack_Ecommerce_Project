@@ -56,10 +56,11 @@
     justify-content: space-around;
     gap: 2rem;
     align-items: center;
+    /* background-color: skyblue; */
 }
 .photosection img{
-    width: 90%;
-    height: auto;
+    width: 13rem;
+    height: 13rem;
     border-radius: 50%;
 }
 .photosection .link{
@@ -121,8 +122,8 @@
         padding: 5px 2px;
     }
     .photosection img{
-        width: 20vmax;
-        height: auto;
+        width: 10rem;
+        height: 10rem;
     }
     .detailsection{
         width: 60%;
@@ -142,6 +143,12 @@
         font-size: 1rem;
     }
 }
+@media (max-width:500px){
+    .photosection img{
+        width: 9rem;
+        height: 9rem;
+    }
+}
 @media (max-width:440px){
     .subsection h3{
         font-size: 1rem;
@@ -153,7 +160,16 @@
         font-size: 1rem;
     }
     .photosection img{
-        width: 16vmax;
-        height: auto;
+        width: 8.5rem;
+        height: 8.5rem;
+    }
+    .accountsubsection{
+        padding: .5rem;
+    }
+}
+@media (max-width:400px){
+    .photosection img{
+        width: 7.5rem;
+        height: 7.5rem;
     }
 }
