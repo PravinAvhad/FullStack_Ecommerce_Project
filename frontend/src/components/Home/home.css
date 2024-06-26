@@ -1,0 +1,123 @@
+/* .home{
+} */
+.homesection1{
+    /* background-image: url("../../imgs/bgImg.jpg"); */
+    min-height: 25rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightgoldenrodyellow;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.midcontent{
+    /* background-color: skyblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.homesection1p{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.homesection1scrollbtn{
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: inherit;
+    cursor: pointer;
+}
+.homesection1scrollbtn:hover{
+    background-color: black;
+    color: white;
+}
+.homesection2,.homesection3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: whitesmoke;
+}
+.homesection3{
+    min-height: 23rem;
+    justify-content: center;
+}
+.headingsection{
+    /* background-color: skyblue; */
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+.homesection2h2{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+.allproducts{
+    padding: 1rem;
+    /* background-color: tomato; */
+    max-width: 70rem;
+    margin: 0rem auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.pagination{
+    /* background-color: lightgreen; */
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0rem 1rem;
+    /* gap: 1rem; */
+}
+.page-item{
+    list-style: none;
+    /* background-color: skyblue; */
+    padding: .7rem 1rem;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    cursor: pointer;
+}
+.page-item:hover{
+    background-color: whitesmoke;
+}
+.page-item:first-child{
+    border-radius: 5px 0px 0px 5px;
+    border-left: 1px solid black;
+}
+.page-item:last-child{
+    border-radius: 0px 5px 5px 0px;
+}
+.page-link{
+    text-decoration: none;
+    color: black;
+}
+.pageItemActive{
+    background-color: whitesmoke;
+}
+@media (max-width:500px){
+    .allproducts{
+        padding: 1rem 0rem;
+        margin: 0%;
+    }
+    .homesection2h2{
+        font-size: 1.5rem;
+    }
+
+    .page-item{
+        padding: .5rem .6rem;
+    }
+}
