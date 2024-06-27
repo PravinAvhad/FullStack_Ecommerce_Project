@@ -31,6 +31,7 @@ const Products = () => {
         <>
             {loading ? (<Loader />) :
                 (<div className="homesection3" id='products'>
+                    <ToastContainer/>
                     <MetaData title="Ecommerce All Products" />
                     <div className="headingsection">
                         <h2 className='homesection2h2'>Prducts</h2>

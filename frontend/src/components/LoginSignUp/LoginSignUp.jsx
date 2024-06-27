@@ -49,14 +49,17 @@ const LoginSignUp = () => {
         console.log("Form Registered");
         dispatch(registeruser(name,email,password,avatar));
     }
-    const { loading, isAuthenticated, error } = useSelector((state) => state.User);
+    const { loading, isAuthenticated, error,user } = useSelector((state) => state.User);
 
     useEffect(() => {
         if (error) {
             console.log(error);
             toast.error(error);
         }
-        if(isAuthenticated){
+        if(isAuthenticated && user.user.role ==="admin"){
+            navigate("/myaccount"); //Atlast Change to Dashboard 
+        }
+        else if(isAuthenticated && user.user.role==="user"){
             navigate("/products");
         }
     }, [dispatch,error,navigate,isAuthenticated,toast]);
