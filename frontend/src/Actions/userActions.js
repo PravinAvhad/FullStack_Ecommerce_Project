@@ -1,4 +1,4 @@
-import { UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../Store/Slices/Profile";
+import { UpdatePasswordFail, UpdatePasswordRequest, UpdatePasswordSuccess, UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../Store/Slices/Profile";
 import { loginRequest,loginSuccess,loginFail, clearError, registerRequest, registerSuccess, registerFail, loadUserSuccess, loadUserRequest, loadUserFail, logoutUserSuccess, logoutUserFail } from "../Store/Slices/User"; 
 import axios from "axios"
 
@@ -65,11 +65,22 @@ export const updateProfile = (name,email,avatar)=> async(dispatch) =>{
     try {
         dispatch(UpdateProfileRequest());
         const config = {headers:{"Content-Type":"multipart/form-data"}};
-        console.log(name,email,avatar);
         const {data} = await axios.put(`/api/v2/me/updateprofile`,{name,email,avatar},config);
-        // console.log(data);
         dispatch(UpdateProfileSuccess(data));
     } catch (error) {
         dispatch(UpdateProfileFail(error.response.data.message));
+    }
+}
+
+//for Updating Passwords
+export const updatePassword = ({oldpassword,newpassword,confirmpassword})=> async(dispatch) =>{
+    try {
+        dispatch(UpdatePasswordRequest());
+        const config = {headers:{"Content-Type":"application/json"}};
+        const {data} = await axios.put(`/api/v2/me/password/update`,{oldpassword,newpassword,confirmpassword},config);
+        // console.log(data);
+        dispatch(UpdatePasswordSuccess(data));
+    } catch (error) {
+        dispatch(UpdatePasswordFail(error.response.data.message));
     }
 }

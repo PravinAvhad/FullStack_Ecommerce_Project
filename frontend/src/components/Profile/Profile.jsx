@@ -1,10 +1,10 @@
 import React from 'react'
-import "./account.css"
+import "./profile.css"
 import { useSelector } from 'react-redux'
 import Loader from '../Layout/Loader/Loader';
 import { Link } from 'react-router-dom';
 
-const Account = () => {
+const Profile = () => {
     const {loading,isAuthenticated,user} = useSelector((state)=> state.User);
     return (
         <div className='account'>
@@ -44,4 +44,4 @@ const Account = () => {
     )
 }
 
-export default Account;
+export default Profile;

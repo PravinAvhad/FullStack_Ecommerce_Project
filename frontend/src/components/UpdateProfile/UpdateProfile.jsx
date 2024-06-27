@@ -39,10 +39,10 @@ const UpdateProfile = () => {
     }
 
     useEffect(() => {
-        if(user){
+        if(user.user){
             setName(user.user.name);
             setEmail(user.user.email);
-            setAvatarPreview(user.user.profileImg.Url);
+            setAvatarPreview(user.user.profileImg.Url || "/Profile.jpeg");
         }
         if (error) {
             toast.error(error);
