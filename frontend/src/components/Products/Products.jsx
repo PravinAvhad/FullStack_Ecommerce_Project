@@ -12,21 +12,22 @@ import MetaData from '../Layout/MetaData.jsx'
 
 const Products = () => {
     const dispatch = useDispatch();
-    const { keyword } = useParams();
-    const { loading, items, itemsCount, error, itemsPerPage } = useSelector(state => state.Items);
+    const { keyword,category } = useParams();
+    const { loading, items, itemsCount, error, itemsPerPage,itemsFilteredCnt } = useSelector(state => state.Items);
     // const clearErrors = () => {
     //     dispatch(clearError());
     // }
+    // console.log(`keyword: ${keyword} & Category: ${category}`);
     const [currentPageNo, setCurrentPageNo] = useState(1);
     const setCurrentPage = (e) => {
         setCurrentPageNo(e);
     }
     useEffect(() => {
-        dispatch(getitems(keyword, currentPageNo));
+        dispatch(getitems(keyword, currentPageNo,category));
         if (error) {
             toast.error(error);
         }
-    }, [dispatch, keyword, currentPageNo,error]);
+    }, [dispatch, keyword, currentPageNo,error,category]);
     return (
         <>
             {loading ? (<Loader />) :
@@ -45,11 +46,11 @@ const Products = () => {
                     </div>
                     <div className="pagination">
                         {
-                            itemsPerPage < itemsCount && (
+                            (itemsPerPage < itemsFilteredCnt) && (
                                 <Pagination
                                     activePage={currentPageNo}
                                     itemsCountPerPage={itemsPerPage}
-                                    totalItemsCount={itemsCount}
+                                    totalItemsCount={itemsFilteredCnt}
                                     onChange={setCurrentPage}
                                     nextPageText="Next"
                                     prevPageText="prev"

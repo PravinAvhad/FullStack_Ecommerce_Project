@@ -7,13 +7,14 @@ const Itemdetails=createSlice({
         itemDetailRequest(state,action){
             return{
                 loading:true,
-                ...state
+                ...state,
             }
         },
         itemDetailSuccess(state,action){
             return{
+                // ...state,
                 loading:false,
-                fetchitemDetails: action.payload,
+                itemDetails: action.payload,
             }
         },
         itemDetailFail(state,action){
@@ -22,7 +23,7 @@ const Itemdetails=createSlice({
                 error:action.payload
             }
         },
-        clearError(state,action){
+        clearErrors(state,action){
             return {
                 ...state,
                 error:null

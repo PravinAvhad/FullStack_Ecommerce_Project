@@ -71,7 +71,9 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
+    min-height: 23rem;
+    height: 100%;
 }
 .pagination{
     /* background-color: lightgreen; */
@@ -119,5 +121,14 @@
 
     .page-item{
         padding: .5rem .6rem;
+    }
+}
+@media (max-width:380px){
+    .allproducts{
+        gap: .7rem;
+        /* background-color: skyblue; */
+    }
+    .homesection2{
+        padding: 1rem 0px;
     }
 }

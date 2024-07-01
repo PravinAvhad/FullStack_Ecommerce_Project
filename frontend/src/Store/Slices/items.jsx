@@ -15,6 +15,7 @@ const Items=createSlice({
                 loading:false,
                 items: action.payload.items,
                 itemsCount:action.payload.itemsCount,
+                itemsFilteredCnt:action.payload.itemsFilteredCnt,
                 itemsPerPage:action.payload.resultPerPage
             }
         },
