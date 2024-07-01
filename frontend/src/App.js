@@ -14,10 +14,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import UpdatePassword from "./components/UpdatePassword/UpdatePassword.jsx";
+import ForgetPassword from "./components/ForgetPassword/ForgetPassword.jsx";
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, user, error } = useSelector((state) => state.User);
+  const { isAuthenticated,loading, user, error } = useSelector((state) => state.User);
 
   useEffect(() => {
     if (error) {
@@ -25,7 +26,7 @@ function App() {
     }
     dispatch(loaduser());
   }, []);
-
+  
   return (
     <div className="App">
       <ToastContainer />
@@ -33,11 +34,13 @@ function App() {
         <Header isAuthenticated={isAuthenticated} user={user} />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/products' element={<Products />} />
-          <Route path='/products/:keyword' element={<ProductDetails />} />
+          {/* For Searching Product */}
+          <Route path='/products/:keyword' element={<Products />} />
+          <Route path='/products/filter/:category' element={<Products />} /> 
+          <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/login' element={<LoginSignUp />} />
-          <Route path='/password/forget' element={<Home />} />
+          <Route path='/password/forget' element={<ForgetPassword />} />
           {!loading && isAuthenticated && (
             <>
               <Route path="/myaccount" element={<Profile />} />

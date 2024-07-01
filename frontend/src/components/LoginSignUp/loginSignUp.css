@@ -264,6 +264,15 @@ form {
     background-color: black;
     color: white;
 }
+.sign-in-container .forget{
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.sign-in-container .forget:hover{
+    color: tomato;
+    text-decoration: underline;
+}
 @media (max-width:840px) {
     form {
         padding: 0px 10px;

@@ -22,6 +22,7 @@
     position: sticky;
     top: 1rem;
     left: 1rem;
+    padding-top: 2rem;
 }
 .part1{
     background-color: skyblue;
@@ -60,12 +61,14 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 1rem; */
     align-items: center;
 }
-h1{
+.subsection2 h1{
     /* background-color: skyblue; */
     width: 100%;
+    border-bottom: 2px solid lightgrey;
+    margin: 0px;
 }
 .ratings{
     display: flex;
@@ -73,17 +76,27 @@ h1{
     width: 100%;
     align-items: center;
     gap: 1rem;
+    /* border-bottom: 2px solid lightgrey; */
 }
 .pricesection{
-    /* background-color: skyblue; */
+    /* background-color: tomato; */
     width: 100%;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;  
+    height: 100%;  
 }
 .discount{
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: green;
+}
+.subsection3{
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* border-bottom: 2px solid lightgrey; */
 }
 .allprices{
     font-size: 1.5rem;
@@ -91,6 +104,8 @@ h1{
     display: flex;
     align-items: center;
     gap: 1rem;
+    border-bottom: 2px solid lightgrey;
+    /* background-color: skyblue; */
 }
 .orignalprice{
     font-size: 1rem;
@@ -101,6 +116,67 @@ h1{
     width: 100%;
     font-size: 1.2rem;
     font-weight: 400;
+    padding-top: 1rem;
+}
+.statusSection{
+    /* background-color: skyblue; */
+    /* width: 40%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.statusSection span{
+    font-size: 2rem;
+    font-weight: 700;
+    text-wrap: nowrap;
+}
+.subsection4{
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid lightgrey;
+}
+.quantity{
+    display: flex;
+    /* background-color: skyblue; */
+    align-items: center;
+    font-size: 2rem;
+    gap: 1rem;
+    padding: 0px 8px;
+}
+.addcart {
+    /* background-color: skyblue; */
+    font-size: 12px;
+    padding: 4px;
+}
+.subsection4 button{
+    border-radius: 10px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 4px 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin: .5rem 0rem;
+    cursor: pointer;
+}
+.subsection4 button:active {
+    transform: scale(0.95);
+}
+
+.subsection4 button:focus {
+    outline: none;
+}
+
+.subsection4 button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
 }
 @media (max-width:1200px){
     .part1{
@@ -111,25 +187,45 @@ h1{
     .part1{
         width: 100%;
     }
-}
-@media (max-width:800px){
-    .subsection1{
-        padding: .5rem;
-        height: 35rem;
+    .mainsection{
+        padding: 1rem 0rem;
     }
 }
-@media (max-width:700px){
+@media (max-width:970px){
+    .statusSection span{
+        font-size: 1.6rem;
+        text-wrap: wrap;
+    }
+    .subsection4{
+        flex-direction: column;
+        gap: .5rem;
+        align-items: flex-start;
+    }
+}
+@media (max-width:850px){
+    .subsection1{
+        padding: .5rem;
+        height: 30rem;
+    }
+    .mainsection{
+        gap:0rem;
+        padding: 1rem 0rem;
+    }
+}
+/* @media (max-width:700px){
     .subsection1{
         height: 30rem;
     }
     .mainsection{
         padding: 1rem .5rem;
     }
-}
-@media (max-width:639px){
+} */
+@media (max-width:767px){
     .mainsection{
         flex-direction: column;
         align-items: center;
+        padding: 0rem 1rem;
+        gap: 1rem;
     }
     .subsection1{
         width: 90%;
@@ -143,6 +239,17 @@ h1{
     h1{
         font-size: 1.5rem;
     }
+    .statusSection span{
+        text-wrap: nowrap;
+        font-size: 1.5rem;
+    }
+    .subsection4{
+        flex-direction: row;
+        align-items: center;
+    }
+    .subsection4 button{
+        font-size: 1rem;
+    }
 }
 @media (max-width:450px) {
     .mainsection{
@@ -155,5 +262,16 @@ h1{
     }
     .subsection2{
         padding: .5rem;
+    }
+    .subsection3{
+        flex-direction: column;
+    }
+    .statusSection{
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .subsection4{
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

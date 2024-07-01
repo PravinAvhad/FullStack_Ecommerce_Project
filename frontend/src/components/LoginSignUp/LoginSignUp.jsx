@@ -124,7 +124,7 @@ const LoginSignUp = () => {
                         <input type='password'
                             value={loginpassword} placeholder="Password" required
                             onChange={(e) => { setLoginPassword(e.target.value); }} />
-                        <Link to="/password/forget">Forgot your password?</Link>
+                        <Link to="/password/forget" className="forget">Forget your password?</Link>
                         <button onClick={login}>Sign In</button>
                     </form>
                 </div>

@@ -46,22 +46,22 @@ exports.deleteItem = AsyncErrors(async (req, res, next) => {
 
 //Get All Items -- All Users
 exports.getAllItems = AsyncErrors(async (req, res, next) => {
-    // return next(new Errorhandler("This is TEMP Error",500));
     const resultPerPage = 8;
     const itemsCount = await Item.countDocuments();
     const apiFeature = new ApiFeatures(Item.find(), req.query)
         .search()
-        .filter()
-        .pagination(resultPerPage);
-    // const items = await Item.find();
-    const items = await apiFeature.query;
-
+        .filter();
+    let items = await apiFeature.query.clone();
+    let itemsFilteredCnt = items.length;
+    apiFeature.pagination(resultPerPage);
+    items = await apiFeature.query;
     res.status(200).json({
         success: true,
         items,
         itemsCount,
+        itemsFilteredCnt,
         resultPerPage
-    })
+    });
 })
 
 //Get Single Item Detail
