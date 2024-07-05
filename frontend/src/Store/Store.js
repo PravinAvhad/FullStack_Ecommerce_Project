@@ -5,7 +5,7 @@ import Itemdetails from "./Slices/itemdetails"
 import User from './Slices/User';
 import Profile from './Slices/Profile';
 import ForgetPassword from './Slices/ForgetPassword';
-import addToCart from './Slices/addToCart';
+import Cart from './Slices/Cart';
 
 const store = configureStore({
   reducer: {
@@ -14,7 +14,7 @@ const store = configureStore({
     User:User,
     Profile:Profile,
     ForgetPassword:ForgetPassword,
-    addToCart:addToCart,
+    Cart:Cart,
   }
 });
 

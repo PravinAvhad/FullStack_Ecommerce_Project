@@ -107,9 +107,13 @@
     border-bottom: 2px solid lightgrey;
     /* background-color: skyblue; */
 }
+.allprices span:first-child{
+    font-size: 1.5rem;
+}
 .orignalprice{
     font-size: 1rem;
     font-weight: 400;
+    text-decoration: line-through;
 }
 .description{
     /* background-color: skyblue; */

@@ -11,9 +11,9 @@ export const getitems = (keyword="",page=1,category) => async (dispatch) => {
         if(category){
             apilink = `/api/v1/items?keyword=${keyword}&category=${category}&page=${page}`;
         }
-        console.log(apilink);
+        // console.log(apilink);
         const { data } = await axios.get(apilink);
-        console.log(data);
+        // console.log(data);
         dispatch(allItemsSuccess(data));
     } catch (error) {
         // console.log(error);

@@ -15,6 +15,7 @@ import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import UpdatePassword from "./components/UpdatePassword/UpdatePassword.jsx";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword.jsx";
+import Cart from "./components/CartPage/Cart.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/login' element={<LoginSignUp />} />
           <Route path='/password/forget' element={<ForgetPassword />} />
+          <Route path='/cart' element={<Cart/>} />
           {!loading && isAuthenticated && (
             <>
               <Route path="/myaccount" element={<Profile />} />

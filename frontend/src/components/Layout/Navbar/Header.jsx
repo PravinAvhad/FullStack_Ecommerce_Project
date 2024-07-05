@@ -94,7 +94,7 @@ const Header = ({ isAuthenticated, user }) => {
                                     <input type="text" name="" placeholder='Search' onChange={(e) => setKeyword(e.target.value)} id="searchinput" />
                                     <FontAwesomeIcon icon={faMagnifyingGlass} className='icons hover' id="searchicon" onClick={searchsumbitHandler} />
                                 </div>
-                                <div className='iconname hover' onClick={sidebartoogle} style={{ paddingTop: '4px' }}>
+                                <div className='iconname hover' onClick={()=>navigate(`/cart`)} style={{ paddingTop: '4px' }}>
                                     <FontAwesomeIcon icon={faCartShopping} className='profileicon' />
                                     <p>Cart</p>
                                 </div>
@@ -124,32 +124,16 @@ const Header = ({ isAuthenticated, user }) => {
                                     {user.user.role === "admin" && (
                                         <Link to="/dashboard" className='sidebarbtns2'>Dashboard</Link>
                                     )}
-                                    <Link to="/orders" className='sidebarbtns2'>Orders</Link>
-                                    <Link to="/myaccount" className='sidebarbtns2'>My Account</Link>
-                                    <button className='sidebarbtns2' onClick={logout}>Log Out</button>
                                     <Link to="/" className="sidebarbtns">Home</Link>
                                     <Link to="/products" className="sidebarbtns">Products</Link>
-                                    <Link to="/contact" className="sidebarbtns">Contact Us</Link>
-                                    <Link to="/about" className="sidebarbtns">About</Link>
-                                </div >
-                            </div >
-                        ) : (
-                            <div id='aside'>
-                                <div className="asidesection">
-                                    <div className="hellouser">
-                                        <h2>Hello User</h2>
-                                        <p>To access your Ecommerce Account</p>
-                                    </div >
-                                    <Link to="/login" className='sidebarbtns2' onClick={sidebartoogle}>Sign In</Link>
                                     <div className="filteropts">
                                         <div className="selectbtn" onClick={togglefunc}>
                                             <span>Category</span>
                                             {visiblecat ? (
-                                                <div className="downarrow" style={{transform:"rotate(180deg)"}}><FontAwesomeIcon icon={faChevronDown} /></div>
+                                                <div className="downarrow" style={{ transform: "rotate(180deg)" }}><FontAwesomeIcon icon={faChevronDown} /></div>
                                             ) : (
                                                 <div className="downarrow"><FontAwesomeIcon icon={faChevronDown} /></div>
                                             )}
-                                            {/* <div className="downarrow"><FontAwesomeIcon icon={faChevronDown} /></div> */}
                                         </div>
                                         {visiblecat ? (
                                             <div className="content">
@@ -160,8 +144,50 @@ const Header = ({ isAuthenticated, user }) => {
                                                 </ul>
                                             </div>) : (<></>)}
                                     </div>
+                                    <Link to="/myaccount" className='sidebarbtns2'>My Account</Link>
+                                    <Link to="/orders" className='sidebarbtns2'>My Orders</Link>
+                                    <Link to="/contact" className="sidebarbtns">Contact Us</Link>
+                                    {/* <Link to="/about" className="sidebarbtns">About</Link> */}
+                                    <button className='sidebarbtns2' onClick={logout}>Log Out</button>
+                                </div >
+                            </div >
+                        ) : (
+                            <div id='aside'>
+                                <div className="asidesection">
+                                    <div className="hellouser">
+                                        <h2>Hello User</h2>
+                                        <p>To access your Ecommerce Account</p>
+                                    </div >
+                                    <Link to="/login" className='sidebarbtns2' onClick={sidebartoogle}>Sign In</Link>
                                     <Link to="/" className="sidebarbtns">Home</Link>
                                     <Link to="/products" className="sidebarbtns">Products</Link>
+                                    <div className="filteropts">
+                                        <div className="selectbtn" onClick={togglefunc}>
+                                            <span>Category</span>
+                                            {visiblecat ? (
+                                                <div className="downarrow" style={{ transform: "rotate(180deg)" }}><FontAwesomeIcon icon={faChevronDown} /></div>
+                                            ) : (
+                                                <div className="downarrow"><FontAwesomeIcon icon={faChevronDown} /></div>
+                                            )}
+                                        </div>
+                                        {visiblecat ? (
+                                            <div className="content">
+                                                <ul>
+                                                    {categories.map((item, ind) => (
+                                                        <li key={ind} onClick={() => { setCategory(item); filterbycategory(item) }}> {item}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>) : (<></>)}
+                                    </div>
+                                    {/* <div className="filterprice">
+                                        <div className="pricename">
+                                            <span>Price</span>
+                                            <span style={{color:"blue"}}>Clear</span>
+                                        </div>
+                                        <div className="priceline">
+                                            
+                                        </div>
+                                    </div> */}
                                     <Link to="/contact" className="sidebarbtns">Contact Us</Link>
                                     <Link to="/about" className="sidebarbtns">About</Link>
                                 </div >

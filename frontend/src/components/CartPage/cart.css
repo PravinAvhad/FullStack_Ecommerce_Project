@@ -1,0 +1,177 @@
+.cart{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 40rem;
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+.noitem{
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    height: fit-content;
+    align-self: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.noitem h1{
+    font-size: 2rem;
+    font-weight: 600;
+    text-wrap: wrap;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+.noitem p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: .5rem 0rem 1rem 0rem;
+}
+.cartsection{
+    height: 100%;
+    width: 80%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  
+}
+.itemsSection{
+    width: 70%;
+    /* min-height: 35rem; */
+    height: fit-content;
+    max-height: 35rem;
+    overflow-y: auto;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color:white;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    padding: 1rem;
+}
+.pricedetailsSection{
+    width: 30%;
+    height: fit-content;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: white;
+    border-radius: 3px;
+    border: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.pricedetailsSection h2{
+    text-align: start;
+    /* background-color: skyblue; */
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+.pricedetailsSection .pricedetails{
+    /* background-color: aqua; */
+    padding: 1rem 0rem;
+    border-top: 3px solid lightgrey;
+    border-bottom: 3px solid lightgrey;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+.pricedetailsSection .pricedetails .sinprice,.pricedetailsSection .total{
+    /* background-color: skyblue; */
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+.pricedetails span,.pricedetails p,.pricedetails h3{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.pricedetailsSection .total span, .pricedetailsSection .total h3{
+    /* background-color: skyblue; */
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.pricedetailsSection .placeorder{
+    /* background-color: skyblue; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.pricedetailsSection .placeorder button,.noitem button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.pricedetailsSection .placeorder button:active,.noitem button:active  {
+    transform: scale(0.95);
+}
+
+.pricedetailsSection .placeorder button:focus,.noitem button:focus  {
+    outline: none;
+}
+
+.pricedetailsSection .placeorder button:ghost,.noitem button:ghost  {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+.noitem button{
+    align-self: center;
+    margin: 1rem 0rem;
+}
+@media (max-width:1280px) {
+    .cartsection{
+        width: 100%;
+    }
+}
+@media (max-width:875px){
+    .pricedetailsSection h2{
+        font-size: 1.3rem;
+    }
+    .pricedetails span,.pricedetails p,.pricedetails h3{
+        font-size: 1.1rem;
+    }
+    .pricedetailsSection .total span, .pricedetailsSection .total h3{
+        font-size: 1.3rem;
+    }
+}
+@media (max-width:768px) {
+    .cartsection{
+        flex-direction: column;
+        /* min-height: 40rem; */
+    } 
+    .itemsSection{
+        width: 100%;
+        /* min-height: 20rem; */
+    }
+    .pricedetailsSection{
+        width: 100%;
+        height: 40%;
+    }
+}
+@media (max-width:450px){
+    .cart{
+        padding: 1rem .5rem;
+        min-height: 30rem;
+    }
+    .itemsSection{
+        padding: .5rem;
+    }
+}

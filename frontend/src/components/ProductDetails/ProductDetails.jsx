@@ -39,9 +39,7 @@ const ProductDetails = () => {
         }
     }
     const addtocart = () => {
-        console.log(`Add to Cart is working`);
-        dispatch(addItemsToCart(id,quantity));
-        // console.log(`Item : `,itemDetails);
+        dispatch(addItemsToCart(id,quantity)); //working correctly
     }
     const options = {
         edit: false,
@@ -80,8 +78,8 @@ const ProductDetails = () => {
                                     Discount Price
                                 </div>
                                 <div className="allprices">
-                                    <span>Rs. {itemDetails.price}/-</span>
-                                    <span className='orignalprice'>Rs. {itemDetails.price * 0.8}/-</span>
+                                    <span>Rs. {itemDetails.price* 0.8}/-</span>
+                                    <span className='orignalprice'>Rs. {itemDetails.price}/-</span>
                                     <span className='discount'>20% off</span>
                                 </div>
                             </div>

@@ -1,0 +1,199 @@
+.cartItem{
+    width: 100%;
+    /* height: 10rem; */
+    /* background-color: whitesmoke; */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 0rem;
+}
+.cartItemsub1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    gap: 1rem;
+    /* background-color: gray; */
+}
+.cartItemsub2{
+    width: 30%;
+    height: 100%;
+    /* background-color: skyblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
+.cartItemsub1 img{
+    align-self: center;
+    height: 9rem;
+    width: 10rem;
+    border-radius: 5px;
+}
+.itemdetails{
+    width: 70%;
+    height: 100%;
+    /* background-color: skyblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.itemdetails h2{
+    /* background-color: tomato; */
+    width: 100%;
+    text-align: start;
+    text-wrap: wrap;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.itemdetails .pricessection{
+    /* background-color: tomato; */
+    width: 100%;
+}
+.pricessection h3{
+    font-size: 1.4rem;
+    font-weight: 600;
+    /* background-color:green; */
+}
+.pricessection > .prices{
+    /* background-color: gray; */
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+.pricessection span{
+    font-size: 1.3rem;
+    font-weight: 600;
+    /* background-color: skyblue; */
+}
+.pricessection .orignalprice{
+    font-size: 1rem;
+    color: lightgrey;
+}
+.itemdetails button,.quantity button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.itemdetails button:active,.quantity button:active {
+    transform: scale(0.95);
+}
+
+.itemdetails button:focus,.quantity button:focus {
+    outline: none;
+}
+
+.itemdetails button.ghost, .quantity button:ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+.cartItemsub2 .quantity{
+    display: flex;
+    /* background-color: lightcyan; */
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    gap: 1rem;
+    width: 100%;
+}
+.quantity button{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 4px 1.5rem;
+}
+@media (max-width:1000px) {
+    .quantity button{
+        padding: 2px 8px;
+        border-radius: 5px;
+    }
+}
+@media (max-width:970px) {
+    .cartItemsub1 img{
+        width: 7rem;
+        height: 7rem;
+    }
+}
+@media (max-width:875px){
+    .itemdetails h2{
+        font-size: 1.3rem;
+    }
+    .pricessection h3{
+        font-size: 1.2rem;
+    }
+    .pricessection span{
+        font-size: 1.1rem;
+    }
+    .pricessection .orignalprice{
+        font-size: .8rem;
+    }
+}
+@media (max-width:768px) {
+    .cartItemsub1 img{
+        width: 8rem;
+    }
+}
+@media (max-width:550px) {
+    .cartItemsub1 img{
+        width: 6rem;
+        height: 6rem;
+    }
+    .cartItemsub2{
+        padding-right: 0rem;
+    }
+}
+@media (max-width:500px) {
+    .cartItemsub2 .quantity{
+        gap: .5rem;
+        width: fit-content;
+        justify-content: flex-end;
+        font-size: 1.3rem;
+    }
+    .quantity button{
+        padding: 0px 5px;
+    }
+    .itemdetails h2{
+        font-size: 1.1rem;
+    }
+    .pricessection h3{
+        font-size: 1rem;
+    }
+    .pricessection span{
+        font-size: .9rem;
+    }
+    .pricessection .orignalprice{
+        font-size: .7rem;
+    }
+    .cartItemsub1{
+        gap: .5rem;
+    }
+}
+@media (max-width:405px) {
+    .cartItemsub1 img{
+        width: 5.5rem;
+        height: 5rem;
+    }
+    .quantity{
+        padding-left: 0px;
+    }
+    .cartItemsub2{
+        justify-content: flex-end;
+    }
+    .pricessection > .prices{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0px;
+    }
+    .pricessection .orignalprice{
+        font-size: .9rem;
+    }
+}

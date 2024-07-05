@@ -22,6 +22,7 @@ const Products = () => {
     const setCurrentPage = (e) => {
         setCurrentPageNo(e);
     }
+    
     useEffect(() => {
         dispatch(getitems(keyword, currentPageNo,category));
         if (error) {
@@ -50,7 +51,7 @@ const Products = () => {
                                 <Pagination
                                     activePage={currentPageNo}
                                     itemsCountPerPage={itemsPerPage}
-                                    totalItemsCount={itemsFilteredCnt}
+                                    totalItemsCount={itemsCount}
                                     onChange={setCurrentPage}
                                     nextPageText="Next"
                                     prevPageText="prev"

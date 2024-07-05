@@ -285,7 +285,7 @@ form {
 
 @media (max-width:650px) {
     .loginsignup{
-        height: 100vh;
+        height: 120vh;
     }
     .registerimg input{
         height: 2.8rem;
