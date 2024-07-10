@@ -4,6 +4,9 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyparser = require("body-parser");
 const fileupload = require("express-fileupload");
+const dotenv = require("dotenv");
+//Config
+dotenv.config({path:"backend/config.env"});
 
 app.use(express.json());
 app.use(cookieParser());
@@ -13,10 +16,12 @@ app.use(fileupload());
 const itemRoute = require("./routes/ItemRoute");
 const userRoute = require("./routes/UserRoute");
 const OrderRoute = require("./routes/OrderRoute");
+const PaymentRoute = require("./routes/paymentRoute");
+
 app.use("/api/v1",itemRoute);
 app.use("/api/v2",userRoute);
 app.use("/api/v3",OrderRoute);
-
+app.use("/api/v4",PaymentRoute);
 //Error Middlerware
 app.use(ErrorMiddleware);
 

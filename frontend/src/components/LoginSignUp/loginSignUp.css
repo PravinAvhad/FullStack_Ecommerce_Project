@@ -78,7 +78,7 @@ span {
     border-color: #FFFFFF;
 }
 
-form {
+.form-container form {
     background-color: #FFFFFF;
     display: flex;
     align-items: center;

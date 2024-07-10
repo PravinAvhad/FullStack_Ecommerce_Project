@@ -8,6 +8,7 @@ import Loader from '../Layout/Loader/Loader';
 import ReactStars from "react-rating-stars-component"
 import { fetchItemDetails } from '../../Actions/itemAction';
 import { addItemsToCart } from '../../Actions/cartItems';
+import MetaData from '../Layout/MetaData';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -55,6 +56,7 @@ const ProductDetails = () => {
         ) : (
             <div className='productDetails'>
                 {/* <ToastContainer /> */}
+                <MetaData title={itemDetails.name} />
                 <div className="mainsection">
                     <div className="subsection1">
                         {itemDetails.images?.map((img, index) => (

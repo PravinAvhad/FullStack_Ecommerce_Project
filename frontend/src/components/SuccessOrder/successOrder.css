@@ -1,0 +1,62 @@
+.successOrder{
+    min-height: 40rem;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.successOrder .successcontainer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 20rem;
+    height: 100%;
+    width: 40rem;
+    padding: 1rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.successcontainer .icon{
+    font-size: 4rem;
+    color: #FF4B2B;
+}
+.successcontainer h3{
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+.successcontainer button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .7rem 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.successcontainer button:active {
+    transform: scale(0.95);
+}
+
+.successcontainer button:focus {
+    outline: none;
+}
+
+.successcontainer button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+@media (max-width: 639px) {
+    .successOrder{
+        min-height: 30rem;
+    }
+}

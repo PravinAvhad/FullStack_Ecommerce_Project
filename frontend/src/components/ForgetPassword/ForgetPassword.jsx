@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { clearError } from '../../Store/Slices/ForgetPassword';
 import { sendemail } from '../../Actions/userActions';
 import Loader from '../Layout/Loader/Loader';
+import MetaData from '../Layout/MetaData';
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const ForgetPassword = () => {
     {loading ? (<Loader/>) : (
     <div className="forgetpassword">
       <ToastContainer/>
+      <MetaData title="Ecommerce Password Assistance"/>
       <div className="forgetpasswordsection">
         <h1>Find your Account</h1>
         <div className="subsection1">

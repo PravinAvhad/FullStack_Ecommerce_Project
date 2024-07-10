@@ -54,6 +54,7 @@ const UpdatePassword = () => {
   return (
     <div className="updatePassword">
       <ToastContainer />
+      <MetaData title="Update Password"/>
       <div className="updatePasswordSection">
         <h1>Update Password</h1>
         <div className="subsection">

@@ -2,6 +2,8 @@ import React from 'react'
 import "./cartItem.css";
 import { useDispatch } from 'react-redux';
 import { addItemsToCart, RemoveItem } from '../../Actions/cartItems';
+import { Link } from 'react-router-dom';
+
 const CartItem = ({item}) => {
     const dispatch = useDispatch();
     const increment = ()=>{
@@ -24,6 +26,7 @@ const CartItem = ({item}) => {
         dispatch(RemoveItem(id));
     }
     return (
+        // <Link to={`/product/${item.data.item._id}`} className="cartItem">
         <div className="cartItem">
             <div className="cartItemsub1">
                 <img src={item.data.item.images ? item.data.item.images[0].Url :"./Profile.jpeg"} alt="Item Image" />

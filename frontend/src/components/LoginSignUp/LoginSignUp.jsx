@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import "./loginSignUp.css"
 import Loader from '../Layout/Loader/Loader'
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginuser, registeruser } from '../../Actions/userActions'
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
+import MetaData from '../Layout/MetaData'
 
 const LoginSignUp = () => {
     const dispatch = useDispatch();
@@ -60,15 +61,27 @@ const LoginSignUp = () => {
             navigate("/myaccount"); //Atlast Change to Dashboard 
         }
         else if(isAuthenticated && user.user.role==="user"){
-            navigate("/products");
+            if(window.location.href){
+                if(window.location.href.split("=")[1]){
+                    navigate(window.location.href.split("=")[1]); 
+                    window.location.reload();  //temporary used
+                }
+                else{
+                    navigate("/products");
+                }
+            }
+            else{
+                navigate("/products");
+            }
         }
-    }, [dispatch,error,navigate,isAuthenticated,toast]);
+    }, [dispatch,error,navigate,isAuthenticated,toast,redirect]);
 
     return (
         <>
         {loading ? (<Loader/>) : (
             <>
         <ToastContainer />
+        <MetaData title="Ecommerce Sign In"/>
         <div className="loginsignup">
             <div className="container" id="container">
                 <div className="form-container sign-up-container">
@@ -110,7 +123,7 @@ const LoginSignUp = () => {
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
-                    <form action="#">
+                    <form >
                         <h1>Sign in</h1>
                         {/* <div className="social-container">
                             <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>

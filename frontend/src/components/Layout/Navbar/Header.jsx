@@ -144,9 +144,9 @@ const Header = ({ isAuthenticated, user }) => {
                                                 </ul>
                                             </div>) : (<></>)}
                                     </div>
-                                    <Link to="/myaccount" className='sidebarbtns2'>My Account</Link>
-                                    <Link to="/orders" className='sidebarbtns2'>My Orders</Link>
-                                    <Link to="/contact" className="sidebarbtns">Contact Us</Link>
+                                    <Link to="/myaccount" className='sidebarbtns2' onClick={sidebartoogle}>My Account</Link>
+                                    <Link to="/orders" className='sidebarbtns2' onClick={sidebartoogle}>My Orders</Link>
+                                    <Link to="/contact" className="sidebarbtns" onClick={sidebartoogle}>Contact Us</Link>
                                     {/* <Link to="/about" className="sidebarbtns">About</Link> */}
                                     <button className='sidebarbtns2' onClick={logout}>Log Out</button>
                                 </div >

@@ -6,6 +6,7 @@ import User from './Slices/User';
 import Profile from './Slices/Profile';
 import ForgetPassword from './Slices/ForgetPassword';
 import Cart from './Slices/Cart';
+import Order from './Slices/Order';
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     Profile:Profile,
     ForgetPassword:ForgetPassword,
     Cart:Cart,
+    Order:Order
   }
 });
 

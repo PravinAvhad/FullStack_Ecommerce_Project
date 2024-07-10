@@ -1,6 +1,7 @@
 .cart{
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 2rem 1rem;
     min-height: 40rem;
     height: 100%;
@@ -40,9 +41,8 @@
 }
 .itemsSection{
     width: 70%;
-    /* min-height: 35rem; */
     height: fit-content;
-    max-height: 35rem;
+    max-height: 34rem;
     overflow-y: auto;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
@@ -61,7 +61,7 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
     background-color: white;
-    border-radius: 3px;
+    border-radius: 5px;
     border: none;
     padding: 1rem;
     display: flex;
@@ -76,20 +76,20 @@
     font-weight: 600;
 }
 .pricedetailsSection .pricedetails{
-    /* background-color: aqua; */
-    padding: 1rem 0rem;
+    padding: .5rem 0rem;
     border-top: 3px solid lightgrey;
     border-bottom: 3px solid lightgrey;
     display: flex;
     flex-direction: column;
-    gap: .8rem;
 }
 .pricedetailsSection .pricedetails .sinprice,.pricedetailsSection .total{
-    /* background-color: skyblue; */
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
+}
+.pricedetailsSection .pricedetails .sinprice{
+    padding: .5rem 0rem;
 }
 .pricedetails span,.pricedetails p,.pricedetails h3{
     font-size: 1.3rem;
