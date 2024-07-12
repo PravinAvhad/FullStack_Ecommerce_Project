@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useStripe, CardNumberElement, CardExpiryElement, useElements, CardCvcElement } from "@stripe/react-stripe-js";
-import { clear, createOrder } from '../../Actions/Order';
+import { clear, createOrder } from '../../Actions/OrderAction';
 
 const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
     const navigate = useNavigate();
@@ -29,6 +29,7 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
         }),
         itemsPrice: orderInfo && orderInfo.itemsPrice,
         taxPrice: orderInfo && orderInfo.taxPrice,
+        discountPrice: orderInfo && orderInfo.discountPrice,
         shippingPrice: orderInfo && orderInfo.shippingPrice,
         totalPrice: orderInfo && orderInfo.totalPrice,
     }
@@ -75,7 +76,7 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
                             status: result.paymentIntent.status,
                         }
                         alert(`Success`);
-                        // console.log("OrderDetails:", orderdetails);
+                        console.log("OrderDetails:", orderdetails);
                         dispatch(createOrder(orderdetails));
                         navigate("/success");
                     }

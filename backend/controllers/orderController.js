@@ -5,9 +5,9 @@ const Item = require("../models/itemModel");
 
 //Create new Order
 exports.createnewOrder = AsyncErrors(async (req, res, next) => {
-    const { shippinginfo, Itemsorder, paymentInfo, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
+    const { shippinginfo, Itemsorder, paymentInfo, itemsPrice,discountPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
-    const order = await Orders.create({ shippinginfo, Itemsorder, paymentInfo, itemsPrice, taxPrice, shippingPrice, totalPrice, paidAt: Date.now(), user: req.user._id });
+    const order = await Orders.create({ shippinginfo, Itemsorder, paymentInfo, itemsPrice,discountPrice, taxPrice, shippingPrice, totalPrice, paidAt: Date.now(), user: req.user._id });
     res.status(201).json({
         success: true,
         order
@@ -29,7 +29,7 @@ exports.getSingleOrderDetails = AsyncErrors(async (req, res, next) => {
 
 //Get All Orders to Logged In User
 exports.myOrders = AsyncErrors(async (req, res, next) => {
-    const orders = await Orders.find({ user: req.user._id });
+    const orders = await Orders.find({ user: req.user._id }).sort({paidAt:-1});
 
     res.status(200).json({
         success: true,

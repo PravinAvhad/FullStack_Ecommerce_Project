@@ -50,6 +50,8 @@ export const logoutuser = ()=> async(dispatch) =>{
     try {
         await axios.get(`/api/v2/logout`);
         // console.log(data);
+        // localStorage.setItem("shippingInfo",JSON.stringify(getState().Cart.shippinginfo));
+        localStorage.removeItem("shippingInfo");
         dispatch(logoutUserSuccess());
     } catch (error) {
         dispatch(logoutUserFail(error.response.data.message));

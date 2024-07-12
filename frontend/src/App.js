@@ -18,6 +18,8 @@ import ForgetPassword from "./components/ForgetPassword/ForgetPassword.jsx";
 import Cart from "./components/CartPage/Cart.jsx";
 import ShippingInformation from "./components/Shipping/ShippingInformation.jsx";
 import SuccessOrder from "./components/SuccessOrder/SuccessOrder.jsx";
+import MyOrders from "./components/MyOrders/MyOrders.jsx"
+import OrderDetail from "./components/OrderDetail/OrderDetail.jsx";
 import axios from 'axios';
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
     }
     dispatch(loaduser());
     getStripeApiKey();
-  }, [dispatch,stripeKey]);
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -66,6 +68,8 @@ function App() {
                 <Route path='/checkout' element={<ShippingInformation stripeApiKey={stripeKey} />} />
               )}
               <Route path="/success" element={<SuccessOrder />} />
+              <Route path='/myorders' element={<MyOrders/>}/>
+              <Route path='/order/:id' element={<OrderDetail/>} />
             </>
           )}
         </Routes>

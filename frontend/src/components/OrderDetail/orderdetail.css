@@ -1,0 +1,217 @@
+.orderdetail{
+    height: fit-content;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 1rem;
+}
+.orderdetail .orderdetailcontainer{
+    width: 1024px;
+    /* height: 30rem; */
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.orderdetailcontainer .sub1{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.orderdetailcontainer .sub1 div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: .7rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.orderdetailcontainer .sub1 div .dateid{
+    /* background-color: tomato; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.orderdetailcontainer .sub1 div .dateid p:first-child{
+    border-right: 2px solid black;
+    padding-right: .5rem;
+}
+.orderdetailcontainer .sub1 div h2{
+    font-size: 2rem;
+}
+.orderdetailcontainer .sub1 button{
+    height: fit-content;
+    background-color: inherit;
+    padding: .5rem 1rem ;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.orderdetailcontainer .sub1 button:hover{
+    color: #FF4B2B;
+    text-decoration: underline;
+}
+.orderdetailcontainer .sub2{
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.orderdetailcontainer .sub2 .paymentmethods{
+    /* background-color: skyblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.orderdetailcontainer .sub2 .paymentmethods h3{
+    /* background-color: skyblue; */
+    font-size: 1.5rem;
+}
+.orderdetailcontainer .sub2 .ordersummary{
+    /* background-color: skyblue; */
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 16rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.orderdetailcontainer .sub2 .ordersummary h3{
+    font-size: 1.5rem;
+}
+.orderdetailcontainer .sub2 .ordersummary .orderallprices{
+    display: flex;
+    flex-direction: column;
+}
+.orderdetailcontainer .sub2 .ordersummary .orderallprices .price{
+    display: flex;
+    /* background-color: white; */
+    justify-content: space-between;
+    padding: 3px;
+}
+.orderdetailcontainer .sub2 .ordersummary .orderallprices .price p{
+    width: 50%;
+}
+.orderdetailcontainer .sub2 .ordersummary .orderallprices .price p:last-child{
+    text-align: end;
+}
+.orderdetailcontainer .sub2 .ordersummary .orderallprices .price:last-child{
+    border-top: 2px solid black;
+    font-weight: 600;
+}
+.orderdetailcontainer .sub3{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+        background-color: white;
+
+}
+.orderdetailcontainer .sub3 h3{
+    font-size: 1.5rem;
+}
+.orderdetailcontainer .sub3 .allorderitems{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.orderdetailcontainer .sub3 .allorderitems .orderitem{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
+}
+.orderdetailcontainer .sub3 .allorderitems .orderitem h3{
+    width: 35%;
+    font-size: 1.3rem;
+}
+.orderdetailcontainer .sub3 .allorderitems .orderitem img{
+    width: 200px;
+    height: 150px;
+}
+@media (max-width: 689px) {
+    .orderdetailcontainer .sub3 .allorderitems .orderitem img{
+        width: 33%;
+        height: auto;
+    }
+    .orderdetailcontainer .sub3 .allorderitems .orderitem h3{
+        width: 33%;
+        font-size: 1.1rem;
+    }
+    .orderdetailcontainer .sub3 h3{
+        font-size: 1.3rem;
+    }
+    .orderdetailcontainer .sub2 .paymentmethods h3,.orderdetailcontainer .sub2 .ordersummary h3{
+        font-size: 1.3rem;
+    }
+    .orderdetailcontainer .sub1 div .dateid{
+        flex-direction: column;
+    }
+    .orderdetailcontainer .sub1 div .dateid p:first-child{
+        border: none;
+    }
+}
+@media (max-width:460px) {
+    .orderdetailcontainer .sub3 .allorderitems .orderitem h3{
+        width: 33%;
+        font-size: 1rem;
+    }
+    .orderdetailcontainer .sub3 h3{
+        font-size: 1.1rem;
+    }
+    .orderdetailcontainer .sub2 .paymentmethods h3,.orderdetailcontainer .sub2 .ordersummary h3{
+        font-size: 1.1rem;
+        text-wrap: wrap;
+    }
+    .orderdetailcontainer .sub1 div{
+        font-size: 1rem;
+    }
+    .orderdetailcontainer .sub3 .allorderitems .orderitem{
+        gap:.5rem
+    }
+    .orderdetailcontainer .sub3{
+        padding: .5rem;
+    }
+    .orderdetailcontainer .sub2{
+        gap: 0.5rem;
+        padding: .5rem;
+    }
+    .orderdetail{
+        padding: .8rem .5rem;
+    }
+    .orderdetailcontainer .sub1 button{
+        padding: .5rem;
+    }
+    .orderdetailcontainer .sub1 div h2{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width:390px) {
+    .orderdetailcontainer .sub2 .ordersummary{
+        width: 90%;
+    }
+    .orderdetailcontainer .sub2 .ordersummary .orderallprices .price p:first-child{
+        width: 60%;
+        /* background-color: skyblue; */
+    }
+}

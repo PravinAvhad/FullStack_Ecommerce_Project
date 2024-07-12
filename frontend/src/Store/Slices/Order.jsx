@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const Order = createSlice({
     name:"Orders",
-    initialState:{order:{}},
+    initialState:{order:{},myorders:[]},
     reducers:{
         createOrderRequest(state,action){
             return{
@@ -29,9 +29,29 @@ const Order = createSlice({
                 ...state,
                 error:null,
             }
+        },
+        myorderRequest(state,action){
+            return{
+                ...state,
+                loading:true,
+            }
+        },
+        myorderSuccess(state,action){
+            return{
+                ...state,
+                loading:false,
+                myorders:action.payload
+            }
+        },
+        myorderFail(state,action){
+            return{
+                ...state,
+                loading:false,
+                error:action.payload
+            }
         }
     }
 });
 
 export default Order.reducer;
-export const {createOrderRequest,createOrderSuccess,createOrderFail,clearError} = Order.actions;
+export const {createOrderRequest,createOrderSuccess,createOrderFail,clearError,myorderRequest,myorderSuccess,myorderFail} = Order.actions;

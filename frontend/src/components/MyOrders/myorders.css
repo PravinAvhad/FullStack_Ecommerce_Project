@@ -1,0 +1,104 @@
+.myorders{
+    min-height: 40rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 1rem;
+}
+.myorders .ordertable{
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0px auto;
+}
+.myorders .ordertable .noorder{
+    min-height: 33rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    gap:2rem
+}
+.myorders .ordertable .noorder button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.myorders .ordertable .noorder button:active  {
+    transform: scale(0.95);
+}
+
+.myorders .ordertable .noorder button:focus  {
+    outline: none;
+}
+
+.myorders .ordertable .noorder button:ghost  {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+.ordertable table{
+    width: 100%;
+}
+.ordertable table thead{
+    background-color: skyblue;
+}
+.ordertable table thead th{
+    padding: .8rem 5px;
+    font-size: 1.6rem;
+}
+.ordertable table tbody tr{
+    /* background-color: lightcyan; */
+    border: 3px solid black;
+}
+.ordertable table tbody tr td{
+    border-bottom: 2px solid lightgray;
+    text-align: center;
+    padding: .5rem 5px;
+    font-size: 1.1rem;
+}
+.ordertable table tbody tr td button{
+    background-color: inherit;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.ordertable table tbody tr td button:hover{
+    color: skyblue;
+}
+.ordertable table tbody tr:last-child td{
+    border-bottom: 0px;
+}
+@media (max-width:800px){
+    .ordertable table thead th{
+        font-size: 1.3rem;
+    }
+    .ordertable table tbody tr td{
+        font-size: .9rem;
+        text-wrap: nowrap;
+    }
+}
+@media (max-width:639px){
+    .ordertable table thead th{
+        font-size: 1rem;
+    }
+    .myorders .ordertable{
+        overflow-x: auto;
+    }
+}

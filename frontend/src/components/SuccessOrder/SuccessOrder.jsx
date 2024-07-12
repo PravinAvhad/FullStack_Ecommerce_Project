@@ -14,7 +14,7 @@ const SuccessOrder = () => {
             <div className="successcontainer">
                 <FontAwesomeIcon icon={faCircleCheck} className='icon'/>
                 <h3>Your Order has been Placed Successfully.</h3>
-                <button type="button" onClick={() => navigate("/myordres")}>View Orders</button>
+                <button type="button" onClick={() => navigate("/myorders")}>View Orders</button>
             </div>
         </div>
     )

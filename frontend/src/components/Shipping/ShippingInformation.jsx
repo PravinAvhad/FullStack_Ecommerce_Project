@@ -40,9 +40,18 @@ const ShippingInformation = ({ stripeApiKey }) => {
     }
     const itemsPrice = Math.round(cartItems.reduce((acc, item) => acc + item.data.item.price * item.quantity, 0));
     // 0.2 i.e. 20% temporary used
-    const discountPrice = Math.round(itemsPrice * 0.2);
+    const getdiscount = () => {
+        let discount = 0;
+        cartItems.map((item)=>{
+          if(item.data.item.discount){
+            discount += item.data.item.price*`0.${item.data.item.discount}`*item.quantity;
+          }
+        });
+        return discount;
+      }
+    const discountPrice = Math.round(getdiscount());
     const shippingPrice = Math.round((itemsPrice - discountPrice < 5000) ? 0 : (itemsPrice - discountPrice) * 0.002);
-    const taxPrice = Math.round((itemsPrice - discountPrice < 5000) ? 0 : (itemsPrice - discountPrice) * 0.18);
+    const taxPrice = Math.round((itemsPrice - discountPrice) * 0.18);
     const totalPrice = itemsPrice - discountPrice + shippingPrice + taxPrice;
     const confirm = () => {
         const paymentdata = {
@@ -76,15 +85,15 @@ const ShippingInformation = ({ stripeApiKey }) => {
                         </div>
                         <div className="sinprice">
                             <h3>Discount</h3>
-                            <span>- {discountPrice} /-</span>
-                        </div>
-                        <div className="sinprice">
-                            <h3>Delivery Charges </h3>
-                            <span>{shippingPrice} /-</span>
+                            <span>{discountPrice === 0 ? (discountPrice) :(`-${discountPrice}`)} /-</span>
                         </div>
                         <div className="sinprice">
                             <h3>GST (18%) </h3>
                             <span>{taxPrice} /-</span>
+                        </div>
+                        <div className="sinprice">
+                            <h3>Delivery Charges </h3>
+                            <span>{shippingPrice} /-</span>
                         </div>
                     </div>
                     <div className="total">

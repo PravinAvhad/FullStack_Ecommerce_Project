@@ -80,9 +80,15 @@ const ProductDetails = () => {
                                     Discount Price
                                 </div>
                                 <div className="allprices">
-                                    <span>Rs. {itemDetails.price* 0.8}/-</span>
-                                    <span className='orignalprice'>Rs. {itemDetails.price}/-</span>
-                                    <span className='discount'>20% off</span>
+                                    {itemDetails.discount ? (
+                                        <>
+                                        <span>Rs. {itemDetails.price - itemDetails.price*`0.${itemDetails.discount}`}/-</span>
+                                        <span className='orignalprice'>Rs. {itemDetails.price}/-</span>
+                                        <span className='discount'>{itemDetails.discount}% off</span>
+                                        </>
+                                    ) : (
+                                        <span>Rs. {itemDetails.price}/-</span>
+                                    )}
                                 </div>
                             </div>
                             <div className="statusSection">
@@ -98,7 +104,7 @@ const ProductDetails = () => {
                                 <button onClick={increment}>+</button>
                             </div>
                             <div className="addcart">
-                                <button onClick={addtocart}>Add to cart</button>
+                                <button disabled={itemDetails.stock < 1 ? true : false} onClick={addtocart}>Add to cart</button>
                             </div>
                         </div>
                         <div className="description">{itemDetails.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium corrupti sequi, vitae est perferendis amet accusantium, illo pariatur, reprehenderit non nisi! In repellat molestiae consectetur adipisci beatae minus quasi porro. Inventore veniam mollitia delectus laudantium dicta dignissimos nulla quo facilis harum fugit. Est qui vel fugiat cum molestiae iste odit cumque, temporibus sunt, recusandae facilis doloribus optio placeat quia a ipsum quasi ullam nemo. Asperiores, cumque. Quia, veniam. Nemo, dolor. Facere perferendis ducimus sit aliquid in molestiae fugit ipsum doloremque nulla odio animi dolor debitis nam corporis, voluptatem repellat nesciunt, iste voluptas perspiciatis eveniet facilis similique quos? Similique culpa reiciendis impedit dolore amet ratione illum fuga. Doloremque non optio nisi nostrum ullam aliquid dolorum nesciunt vero, ratione sed veniam quas sint eveniet cum ab fugiat aliquam esse quaerat eum est qui error nulla voluptas adipisci? Animi omnis et molestiae non amet ratione harum soluta sit ullam itaque autem quam ab quaerat hic saepe dolore praesentium quos earum, commodi vitae, velit fugit, dignissimos placeat nam. Dicta eos qui error praesentium nesciunt aliquid dolorum pariatur. Saepe iusto doloribus, repellendus ab voluptas quisquam molestiae amet error doloremque, maiores voluptatem quae excepturi dolore cumque molestias in ducimus fuga impedit. Recusandae cumque minus porro labore, qui nam odit perferendis, incidunt cupiditate nihil deserunt debitis impedit reprehenderit minima necessitatibus fugiat possimus? Ab saepe corporis consequatur pariatur, fugiat illo aperiam sapiente qui dolorem natus ipsum dignissimos recusandae quam dolor vitae optio esse cum voluptatibus iusto, rerum odit! Harum voluptate ducimus deleniti atque nesciunt vel fugit voluptatem, dolorem facere excepturi reprehenderit odit mollitia aperiam ab. Incidunt dolorem commodi praesentium. Iusto, est illo? Alias architecto quo nobis nisi porro voluptatum fugit mollitia reiciendis ipsum tenetur, incidunt nam eum! Facilis sit voluptatibus illo aperiam unde rerum optio quo eligendi in! Sit ad non earum modi reiciendis at saepe harum ipsa est laboriosam excepturi consequatur dolorum aperiam, similique quisquam laborum obcaecati voluptas nobis unde amet magni. Quaerat, libero! Totam suscipit dolorem hic, facere itaque adipisci ducimus amet reprehenderit excepturi? Rem veritatis laudantium accusantium quae dolorum, et, atque earum eligendi facilis quis repellendus corrupti sed autem neque voluptates nobis harum minima libero! Sunt accusantium dolor, ducimus suscipit dignissimos autem dolorem nulla cumque, assumenda dolorum et eligendi rerum nam quas soluta quod consequuntur labore nisi, obcaecati iste voluptatum quam odio. In, assumenda ut? Assumenda modi deserunt corrupti minus tempore placeat porro ad vitae, consectetur ea sit architecto deleniti, ipsa dicta quasi tenetur praesentium.</div>
