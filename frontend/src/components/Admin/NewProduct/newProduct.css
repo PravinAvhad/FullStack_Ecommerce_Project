@@ -1,0 +1,15 @@
+.adminNewProduct{
+    display: flex;
+    background-color: whitesmoke;
+}
+.newProduct{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminNewProduct{
+        flex-direction: column;
+    }
+    .newProduct{
+        width: 100%;
+    }
+}

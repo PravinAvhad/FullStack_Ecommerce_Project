@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./header.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faCartShopping, faUser, faChevronDown } from "@fortawesome/free-solid-svg-icons"
@@ -8,9 +8,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { logoutuser } from '../../../Actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from "../../Layout/Loader/Loader";
-import { getitems } from '../../../Actions/itemAction'
 
-const Header = ({ isAuthenticated, user }) => {
+const Header = ({ isAuthenticated,user }) => {
     const [sidebar, setSidebar] = useState(false);
     const [keyword, setKeyword] = useState("");
     const [categories, setCategories] = useState(["All Categories", "Electronics", "Furniture", "AutoMobile", "Vegetables", "Sports"]);
@@ -19,7 +18,7 @@ const Header = ({ isAuthenticated, user }) => {
     const [visiblecat, setVisibleCat] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { items, loading } = useSelector(state => state.Items);
+    const { loading } = useSelector(state => state.Items);
     const sidebartoogle = () => {
         setSidebar(!sidebar);
         if (sidebar === false) {
@@ -86,7 +85,9 @@ const Header = ({ isAuthenticated, user }) => {
                             </div>
                             <div className="subpart2" icons >
                                 <Link to="/products" className="navlinks hover">Products</Link>
-                                <Link to="/contact" className="navlinks hover">Contact Us</Link>
+                                {isAuthenticated && user.user.role !== "admin" ? (
+                                    <Link to="/contact" className="navlinks hover">Contact Us</Link>) : (
+                                    <Link to="/admin/dashboard" className="navlinks hover">Dashboard</Link>)}
                                 <Link to="/about" className="navlinks hover">About</Link>
                             </div>
                             <div className="subpart3">
@@ -94,13 +95,13 @@ const Header = ({ isAuthenticated, user }) => {
                                     <input type="text" name="" placeholder='Search' onChange={(e) => setKeyword(e.target.value)} id="searchinput" />
                                     <FontAwesomeIcon icon={faMagnifyingGlass} className='icons hover' id="searchicon" onClick={searchsumbitHandler} />
                                 </div>
-                                <div className='iconname hover' onClick={()=>navigate(`/cart`)} style={{ paddingTop: '4px' }}>
+                                <div className='iconname hover' onClick={() => navigate(`/cart`)} style={{ paddingTop: '4px' }}>
                                     <FontAwesomeIcon icon={faCartShopping} className='profileicon' />
                                     <p>Cart</p>
                                 </div>
                                 <div className='iconname hover' id='toggle1' onClick={sidebartoogle} >
                                     {isAuthenticated ? (
-                                        <img src={user.user.profileImg.Url ? user.user.profileImg.Url : "/Profile.jpeg"} className='profileimg' />
+                                        <img src={user.user.profileImg.Url ? user.user.profileImg.Url : "/Profile.jpeg"} className='profileimg' alt="Profile Img" />
                                     ) : (<>
                                         <FontAwesomeIcon icon={faUser} className='profileicon' />
                                         <p>Profile</p> </>
@@ -121,9 +122,9 @@ const Header = ({ isAuthenticated, user }) => {
                                         <h2>Welcome</h2>
                                         <h2>{user.user.name}</h2>
                                     </div >
-                                    {user.user.role === "admin" && (
-                                        <Link to="/dashboard" className='sidebarbtns2'>Dashboard</Link>
-                                    )}
+                                    {/* {user.user.role === "admin" && (
+                                        <Link to="/admin/dashboard" className='sidebarbtns2'>Dashboard</Link>
+                                    )} */}
                                     <Link to="/" className="sidebarbtns">Home</Link>
                                     <Link to="/products" className="sidebarbtns">Products</Link>
                                     <div className="filteropts">
@@ -145,7 +146,9 @@ const Header = ({ isAuthenticated, user }) => {
                                             </div>) : (<></>)}
                                     </div>
                                     <Link to="/myaccount" className='sidebarbtns2' onClick={sidebartoogle}>My Account</Link>
-                                    <Link to="/myorders" className='sidebarbtns2' onClick={sidebartoogle}>My Orders</Link>
+                                    {user.user.role !== "admin" && (
+                                        <Link to="/myorders" className='sidebarbtns2' onClick={sidebartoogle}>My Orders</Link>
+                                    )}
                                     <Link to="/contact" className="sidebarbtns" onClick={sidebartoogle}>Contact Us</Link>
                                     {/* <Link to="/about" className="sidebarbtns">About</Link> */}
                                     <button className='sidebarbtns2' onClick={logout}>Log Out</button>

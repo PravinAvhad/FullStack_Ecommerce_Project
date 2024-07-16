@@ -1,0 +1,15 @@
+.adminallproducts{
+    display: flex;
+    background-color: whitesmoke;
+}
+.allproducts{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminallproducts{
+        flex-direction: column;
+    }
+    .allproducts{
+        width: 100%;
+    }
+}

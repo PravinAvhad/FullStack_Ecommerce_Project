@@ -144,3 +144,15 @@ exports.deleteItemReview = AsyncErrors(async(req,res,next)=>{
         success:true
     })
 })
+
+//Get All Items -- Only Admin
+exports.getAdminAllItems = AsyncErrors(async (req, res, next) => {
+    const items = await Item.find();
+    res.status(200).json({
+        success: true,
+        items,
+        itemsCount,
+        itemsFilteredCnt,
+        resultPerPage
+    });
+})

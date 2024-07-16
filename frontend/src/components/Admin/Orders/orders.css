@@ -1,0 +1,15 @@
+.adminOrders{
+    display: flex;
+    background-color: whitesmoke;
+}
+.orders{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminOrders{
+        flex-direction: column;
+    }
+    .orders{
+        width: 100%;
+    }
+}

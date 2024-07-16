@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getOrderDetails } from '../../Actions/OrderAction';
 import "./orderdetail.css"
 import Loader from "../Layout/Loader/Loader";
@@ -8,6 +8,7 @@ import Metadata from "../Layout/MetaData";
 
 const OrderDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { OrderDetails, loading, error } = useSelector((state) => state.OrderDetails);
     useEffect(() => {
@@ -73,9 +74,14 @@ const OrderDetail = () => {
                             <div className="allorderitems">
                                 {OrderDetails.order && OrderDetails.order.Itemsorder && OrderDetails.order.Itemsorder.map((item) => (
                                     <div className="orderitem">
-                                        <img src={item.image} alt="Order Image" />
-                                        <h3>{item.name}</h3>
+                                        <img onClick={()=>navigate(`/product/${item.product}`)} src={item.image} alt="Order Image" />
+                                        <h3 onClick={()=>navigate(`/product/${item.product}`)} className='productname'>{item.name}</h3>
+                                        <div className="prices">
                                         <h3>{`Rs. ${item.price} x ${item.quantity} = Rs. ${item.price * item.quantity}`}</h3>
+                                        {item.discount > 0 && (
+                                        <h3 style={{color:"green"}}>Discount : {item.discount}%</h3> )}
+                                        </div>
+                                        
                                     </div>
                                 ))}
                             </div>

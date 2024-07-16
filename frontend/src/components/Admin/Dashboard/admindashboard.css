@@ -1,0 +1,131 @@
+.admindashboard{
+    display: flex;
+    background-color: whitesmoke;
+    /* min-height: 100rem; */
+}
+.dashboard{
+    /* background-color: tomato; */
+    width: 80%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+.dashboard > h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.dashboard > .sub1{
+    /* background-color:skyblue; */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+.dashboard > .sub1 > .detailbox{
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    height: fit-content;
+    padding: 1.5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1.5rem;
+    width: 15rem;
+    text-decoration: none;
+    color: black;
+}
+.dashboard > .sub1 > .detailbox > .logo{
+    font-size: 3rem;
+    color: #FF4B2B;
+}
+.dashboard > .sub1 > .detailbox > div{
+    display: flex;
+    flex-direction: column;
+    /* background-color: tomato; */
+    gap: .4rem;
+}
+.dashboard > .sub1 > .detailbox > div > h4{
+    font-size: 1.3rem;
+    color: lightgrey;
+}
+.dashboard > .sub1 > .detailbox > div > h3{
+    font-size: 1.6rem;
+}
+.dashboard > .subsection{
+    display: flex;
+    /* background-color: salmon; */
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 1.5rem;
+}
+.dashboard > .subsection > .sub2, .dashboard >.subsection > .sub3{
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.dashboard > .subsection > .sub2 > h3, .dashboard > .subsection > .sub3 > h3{
+    font-size: 1.7rem;
+}
+.dashboard > .subsection > .sub2 > .graph{
+    width: 70%;
+    margin: auto;
+}
+.dashboard > .subsection > .sub3{
+    width: 100%;
+}
+.dashboard > .subsection > .sub3 > .piechart{
+    width: 30vmax;
+    margin:auto;
+}
+@media (max-width:1024px){
+    .dashboard{
+        width: 75%;
+    }
+}
+@media (max-width:768px) {
+    .admindashboard{
+        flex-direction: column;
+    }
+    .dashboard{
+        width: 100%;
+    }
+}
+@media (max-width:580px) {
+    .dashboard > .sub1{
+        gap: 1rem;
+    }
+    .dashboard{
+        padding: .5rem;
+    }
+    .dashboard > .sub1 > .detailbox{
+        gap: 1rem;
+        width: 10rem;
+    }
+    .dashboard > .sub1 > .detailbox > .logo{
+        font-size: 2rem;
+    }
+    .dashboard > .sub1 > .detailbox > div > h4{
+        font-size: 1rem;
+    }
+    .dashboard > .sub1 > .detailbox > div > h3{
+        font-size: 1.3rem;
+    }
+}
+@media (max-width:375px) {
+    .dashboard > .sub1 > .detailbox{
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,15 @@
+.adminAllUsers{
+    display: flex;
+    background-color: whitesmoke;
+}
+.allusers{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminAllUsers{
+        flex-direction: column;
+    }
+    .allusers{
+        width: 100%;
+    }
+}

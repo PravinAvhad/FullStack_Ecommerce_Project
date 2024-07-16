@@ -1,0 +1,15 @@
+.adminReviews{
+    display: flex;
+    background-color: whitesmoke;
+}
+.reviews{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminReviews{
+        flex-direction: column;
+    }
+    .reviews{
+        width: 100%;
+    }
+}

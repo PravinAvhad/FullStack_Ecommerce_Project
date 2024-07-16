@@ -21,6 +21,7 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
             const temp = {
                 name: maindata.data.item.name,
                 price: maindata.data.item.price,
+                discount: maindata.data.item.discount,
                 quantity: maindata.quantity,
                 image: maindata.data.item.images[0].Url,
                 product:  maindata.data.item._id

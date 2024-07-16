@@ -141,13 +141,30 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     text-align: center;
 }
-.orderdetailcontainer .sub3 .allorderitems .orderitem h3{
-    width: 35%;
+.orderdetailcontainer .sub3 .allorderitems .orderitem .productname{
+    max-width: 35%;
     font-size: 1.3rem;
+}
+.orderdetailcontainer .sub3 .allorderitems .orderitem .prices{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.orderdetailcontainer .sub3 .allorderitems .orderitem .productname:hover{
+    color: #FF4B2B;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .orderdetailcontainer .sub3 .allorderitems .orderitem img{
     width: 200px;
     height: 150px;
+}
+.orderdetailcontainer .sub3 .allorderitems .orderitem img:hover{
+    cursor: pointer;
 }
 @media (max-width: 689px) {
     .orderdetailcontainer .sub3 .allorderitems .orderitem img{
@@ -169,6 +186,9 @@
     }
     .orderdetailcontainer .sub1 div .dateid p:first-child{
         border: none;
+    }
+    .orderdetailcontainer .sub3 .allorderitems .orderitem .prices h3{
+        width: 100%;
     }
 }
 @media (max-width:460px) {

@@ -12,7 +12,7 @@ const MyOrders = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { myorders, loading, error } = useSelector((state) => state.Order);
-  console.log("All Orders", myorders);
+  // console.log("All Orders", myorders);
 
   useEffect(() => {
     if (error) {

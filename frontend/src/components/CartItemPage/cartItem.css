@@ -32,6 +32,9 @@
     width: 10rem;
     border-radius: 5px;
 }
+.cartItemsub1 img:hover{
+    cursor: pointer;
+}
 .itemdetails{
     width: 70%;
     height: 100%;
@@ -48,6 +51,11 @@
     text-wrap: wrap;
     font-size: 1.5rem;
     font-weight: 600;
+}
+.itemdetails h2:hover{
+    color: #FF4B2B;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .itemdetails .pricessection{
     /* background-color: tomato; */

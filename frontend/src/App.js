@@ -20,6 +20,13 @@ import ShippingInformation from "./components/Shipping/ShippingInformation.jsx";
 import SuccessOrder from "./components/SuccessOrder/SuccessOrder.jsx";
 import MyOrders from "./components/MyOrders/MyOrders.jsx"
 import OrderDetail from "./components/OrderDetail/OrderDetail.jsx";
+import AdminDashboard from "./components/Admin/Dashboard/AdminDashboard.jsx";
+import AdminAllProducts from "./components/Admin/AllProducts/AllProducts.jsx";
+import AdminNewProduct from "./components/Admin/NewProduct/NewProduct.jsx";
+import AdminOrders from './components/Admin/Orders/Orders.jsx';
+import AdminAllUsers from "./components/Admin/AllUsers/AllUsers.jsx";
+import AdminReviews from "./components/Admin/Reviews/Reviews.jsx";
+
 import axios from 'axios';
 
 function App() {
@@ -72,10 +79,19 @@ function App() {
               <Route path='/order/:id' element={<OrderDetail/>} />
             </>
           )}
+          {!loading && isAuthenticated && user.user.role==="admin" && (
+            <>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/allproducts" element={<AdminAllProducts />} />
+              <Route path="/admin/newproduct" element={<AdminNewProduct />} />
+              <Route path="/admin/orders" element={<AdminOrders />} />
+              <Route path="/admin/allusers" element={<AdminAllUsers />} />
+              <Route path="/admin/reviews" element={<AdminReviews />} />
+            </>
+          )}
         </Routes>
         <Footer />
       </BrowserRouter>
-
     </div>);
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./loginSignUp.css"
 import Loader from '../Layout/Loader/Loader'
-import { Link, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginuser, registeruser } from '../../Actions/userActions'
 import { ToastContainer, toast } from "react-toastify";
@@ -58,7 +58,7 @@ const LoginSignUp = () => {
             toast.error(error);
         }
         if(isAuthenticated && user.user.role ==="admin"){
-            navigate("/myaccount"); //Atlast Change to Dashboard 
+            navigate("/admin/dashboard"); //Atlast Change to Dashboard 
         }
         else if(isAuthenticated && user.user.role==="user"){
             if(window.location.href){
@@ -74,7 +74,7 @@ const LoginSignUp = () => {
                 navigate("/products");
             }
         }
-    }, [dispatch,error,navigate,isAuthenticated,toast,redirect]);
+    }, [dispatch,error,navigate,isAuthenticated,user]);
 
     return (
         <>

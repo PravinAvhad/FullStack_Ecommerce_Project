@@ -2,10 +2,11 @@ import React from 'react'
 import "./cartItem.css";
 import { useDispatch } from 'react-redux';
 import { addItemsToCart, RemoveItem } from '../../Actions/cartItems';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CartItem = ({ item }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const increment = () => {
         const newQty = item.quantity + 1;
         if (item.data.item.stock <= item.quantity) {
@@ -26,12 +27,11 @@ const CartItem = ({ item }) => {
         dispatch(RemoveItem(id));
     }
     return (
-        // <Link to={`/product/${item.data.item._id}`} className="cartItem">
         <div className="cartItem">
             <div className="cartItemsub1">
-                <img src={item.data.item.images ? item.data.item.images[0].Url : "./Profile.jpeg"} alt="Item Image" />
+                <img onClick={()=>navigate(`/product/${item.data.item._id}`)} src={item.data.item.images ? item.data.item.images[0].Url : "./Profile.jpeg"} alt="Item Image" />
                 <div className="itemdetails">
-                    <h2>{item.data.item.name}</h2>
+                    <h2 onClick={()=>navigate(`/product/${item.data.item._id}`)}>{item.data.item.name}</h2>
                     <div className="pricessection">
                         <h3>Price : </h3>
                         <div className="prices">

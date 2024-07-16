@@ -1,0 +1,213 @@
+.aside{
+    background-color: lightgray;
+    width: 20%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 1rem 2rem;
+}
+.asidebox{
+    min-height: 39.55rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.asidebox > .linktags,.asidebox > button{
+    width: 100%;
+    padding: .7rem 1.5rem;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    text-align: start;
+    font-size: 1.5rem;
+    color: black;
+    /* background-color: white; */
+}
+.asidebox > button{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: .7rem 1rem .7rem 1.5rem;
+}
+.asidebox > .productsbox{
+    margin-top: -1.5rem;
+    padding: 0rem .5rem;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.asidebox > .productsbox > .small{
+    width: 100%;
+    padding: .7rem 1.5rem;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: inherit;
+    text-align: start;
+    font-size: 1.2rem;
+    margin: .5rem 0rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+.asidebox > .productsbox > .small > .logo{
+    font-size: .5rem;
+}
+.asidebox > .linktags:hover,.asidebox > .productsbox .small:hover,.aside > .smmobile > .mobilelinks:hover{
+    background-color: #FF4B2B;
+}
+.asidebox .products{
+   background-color: tomato;
+   width: 100%;
+}
+.asidebox .button{
+    font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+.mobileasidebox{
+    /* background-color: white; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+.mobileasidebox > .mobilelinks,.mobileasidebox > div > button, .aside > .smmobile > .smlinks, .aside > .smmobile > div > button{
+    text-decoration: none;
+    color: black;
+    padding: .5rem .7rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background-color: inherit;
+    font-family: 'Times New Roman', Times, serif;
+}
+.mobileasidebox > div,.smmobile > div{
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+}
+.mobileasidebox > div > .mobproductsbox, .smmobile > div > .mobproductsbox{
+    background-color: white;
+    border-radius: 5px;
+    padding: .5rem .2rem;
+    position: absolute;
+    top: 2.8rem;
+    left: 0;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    z-index: 10;
+}
+.mobileasidebox > div > .mobproductsbox > .moblinks, .smmobile > div >.mobproductsbox > .moblinks{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 5px;
+    padding: .2rem .5rem;
+}
+.mobileasidebox > div > .mobproductsbox > .moblinks:hover, .smmobile > div >.mobproductsbox > .moblinks:hover,.smmobile > .smlinks:hover{
+    background-color: #FF4B2B;
+}
+.mobileasidebox > div > .mobproductsbox > .moblinks > .moblogos,.smmobile > div > .mobproductsbox > .moblinks > .moblogos{
+    font-size: .5rem;
+}
+.mobileasidebox > div > button,.smmobile > div > button{
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    gap: 1rem;
+    border-radius: 5px;
+}
+.mobileasidebox > .mobilelinks:hover{
+    background-color: #FF4B2B;
+}
+.aside > .smmobile{
+    /* background-color: aqua; */
+    padding-top: .3rem;
+    border-top: 2px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width:1150px) {
+    .aside{
+        padding: 1rem;
+    }
+    .asidebox > .productsbox{
+        padding: 0rem .5rem;
+    }
+}
+@media (max-width:1024px){
+    .aside{
+        width: 25%;
+    }
+}
+@media (max-width:850px){
+    .asidebox > .linktags,.asidebox > button{
+        padding: .7rem;
+    }
+}
+@media (min-width:769px) {
+    .mobileasidebox{
+        display: none;
+    }
+}
+@media (max-width:768px) {
+    .aside{
+        width: 100%;
+        /* min-height: 5rem; */
+        padding: .5rem 1rem;
+    }
+    .asidebox{
+        display: none;
+    }
+}
+@media (max-width:650px) {
+    .mobileasidebox > div > button{
+        gap: .5rem;
+    }
+    .aside{
+        padding: .5rem;
+    }
+}
+@media (min-width:585px) {
+    .aside > .smmobile{
+        display: none;
+    }
+}
+@media (max-width:585px) {
+    .mobileasidebox > .lastlinks{
+        display: none;
+    }
+    .aside{
+        padding: .5rem 1rem;
+        flex-direction: column;
+    }
+    .aside > .smallmobile{
+        display: block;
+    }
+    .mobileasidebox{
+        padding-bottom: .3rem;
+    }
+}
+@media (max-width:420px) {
+    .aside{
+        padding: .5rem;
+    }
+}
