@@ -1,0 +1,15 @@
+.adminEditItem{
+    display: flex;
+    background-color: whitesmoke;
+}
+.editItem{
+    width: 80%;
+}
+@media (max-width:768px) {
+    .adminEditItem{
+        flex-direction: column;
+    }
+    .editItem{
+        width: 100%;
+    }
+}

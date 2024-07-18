@@ -26,6 +26,7 @@ import AdminNewProduct from "./components/Admin/NewProduct/NewProduct.jsx";
 import AdminOrders from './components/Admin/Orders/Orders.jsx';
 import AdminAllUsers from "./components/Admin/AllUsers/AllUsers.jsx";
 import AdminReviews from "./components/Admin/Reviews/Reviews.jsx";
+import AdminEditItem from "./components/Admin/EditItem/EditItem.jsx";
 
 import axios from 'axios';
 
@@ -84,6 +85,7 @@ function App() {
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/allproducts" element={<AdminAllProducts />} />
               <Route path="/admin/newproduct" element={<AdminNewProduct />} />
+              <Route path="/admin/editproduct/:id" element={<AdminEditItem/>} />
               <Route path="/admin/orders" element={<AdminOrders />} />
               <Route path="/admin/allusers" element={<AdminAllUsers />} />
               <Route path="/admin/reviews" element={<AdminReviews />} />

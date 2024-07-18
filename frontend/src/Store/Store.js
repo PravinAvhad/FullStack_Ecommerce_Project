@@ -8,6 +8,10 @@ import ForgetPassword from './Slices/ForgetPassword';
 import Cart from './Slices/Cart';
 import Order from './Slices/Order';
 import OrderDetails from './Slices/OrderDetails';
+import AdminItems from './Slices/AdminItems';
+import AdminNewItem from './Slices/AdminNewItem';
+import AdminDeleteItem from './Slices/AdminDeleteItem';
+import AdminUpdateItem from './Slices/AdminUpdateItem';
 
 const store = configureStore({
   reducer: {
@@ -18,7 +22,11 @@ const store = configureStore({
     ForgetPassword:ForgetPassword,
     Cart:Cart,
     Order:Order,
-    OrderDetails:OrderDetails
+    OrderDetails:OrderDetails,
+    AdminItems:AdminItems,
+    AdminNewItem:AdminNewItem,
+    AdminDeleteItem:AdminDeleteItem,
+    AdminUpdateItem:AdminUpdateItem
   }
 });
 

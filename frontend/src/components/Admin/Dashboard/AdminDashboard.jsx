@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Aside from "../AsideBar/Aside.jsx"
 import "./admindashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,10 +17,24 @@ import {
   Legend,
   ArcElement
 } from "chart.js";
+import { useDispatch, useSelector } from 'react-redux'
+import { admingetItems } from '../../../Actions/itemAction.js'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 const AdminDashboard = () => {
+  const {adminItems, loading,error} = useSelector((state)=> state.AdminItems);
+  const dispatch = useDispatch();
+  let outOfStock = 0;
+  adminItems && adminItems.forEach((item)=>{
+    if(item.stock === 0){
+      outOfStock += 1;
+    }
+  })
+  useEffect(() => {
+    dispatch(admingetItems());
+  }, [dispatch])
   const linestate = {
     labels:["Initial Amount","Earned Amount"],
     datasets:[
@@ -38,7 +52,7 @@ const AdminDashboard = () => {
       {
         backgroundColor:["rgb(135,206,235)","rgb(128,128,128)"],
         hoverBackgroundColor: ["rgb(255,75,43)","rgb(34, 139, 34)"],
-        data:[5,10],
+        data:[outOfStock,adminItems.length - outOfStock],
       }
     ],
   }
@@ -66,7 +80,7 @@ const AdminDashboard = () => {
             <FontAwesomeIcon icon={faProductHunt} className='logo'/>
             <div>
               <h4>Total Products</h4>
-              <h3>200</h3>
+              <h3>{adminItems.length}</h3>
             </div>
           </Link>
           <Link to="/admin/allusers" className="detailbox">

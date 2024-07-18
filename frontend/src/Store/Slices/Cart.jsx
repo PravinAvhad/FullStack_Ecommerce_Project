@@ -5,14 +5,6 @@ const Cart = createSlice({
     initialState: {
         cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
         shippinginfo : localStorage.getItem("shippingInfo") ? JSON.parse(localStorage.getItem("shippingInfo")) : {},
-        // shippinginfo: localStorage.getItem("ShippingInfo") ? JSON.parse(localStorage.getItem("ShippingInfo")) : {
-        //     address: "",
-        //     city: "",
-        //     pincode: "",
-        //     mobileno: "",
-        //     Country: "",
-        //     state: "",
-        // },
     },
     reducers: {
         AddToCartRequest(state, action) {

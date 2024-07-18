@@ -2,10 +2,29 @@ const Item = require("../models/itemModel");
 const Errorhandler = require("../utils/errorhandler");
 const AsyncErrors = require("../middleware/AsyncErrors");
 const ApiFeatures = require("../utils/apiFeatures");
+const cloudinary = require("cloudinary");
 
 //Create Item -- Admin
 exports.createItem = AsyncErrors(async (req, res, next) => {
-    req.body.user = req.user.id
+    let images = [];
+    if (typeof req.body.images === "string") {
+        images.push(req.body.images);
+    }
+    else {
+        images = req.body.images;
+    }
+    let imageslink = [];
+    for (let i = 0; i < images.length; i++) {
+        const res = await cloudinary.v2.uploader.upload(images[i], {
+            folder: "ProfileImgs",
+        });
+        imageslink.push({
+            publicId: res.public_id,
+            Url: res.secure_url,
+        });
+    }
+    req.body.images = imageslink;
+    req.body.user = req.user.id;
     const item = await Item.create(req.body);
 
     res.status(201).json({
@@ -21,7 +40,31 @@ exports.updateItem = AsyncErrors(async (req, res, next) => {
     if (!item) {
         return next(new Errorhandler("Item not Found", 404));
     }
-    item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, useFindAndModify: CSSFontFeatureValuesRule });
+    let images = [];
+    if (typeof req.body.images === "string") {
+        images.push(req.body.images);
+    }
+    else {
+        images = req.body.images;
+    }
+    if (images !== undefined) {
+        //Deleting Images from Cloudinary
+        for (let i = 0; i < item.images.length; i++) {
+            await cloudinary.v2.uploader.destroy(item.images[i].publicId);
+        }
+    }
+    let imageslink = [];
+    for (let i = 0; i < images.length; i++) {
+        const res = await cloudinary.v2.uploader.upload(images[i], {
+            folder: "ProfileImgs",
+        });
+        imageslink.push({
+            publicId: res.public_id,
+            Url: res.secure_url,
+        });
+    }
+    req.body.images = imageslink;
+    item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, useFindAndModify: false });
     res.status(200).json({
         success: true,
         item
@@ -33,6 +76,10 @@ exports.deleteItem = AsyncErrors(async (req, res, next) => {
     let item = await Item.findById(req.params.id);
     if (!item) {
         return next(new Errorhandler("Item not Found", 404));
+    }
+    //Deleting Images from Cloudinary
+    for (let i = 0; i < item.images.length; i++) {
+        const res = await cloudinary.v2.uploader.destroy(item.images[i].publicId);
     }
     await Item.findByIdAndDelete(req.params.id)
         .then(() =>
@@ -88,9 +135,9 @@ exports.itemReview = AsyncErrors(async (req, res, next) => {
     const isReviewed = item.reviews.find(rev => rev.user.toString() === req.user._id.toString());
     if (isReviewed) {
         item.reviews.forEach((rev) => {
-            if (rev.user.toString() === req.user._id.toString()) 
+            if (rev.user.toString() === req.user._id.toString())
                 rev.rating = req.body.rating,
-                rev.comment = req.body.comment
+                    rev.comment = req.body.comment
         })
     }
     else {
@@ -104,29 +151,29 @@ exports.itemReview = AsyncErrors(async (req, res, next) => {
     avg = avg / item.reviews.length;
     item.ratings = avg;
 
-    await item.save({validateBeforeSave:false});
+    await item.save({ validateBeforeSave: false });
 
     res.status(200).json({
-        success:true
+        success: true
     })
 })
 
 //Get All Reviews of Single Item
-exports.getItemsReviews = AsyncErrors(async(req,res,next)=>{
+exports.getItemsReviews = AsyncErrors(async (req, res, next) => {
     const item = await Item.findById(req.query.itemid);
-    if(!item){
+    if (!item) {
         return next(new Errorhandler("Item not Found", 404));
     }
     res.status(200).json({
-        success:true,
-        Reviews:item.reviews
+        success: true,
+        Reviews: item.reviews
     })
 })
 
 //Delete Review of Single Item
-exports.deleteItemReview = AsyncErrors(async(req,res,next)=>{
+exports.deleteItemReview = AsyncErrors(async (req, res, next) => {
     const item = await Item.findById(req.query.itemId);
-    if(!item){
+    if (!item) {
         return next(new Errorhandler("Item not Found", 404));
     }
     const reviews = item.reviews.filter(rev => rev._id.toString() !== req.query.reviewId.toString());
@@ -137,11 +184,11 @@ exports.deleteItemReview = AsyncErrors(async(req,res,next)=>{
     const ratings = avg / reviews.length;
     const numOfReviews = reviews.length;
     await Item.findByIdAndUpdate(req.query.itemId,
-        {reviews,ratings,numOfReviews},
-        {new:true,runValidators:true,runValidators:true});
+        { reviews, ratings, numOfReviews },
+        { new: true, runValidators: true, runValidators: true });
 
     res.status(200).json({
-        success:true
+        success: true
     })
 })
 
@@ -151,8 +198,5 @@ exports.getAdminAllItems = AsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         items,
-        itemsCount,
-        itemsFilteredCnt,
-        resultPerPage
     });
 })
