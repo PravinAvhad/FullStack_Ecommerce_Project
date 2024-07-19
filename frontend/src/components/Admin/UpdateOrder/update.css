@@ -1,0 +1,299 @@
+.adminProcessOrder{
+    display: flex;
+    background-color: whitesmoke;
+}
+.processOrder{
+    padding: 1rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap:1rem
+}
+.processOrder > h2{
+    font-size: 2rem;
+    font-size: 600;
+    text-align: start;
+}
+.processOrdersection{
+    display: flex;
+    gap: 1rem;
+    /* background-color: tomato; */
+    /* padding: .5rem; */
+}
+.processOrdersection > .leftsection{
+    /* background-color: skyblue; */
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.processOrdersection > .rightsection{
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+    width: 30%;
+    /* height: 30rem; */
+    height: fit-content;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.processOrdersection > .rightsection > h3{
+    padding-bottom: 1rem;
+}
+.processOrdersection > .leftsection > .sub1, .processOrdersection > .leftsection > .sub2{
+    background-color: white;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    display: flex;
+    padding: 1rem;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.processOrdersection > .leftsection > .sub1 > h3,.processOrdersection > .leftsection > .sub2 > h3,.processOrdersection > .rightsection > h3{
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-bottom: .5rem;
+}
+.processOrdersection > .leftsection > .sub1 > p, .processOrdersection > .leftsection > .sub2 > p{
+    font-size: 1.4rem;
+    padding: .3rem 0rem 0rem 1rem;
+}
+.processOrdersection > .leftsection > .sub1 > p > span, .processOrdersection > .leftsection > .sub2 > p > span{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.processOrdersection > .leftsection > .sub1 > .dateid{
+    display: flex;
+    /* background-color: skyblue; */
+    font-size: 1.4rem;
+    padding: .3rem 0rem 0rem 1rem;
+}
+.processOrdersection > .leftsection > .sub1 > .dateid > p:first-child{
+    border-right: 2px solid black;
+    padding: 0rem 1rem 0rem 0rem;
+}
+.processOrdersection > .leftsection > .sub1 > .dateid > p:last-child{
+    padding: 0rem 0rem 0rem 1rem;
+}
+.processOrdersection > .leftsection > .sub3{
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+        background-color: white;
+}
+.processOrdersection > .leftsection > .sub3 > h3{
+    font-size: 1.5rem;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .productname{
+    max-width: 35%;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .prices{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .prices > h3{
+    font-weight: 400;
+    font-weight: 1.3rem;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .productname:hover{
+    color: #FF4B2B;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > img{
+    width: 200px;
+    height: 150px;
+}
+.processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > img:hover{
+    cursor: pointer;
+}
+.processOrdersection > .rightsection > form {
+    /* background-color: skyblue; */
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 3rem;
+}
+.processOrdersection > .rightsection > form > label{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.processOrdersection > .rightsection > form > select{
+    width: 90%;
+    align-self: center;
+}
+.processOrdersection > .rightsection > form > button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 45px;
+    width: fit-content;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin: .5rem 0rem;
+    cursor: pointer;
+    align-self: center;
+}
+
+.processOrdersection > .rightsection > form > button:active {
+    transform: scale(0.95);
+}
+
+.processOrdersection > .rightsection > form > button:focus {
+    outline: none;
+}
+
+.processOrdersection > .rightsection > form > button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+@media (max-width:1280px) {
+    .processOrdersection > .rightsection > form > select{
+        width: 100%;
+        padding: .5rem .5rem;
+    }
+}
+@media (max-width:1050px) {
+    .processOrdersection > .rightsection > form > select{
+        font-size: 1.1rem;
+        padding: .5rem 0rem;
+    }
+}
+@media (max-width:900px) {
+    .processOrdersection > .leftsection{
+        width: 60%;
+    }
+    .processOrdersection > .rightsection{
+        width: 40%;
+    }
+    .processOrdersection > .leftsection > .sub1 > .dateid > p:last-child{
+        word-break: break-all;
+    }
+}
+@media (max-width:768px) {
+    .adminProcessOrder{
+        flex-direction: column;
+    }
+    .processOrder{
+        width: 100%;
+    }
+    .processOrdersection > .leftsection{
+        width: 100%;
+    }
+    .processOrdersection > .rightsection{
+        width: 100%;
+    }
+    .processOrdersection{
+        flex-direction: column;
+    }
+}
+@media (max-width:1024px) {
+    /* .processOrdersection > .leftsection{
+        width: 73%;
+    }
+    .processOrdersection > .rightsection{
+        width: 27%;
+    } */
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > img{
+        width: 33%;
+        height: auto;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > h3{
+        width: 33%;
+        font-size: 1.1rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > h3{
+        font-size: 1.3rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .prices > h3{
+        width: 100%;
+    }
+    .processOrdersection > .leftsection > .sub1 > p > span, .processOrdersection > .leftsection > .sub2 > p > span{
+        font-size: 1.2rem;
+    }
+    .processOrdersection > .leftsection > .sub1 > p, .processOrdersection > .leftsection > .sub2 > p{
+        font-size: 1.2rem;
+    }
+    .processOrdersection > .leftsection > .sub1 > .dateid{
+        font-size: 1.2rem;
+    }
+}
+@media (max-width:650px) {
+    .processOrdersection > .rightsection > form > select{
+        max-width: 400px;
+    }
+    .processOrdersection > .rightsection{
+        height: fit-content;
+        gap: 3rem;
+    }
+    .processOrdersection > .leftsection > .sub1 > .dateid{
+        flex-direction: column;
+    }
+    .processOrdersection > .leftsection > .sub1 > .dateid > p:first-child{
+        border-right: none;
+        padding: 0rem;
+    }
+    .processOrdersection > .leftsection > .sub1 > .dateid > p:last-child{
+        padding: .2rem 0rem;
+    }
+    .processOrdersection > .leftsection > .sub1 > p, .processOrdersection > .leftsection > .sub2 > p, .processOrdersection > .leftsection > .sub1 > .dateid{
+        padding: .2rem 0rem;
+        font-size: 1rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > h3{
+        width: 33%;
+        font-size: 1rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem{
+        gap:.5rem
+    }
+    .processOrdersection > .leftsection, .processOrdersection > .rightsection{
+        width: 100%;
+    }
+    .processOrdersection > .leftsection > .sub1 > h3,.processOrdersection > .leftsection > .sub2 > h3, .processOrdersection > .leftsection > .sub3 > h3, .processOrdersection > .rightsection > h3{
+        font-size: 1.3rem;
+    }
+    .processOrder > h2{
+        font-size: 1.6rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .prices > h3{
+        font-size: 1rem;
+    }
+    .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > .productname{
+        font-size: 1rem;
+    }
+}

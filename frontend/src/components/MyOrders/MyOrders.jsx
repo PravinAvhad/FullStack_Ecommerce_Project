@@ -43,7 +43,7 @@ const MyOrders = () => {
                     {myorders.orders.map((ord) => (
                       <tr key={ord._id}>
                         <td>{ord._id}</td>
-                        <td style={{ color: ord.orderStatus === "Processing" ? "red" : "green" }}>{ord.orderStatus}</td>
+                        <td style={{color: ord.orderStatus==="Processing" ? "#FF4B2B" : ord.orderStatus === "Shipped" ? "black" : "green"}} >{ord.orderStatus}</td>
                         <td>{ord.Itemsorder.length}</td>
                         <td>{ord.paidAt.substr(0, 10)}</td>
                         <td>{ord.totalPrice}</td>

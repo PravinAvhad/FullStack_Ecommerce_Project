@@ -67,7 +67,7 @@ export const createItem = (itemdata,navigate) => async(dispatch)=>{
     }
 }
 
-//Delete Item - For Admin Remaining
+//Delete Item - For Admin 
 export const Itemdelete = (id)=>async(dispatch)=>{
     try {
         dispatch(adminDeleteRequest());

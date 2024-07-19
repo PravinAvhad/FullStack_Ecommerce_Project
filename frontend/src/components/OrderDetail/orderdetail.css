@@ -74,7 +74,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.orderdetailcontainer .sub2 .paymentmethods h3{
+.orderdetailcontainer .sub2 .paymentmethods h3,.orderdetailcontainer .sub2 .paymentmethods h3 span{
     /* background-color: skyblue; */
     font-size: 1.5rem;
 }
@@ -120,7 +120,6 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
         background-color: white;
-
 }
 .orderdetailcontainer .sub3 h3{
     font-size: 1.5rem;
@@ -199,7 +198,7 @@
     .orderdetailcontainer .sub3 h3{
         font-size: 1.1rem;
     }
-    .orderdetailcontainer .sub2 .paymentmethods h3,.orderdetailcontainer .sub2 .ordersummary h3{
+    .orderdetailcontainer .sub2 .paymentmethods h3, .orderdetailcontainer .sub2 .paymentmethods h3 span,.orderdetailcontainer .sub2 .ordersummary h3{
         font-size: 1.1rem;
         text-wrap: wrap;
     }

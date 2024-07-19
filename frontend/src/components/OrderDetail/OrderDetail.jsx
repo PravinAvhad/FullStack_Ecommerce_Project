@@ -16,7 +16,7 @@ const OrderDetail = () => {
             console.log(error);
         }
         dispatch(getOrderDetails(id));
-    }, [dispatch, error])
+    }, [dispatch, error,id]);
     
     return (
         <>
@@ -40,7 +40,9 @@ const OrderDetail = () => {
                         <div className="sub2">
                             <div className="paymentmethods">
                                 <h3 style={{textWrap:"wrap"}}>Payment Method : Card</h3>
-                                <h3>Order Status : {OrderDetails.order && OrderDetails.order.orderStatus}</h3>
+                                <h3>Order Status : 
+                                    <span style={{color: OrderDetails.order &&  OrderDetails.order.orderStatus==="Processing" ? "#FF4B2B" : OrderDetails.order && OrderDetails.order.orderStatus === "Shipped" ? "black" : "green"}}> {OrderDetails.order && OrderDetails.order.orderStatus}</span>
+                                </h3>
                             </div>
                             <div className="ordersummary">
                                 <h3>Order Summary</h3>
@@ -68,13 +70,12 @@ const OrderDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* Till Here Completed */}
                         <div className="sub3">
                             <h3>Your Orders :</h3>
                             <div className="allorderitems">
                                 {OrderDetails.order && OrderDetails.order.Itemsorder && OrderDetails.order.Itemsorder.map((item) => (
-                                    <div className="orderitem">
-                                        <img onClick={()=>navigate(`/product/${item.product}`)} src={item.image} alt="Order Image" />
+                                    <div className="orderitem" key={item._id}>
+                                        <img onClick={()=>navigate(`/product/${item.product}`)} src={item.image} alt={item.name} />
                                         <h3 onClick={()=>navigate(`/product/${item.product}`)} className='productname'>{item.name}</h3>
                                         <div className="prices">
                                         <h3>{`Rs. ${item.price} x ${item.quantity} = Rs. ${item.price * item.quantity}`}</h3>

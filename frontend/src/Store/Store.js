@@ -12,6 +12,8 @@ import AdminItems from './Slices/AdminItems';
 import AdminNewItem from './Slices/AdminNewItem';
 import AdminDeleteItem from './Slices/AdminDeleteItem';
 import AdminUpdateItem from './Slices/AdminUpdateItem';
+import AdminGetOrders from './Slices/AdminGetOrders';
+import AdminUpDelOrder from './Slices/AdminUpDelOrder';
 
 const store = configureStore({
   reducer: {
@@ -26,7 +28,9 @@ const store = configureStore({
     AdminItems:AdminItems,
     AdminNewItem:AdminNewItem,
     AdminDeleteItem:AdminDeleteItem,
-    AdminUpdateItem:AdminUpdateItem
+    AdminUpdateItem:AdminUpdateItem,
+    AdminGetOrders:AdminGetOrders,
+    AdminUpDelOrder:AdminUpDelOrder
   }
 });
 

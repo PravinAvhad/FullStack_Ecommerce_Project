@@ -131,6 +131,9 @@
     }
 }
 @media (max-width:500px) {
+    .newProduct>h2 {
+        font-size: 1.6rem;
+    }
     .productcontainer>form>.firsttworows{
         flex-direction: column;
     }

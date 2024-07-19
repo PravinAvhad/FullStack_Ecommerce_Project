@@ -5,11 +5,73 @@
 .orders{
     width: 80%;
 }
+.products > .sub > .noOrders{
+    /* background-color: skyblue; */
+    min-height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.products > .sub > .noOrders > h3{
+    font-size: 2rem;
+    font-weight: 600;
+}
 @media (max-width:768px) {
     .adminOrders{
         flex-direction: column;
     }
     .orders{
         width: 100%;
+    }
+}
+@media (max-width:600px) {
+    .adminallproducts > .products > .sub > table > thead > th{
+        font-size: 1.3rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > td{
+        font-size: 1.1rem;
+    }
+}
+@media (max-width:505px) {
+    .adminallproducts > .products{
+        padding: 1rem .5rem;
+    }
+    .adminallproducts > .products > h2{
+        font-size: 1.5rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > .actions > button{
+        font-size: .9rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > .actions{
+        gap: .5rem;
+    }
+    .adminallproducts > .products > .sub > table > thead > th{
+        font-size: 1.1rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > td{
+        font-size: .9rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr{
+        padding: 0rem .5rem;
+    }
+    .adminallproducts > .products > .sub > table > thead{
+        padding: 0rem 0.5rem;
+    }
+    .adminallproducts > .products > .sub > table > thead > th{
+        padding: .4rem 3px;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > td{
+        padding: .4rem 3px;
+    }
+}
+@media (max-width:390px) {
+    .adminallproducts > .products > .sub > table > thead > th{
+        font-size: .9rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > td{
+        font-size: .7rem;
+    }
+    .adminallproducts > .products > .sub > table > tbody > tr > .actions > button{
+        font-size: .7rem;
     }
 }

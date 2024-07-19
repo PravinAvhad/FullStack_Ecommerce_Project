@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { adminDeleteReset, clearError } from '../../../Store/Slices/AdminDeleteItem';
+import MetaData from '../../Layout/MetaData';
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const AllProducts = () => {
     <>
       {loading ? (<Loader />) : (
         <div className="adminallproducts">
+          <MetaData title="Ecommerce : Admin All Products"/>
           <Aside />
           <div className="products">
             <h2>All Products</h2>

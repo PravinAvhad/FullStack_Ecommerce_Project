@@ -6,18 +6,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { fetchItemDetails, UpdateItem } from '../../../Actions/itemAction';
 import { adminUpdateReset } from '../../../Store/Slices/AdminUpdateItem';
 import Loader from '../../Layout/Loader/Loader';
+import MetaData from '../../Layout/MetaData';
 
 const EditItem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [item, setItem] = useState({
-    name: "",
-    price: "",
-    description: "",
-    discount: "",
-    category: "",
-    stock: "",
-  })
+  // const [item, setItem] = useState({
+  //   name: "",
+  //   price: "",
+  //   description: "",
+  //   discount: "",
+  //   category: "",
+  //   stock: "",
+  // })
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -59,7 +60,7 @@ const EditItem = () => {
       dispatch(adminUpdateReset());
       dispatch(fetchItemDetails(id));
     }
-  }, [dispatch, UpdateError, itemDetails,Updated,id,itemDetails,error,navigate]);
+  }, [dispatch, UpdateError, itemDetails,Updated,id,error,navigate]);
 
   const [updatedItem,setUpdatedItem]=useState({});
   const updateproduct = (e) => {
@@ -95,6 +96,7 @@ const EditItem = () => {
     <>
       {loading ? (<Loader />) : (
         <div className="adminNewProduct">
+          <MetaData title="Ecommerce : Admin Update Product"/>
           <Aside />
           <div className="newProduct">
             <h2>Update Product</h2>

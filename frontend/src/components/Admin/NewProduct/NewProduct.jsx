@@ -3,8 +3,8 @@ import "./newProduct.css"
 import Aside from '../AsideBar/Aside';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { adminNewItemReset } from '../../../Store/Slices/AdminNewItem';
 import { createItem } from '../../../Actions/itemAction';
+import MetaData from '../../Layout/MetaData';
 
 const NewProduct = () => {
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ const NewProduct = () => {
   }
   return (
     <div className="adminNewProduct">
+      <MetaData title="Ecommerce : Admin New Product"/>
       <Aside />
       <div className="newProduct">
         <h2>New Product</h2>

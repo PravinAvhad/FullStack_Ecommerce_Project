@@ -104,6 +104,9 @@
     }
 }
 @media (max-width:580px) {
+    .dashboard > h2{
+        font-size: 1.9rem;
+    }
     .dashboard > .sub1{
         gap: 1rem;
     }
@@ -122,6 +125,11 @@
     }
     .dashboard > .sub1 > .detailbox > div > h3{
         font-size: 1.3rem;
+    }
+}
+@media (max-width:500px) {
+    .dashboard > h2{
+        font-size: 1.6rem;
     }
 }
 @media (max-width:375px) {
