@@ -4,8 +4,7 @@ import axios from "axios"
 import { itemDetailFail, itemDetailRequest, itemDetailSuccess } from '../Store/Slices/itemdetails';
 import { adminItemsFail, adminItemsRequest, adminItemsSuccess } from '../Store/Slices/AdminItems';
 import { adminNewItemFail, adminNewItemRequest, adminNewItemReset, adminNewItemSuccess } from '../Store/Slices/AdminNewItem';
-import { adminDeleteFail, adminDeleteRequest, adminDeleteSuccess } from '../Store/Slices/AdminDeleteItem';
-import { adminUpdateFail, adminUpdateRequest, adminUpdateReset, adminUpdateSuccess } from '../Store/Slices/AdminUpdateItem';
+import { adminUpdateRequest,adminUpdateSuccess,adminUpdateFail,adminDeleteRequest,adminDeleteSuccess,adminDeleteFail } from '../Store/Slices/AdminUpDelItem';
 
 //Get all Items - For Users
 export const getitems = (keyword="",page=1,category) => async (dispatch) => {

@@ -7,14 +7,14 @@ import Loader from '../../Layout/Loader/Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { adminDeleteReset, clearError } from '../../../Store/Slices/AdminDeleteItem';
 import MetaData from '../../Layout/MetaData';
+import { adminDeleteReset, clearError } from '../../../Store/Slices/AdminUpDelItem';
 
 const AllProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { adminItems, error, loading } = useSelector((state) => state.AdminItems);
-  const {error:deleteError,Deleted}= useSelector((state)=> state.AdminDeleteItem)
+  const {error:deleteError,Deleted}= useSelector((state)=> state.AdminUpDelItem);
   const deleteitem = (id)=>{
     dispatch(Itemdelete(id));
   }
@@ -26,9 +26,9 @@ const AllProducts = () => {
       alert(deleteError);
       dispatch(clearError());
     }
-    if(Deleted.success){
+    if(Deleted){
       alert("Product Deleted");
-      navigate("/admin/dashboard");
+      navigate("/admin/allproducts");
       dispatch(adminDeleteReset());
     }
     dispatch(admingetItems());
@@ -60,7 +60,7 @@ const AllProducts = () => {
                             <td>{item.stock}</td>
                             <td>{item.price}</td>
                             <td className='actions'>
-                              <button onClick={()=>navigate(`/admin/editproduct/${item._id}`)}><FontAwesomeIcon icon={faPen} /></button>
+                              <button onClick={()=>navigate(`/admin/updateproduct/${item._id}`)}><FontAwesomeIcon icon={faPen} /></button>
                               <button onClick={()=>deleteitem(item._id)}><FontAwesomeIcon icon={faTrash} /></button>
                             </td>
                           </tr>

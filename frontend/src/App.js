@@ -28,6 +28,7 @@ import AdminAllUsers from "./components/Admin/AllUsers/AllUsers.jsx";
 import AdminReviews from "./components/Admin/Reviews/Reviews.jsx";
 import AdminEditItem from "./components/Admin/EditItem/EditItem.jsx";
 import AdminUpdateOrder from "./components/Admin/UpdateOrder/UpdateOrder.jsx";
+import AdminUpdateUser from "./components/Admin/UpdateUser/UpdateUser.jsx";
 
 import axios from 'axios';
 
@@ -86,10 +87,11 @@ function App() {
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/allproducts" element={<AdminAllProducts />} />
               <Route path="/admin/newproduct" element={<AdminNewProduct />} />
-              <Route path="/admin/editproduct/:id" element={<AdminEditItem/>} />
+              <Route path="/admin/updateproduct/:id" element={<AdminEditItem/>} />
               <Route path="/admin/orders" element={<AdminOrders />} />
               <Route path="/admin/order/:id" element={<AdminUpdateOrder/>} />
               <Route path="/admin/allusers" element={<AdminAllUsers />} />
+              <Route path="/admin/updateuser/:userid" element={<AdminUpdateUser/>} />
               <Route path="/admin/reviews" element={<AdminReviews />} />
             </>
           )}

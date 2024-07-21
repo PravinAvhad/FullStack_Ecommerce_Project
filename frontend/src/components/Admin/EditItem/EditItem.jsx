@@ -4,9 +4,9 @@ import Aside from '../AsideBar/Aside';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchItemDetails, UpdateItem } from '../../../Actions/itemAction';
-import { adminUpdateReset } from '../../../Store/Slices/AdminUpdateItem';
 import Loader from '../../Layout/Loader/Loader';
 import MetaData from '../../Layout/MetaData';
+import { adminUpdateReset } from '../../../Store/Slices/AdminUpDelItem';
 
 const EditItem = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const EditItem = () => {
   const categories = ["Electronics", "Food", "Furniture", "Fashion", "Vegetables", "Women's Wear", "Men's Wear", "Grocery", "Footwear"];
 
   const { error, itemDetails, loading } = useSelector((state) => state.ItemDetails);
-  const { loading: UpdateLoading, error: UpdateError,Updated} = useSelector((state) => state.AdminUpdateItem);
+  const { loading: UpdateLoading, error: UpdateError,Updated} = useSelector((state) => state.AdminUpDelItem);
   const { id } = useParams();
 
   useEffect(() => {

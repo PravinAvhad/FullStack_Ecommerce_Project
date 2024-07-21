@@ -39,7 +39,6 @@ const ShippingInformation = ({ stripeApiKey }) => {
         dispatch(ShippingInfosaved(shipping));
     }
     const itemsPrice = Math.round(cartItems.reduce((acc, item) => acc + item.data.item.price * item.quantity, 0));
-    // 0.2 i.e. 20% temporary used
     const getdiscount = () => {
         let discount = 0;
         cartItems.map((item)=>{

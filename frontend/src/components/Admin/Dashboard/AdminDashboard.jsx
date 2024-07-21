@@ -22,13 +22,16 @@ import { admingetItems } from '../../../Actions/itemAction.js'
 import { admingetallOrders } from '../../../Actions/OrderAction.js'
 import Loader from "../../Layout/Loader/Loader.jsx";
 import MetaData from "../../Layout/MetaData.jsx";
+import { admingetallUsers } from '../../../Actions/userActions.js'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const AdminDashboard = () => {
   const { adminItems, loading, error } = useSelector((state) => state.AdminItems);
-  const { adminOrders, error: admingetError, loading: admingetloading } = useSelector((state) => state.AdminGetOrders);
+  const { adminOrders, loading: admingetloading, error: admingetError} = useSelector((state) => state.AdminGetOrders);
+  const {adminAllUsers, loading:GetUsersloading,error:adminGetUsersError} = useSelector((state)=> state.AdminGetUsers);
+
   const dispatch = useDispatch();
   let outOfStock = 0;
   adminItems && adminItems.forEach((item) => {
@@ -36,6 +39,15 @@ const AdminDashboard = () => {
       outOfStock += 1;
     }
   })
+  const totalsales = ()=>{
+    let total = 0;
+    adminOrders.orders && adminOrders.orders.map((ord)=>{
+      if(ord.orderStatus === "Delivered"){
+          total += ord.totalPrice;
+      }
+    });
+    return total;
+  }
   useEffect(() => {
     if (error) {
       alert(error);
@@ -45,9 +57,16 @@ const AdminDashboard = () => {
       alert(admingetError);
       console.log(admingetError);
     }
+    if (adminGetUsersError) {
+      alert(adminGetUsersError);
+      console.log(adminGetUsersError);
+    }
     dispatch(admingetItems());
     dispatch(admingetallOrders());
-  }, [dispatch, error, admingetError])
+    dispatch(admingetallUsers());
+    // console.log("total Sales : ",totalsales());
+  }, [dispatch, error, admingetError,adminGetUsersError]);
+  
   const linestate = {
     labels: ["Initial Amount", "Earned Amount"],
     datasets: [
@@ -55,7 +74,7 @@ const AdminDashboard = () => {
         label: "TOTAL AMOUNT",
         backgroundColor: "rgb(135,206,235)",
         hoverBackgroundColor: "rgb(255,75,43)",
-        data: [0, 100000],
+        data: [0,adminOrders && totalsales()],
       }
     ],
   }
@@ -72,7 +91,7 @@ const AdminDashboard = () => {
   return (
     <>
       {
-        loading || admingetloading ? (<Loader/>) : (
+        loading || admingetloading || GetUsersloading ? (<Loader/>) : (
           <div className="admindashboard">
             <MetaData title="Ecommerce : Admin Dashboard"/>
             <Aside />
@@ -83,7 +102,7 @@ const AdminDashboard = () => {
                   <FontAwesomeIcon icon={faIndianRupeeSign} className='logo' />
                   <div>
                     <h4>Total Sales</h4>
-                    <h3>Rs. 10,00,000</h3>
+                    <h3>Rs. {adminOrders && adminOrders.orders && adminOrders.orders.length === 0 ? adminOrders.orders.length : totalsales()} /-</h3>
                   </div>
                 </div>
                 <Link to="/admin/orders" className="detailbox">
@@ -104,7 +123,7 @@ const AdminDashboard = () => {
                   <FontAwesomeIcon icon={faUsers} className='logo' />
                   <div>
                     <h4>Total Users</h4>
-                    <h3>100</h3>
+                    <h3>{adminAllUsers.users && adminAllUsers.users.length}</h3>
                   </div>
                 </Link>
               </div>

@@ -138,7 +138,7 @@ exports.updatePassword = AsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res);
 })
 
-//update User Profile
+//update User Profile - For User
 exports.updateProfile = AsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
@@ -193,19 +193,27 @@ exports.updateRole = AsyncErrors(async (req, res, next) => {
         email: req.body.email,
         role: req.body.role
     }
-    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+    let user = await User.findById(req.params.id);
+    if(!user){
+        return next(new Errorhandler(`User does not exist with Id: ${req.params.id}`, 400));
+    }
+    user = await User.findByIdAndUpdate(req.params.id, newUserData, {
         new: true,
         runValidators: true,
         userFindAndModify: false
     });
     res.status(200).json({
-        success: true
+        success: true,
+        message:"User Role Updated Successfully"
     })
 })
 
 //Delete User -- Admin
 exports.deleteuser = AsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
+    //remove Profile from cloudinary 
+    const imageId = user.profileImg.publicId;
+    await cloudinary.v2.uploader.destroy(imageId);
     if (!user) {
         return next(new Errorhandler(`User does not exist with Id: ${req.params.id}`, 400));
     }

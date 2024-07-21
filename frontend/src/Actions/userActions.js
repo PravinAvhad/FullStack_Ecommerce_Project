@@ -1,3 +1,5 @@
+import { adminallusersFail, adminallusersRequest, adminallusersSuccess } from "../Store/Slices/AdminGetUsers";
+import { adminDelUserFail, adminDelUserRequest, adminDelUserSuccess, adminGetUserFail, adminGetUserRequest, adminGetUserSuccess, adminUpdateUserFail, adminUpdateUserRequest, adminUpdateUserSuccess } from "../Store/Slices/AdminUpDelUser";
 import { ForgetPasswordFail, ForgetPasswordRequest, ForgetPasswordSuccess } from "../Store/Slices/ForgetPassword";
 import { UpdatePasswordFail, UpdatePasswordRequest, UpdatePasswordSuccess, UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../Store/Slices/Profile";
 import { loginRequest,loginSuccess,loginFail, clearError, registerRequest, registerSuccess, registerFail, loadUserSuccess, loadUserRequest, loadUserFail, logoutUserSuccess, logoutUserFail } from "../Store/Slices/User"; 
@@ -88,7 +90,7 @@ export const updatePassword = (oldpassword,newpassword,confirmpassword)=> async(
     }
 }
 
-//for sending email when Forget Password
+//for sending email when Forget Password Remaining
 export const sendemail = (email)=> async(dispatch)=>{
     try {
         dispatch(ForgetPasswordRequest());
@@ -99,4 +101,53 @@ export const sendemail = (email)=> async(dispatch)=>{
     } catch (error) {
         dispatch(ForgetPasswordFail(error.response.data.message));
     }   
+}
+
+//Get All Users - for Admin 
+export const admingetallUsers = ()=> async(dispatch) =>{
+    try {
+        dispatch(adminallusersRequest());
+        const {data} = await axios.get(`/api/v2/admin/users`);
+        // console.log(data);
+        dispatch(adminallusersSuccess(data));
+    } catch (error) {
+        dispatch(adminallusersFail(error.response.data.message));
+    }
+}
+
+//Get Single User Details - For Admin
+export const admingetUserDetail = (id)=> async(dispatch) =>{
+    try {
+        dispatch(adminGetUserRequest());
+        const {data} = await axios.get(`/api/v2/admin/user/${id}`);
+        // console.log(data);
+        dispatch(adminGetUserSuccess(data));
+    } catch (error) {
+        dispatch(adminGetUserFail(error.response.data.message));
+    }
+}
+
+//Update User Role - For Admin 
+export const updateUser = (id,userData)=> async(dispatch) =>{
+    try {
+        dispatch(adminUpdateUserRequest());
+        const config = {headers:{"Content-Type":"application/json"}};
+        const {data} = await axios.put(`/api/v2/admin/user/${id}`,userData,config);
+        // console.log(data);
+        dispatch(adminUpdateUserSuccess(data));
+    } catch (error) {
+        dispatch(adminUpdateUserFail(error.response.data.message));
+    }
+}
+
+//Delete User - For Admin 
+export const deleteUser = (id)=> async(dispatch) =>{
+    try {
+        dispatch(adminDelUserRequest());
+        const {data} = await axios.delete(`/api/v2/admin/user/${id}`);
+        // console.log(data);
+        dispatch(adminDelUserSuccess(data));
+    } catch (error) {
+        dispatch(adminDelUserFail(error.response.data.message));
+    }
 }

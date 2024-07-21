@@ -38,7 +38,7 @@ const Orders = () => {
   }
   return (
     <>
-    {loading ? (<Loader />) : (
+    {loading || DelLoading ? (<Loader />) : (
       <div className="adminallproducts">
         <MetaData title="Ecommerce : Admin All Orders"/>
         <Aside />

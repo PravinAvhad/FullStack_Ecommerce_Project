@@ -10,10 +10,11 @@ import Order from './Slices/Order';
 import OrderDetails from './Slices/OrderDetails';
 import AdminItems from './Slices/AdminItems';
 import AdminNewItem from './Slices/AdminNewItem';
-import AdminDeleteItem from './Slices/AdminDeleteItem';
-import AdminUpdateItem from './Slices/AdminUpdateItem';
+import AdminUpDelItem from './Slices/AdminUpDelItem';
 import AdminGetOrders from './Slices/AdminGetOrders';
 import AdminUpDelOrder from './Slices/AdminUpDelOrder';
+import AdminGetUsers from './Slices/AdminGetUsers';
+import AdminUpDelUser from './Slices/AdminUpDelUser';
 
 const store = configureStore({
   reducer: {
@@ -27,10 +28,11 @@ const store = configureStore({
     OrderDetails:OrderDetails,
     AdminItems:AdminItems,
     AdminNewItem:AdminNewItem,
-    AdminDeleteItem:AdminDeleteItem,
-    AdminUpdateItem:AdminUpdateItem,
+    AdminUpDelItem:AdminUpDelItem,
     AdminGetOrders:AdminGetOrders,
-    AdminUpDelOrder:AdminUpDelOrder
+    AdminUpDelOrder:AdminUpDelOrder,
+    AdminGetUsers:AdminGetUsers,
+    AdminUpDelUser:AdminUpDelUser,
   }
 });
 
