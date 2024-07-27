@@ -11,14 +11,6 @@ import { adminUpdateReset } from '../../../Store/Slices/AdminUpDelItem';
 const EditItem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [item, setItem] = useState({
-  //   name: "",
-  //   price: "",
-  //   description: "",
-  //   discount: "",
-  //   category: "",
-  //   stock: "",
-  // })
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -94,7 +86,7 @@ const EditItem = () => {
   }
   return (
     <>
-      {loading ? (<Loader />) : (
+      {loading ||UpdateLoading ? (<Loader />) : (
         <div className="adminNewProduct">
           <MetaData title="Ecommerce : Admin Update Product"/>
           <Aside />
@@ -129,11 +121,11 @@ const EditItem = () => {
                     onChange={(e) => setDiscount(e.target.value)} />
                 </div>
                 <div className="firsttworows">
-                  <input type="text"
+                  <textarea
                     name="description" id=""
                     placeholder='Product Description' required
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)} />
+                    onChange={(e) => setDescription(e.target.value)} ></textarea>
 
                   <select
                     name="category"

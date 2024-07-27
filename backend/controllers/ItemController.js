@@ -130,14 +130,17 @@ exports.itemReview = AsyncErrors(async (req, res, next) => {
         name: req.user.name,
         rating: Number(req.body.rating),
         comment: req.body.comment,
+        createdAt: req.body.createdAt
     }
     const item = await Item.findById(req.body.itemId);
     const isReviewed = item.reviews.find(rev => rev.user.toString() === req.user._id.toString());
     if (isReviewed) {
         item.reviews.forEach((rev) => {
-            if (rev.user.toString() === req.user._id.toString())
+            if (rev.user.toString() === req.user._id.toString()){
                 rev.rating = req.body.rating,
-                    rev.comment = req.body.comment
+                rev.comment = req.body.comment
+                rev.createdAt = req.body.createdAt
+            }
         })
     }
     else {

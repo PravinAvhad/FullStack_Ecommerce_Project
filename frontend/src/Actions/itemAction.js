@@ -1,10 +1,11 @@
 // import { useSelector, useDispatch } from 'react-redux'
-import { allItemsFail, allItemsRequest, allItemsSuccess, clearError } from '../Store/Slices/items'
+import { allItemsFail, allItemsRequest, allItemsSuccess} from '../Store/Slices/items'
 import axios from "axios"
 import { itemDetailFail, itemDetailRequest, itemDetailSuccess } from '../Store/Slices/itemdetails';
 import { adminItemsFail, adminItemsRequest, adminItemsSuccess } from '../Store/Slices/AdminItems';
 import { adminNewItemFail, adminNewItemRequest, adminNewItemReset, adminNewItemSuccess } from '../Store/Slices/AdminNewItem';
 import { adminUpdateRequest,adminUpdateSuccess,adminUpdateFail,adminDeleteRequest,adminDeleteSuccess,adminDeleteFail } from '../Store/Slices/AdminUpDelItem';
+import { itemReviewFail, itemReviewRequest, itemReviewSuccess } from '../Store/Slices/ItemReview';
 
 //Get all Items - For Users
 export const getitems = (keyword="",page=1,category) => async (dispatch) => {
@@ -25,7 +26,7 @@ export const getitems = (keyword="",page=1,category) => async (dispatch) => {
     }
 }
 
-//Get Items Details - For Users
+//Get Item Details - For Users
 export const fetchItemDetails = (id)=> async (dispatch) => {
     try {
         dispatch(itemDetailRequest());
@@ -88,5 +89,20 @@ export const UpdateItem = (id,itemData) => async(dispatch)=>{
         dispatch(adminUpdateSuccess(data));
     } catch (error) {
         dispatch(adminUpdateFail(error.response.data.message));
+    }
+}
+
+//For Submitting Review Create Review - For User 
+export const ItemReview = (reviewData)=> async (dispatch) => {
+    try {
+        dispatch(itemReviewRequest());
+        const config = {
+            headers:{"Content-Type":"application/json"},
+        };
+        const { data } = await axios.put(`/api/v1/review`,reviewData,config);
+        // console.log(data);
+        dispatch(itemReviewSuccess(data.success));
+    } catch (error) {
+        dispatch(itemReviewFail(error.response.data.message));
     }
 }

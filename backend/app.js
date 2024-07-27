@@ -2,15 +2,15 @@ const express = require("express");
 const ErrorMiddleware = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
-const bodyparser = require("body-parser");
+const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const dotenv = require("dotenv");
 //Config
 dotenv.config({path:"backend/config.env"});
 
-app.use(express.json());
+app.use(express.json({limit:'100mb'}));
 app.use(cookieParser());
-app.use(bodyparser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileupload());
 //Routes Imports
 const itemRoute = require("./routes/ItemRoute");

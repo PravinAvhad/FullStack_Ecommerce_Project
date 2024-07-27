@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {composeWithDevTools} from "redux-devtools-extension"
 import Items from './Slices/items'
 import Itemdetails from "./Slices/itemdetails"
 import User from './Slices/User';
@@ -15,6 +14,7 @@ import AdminGetOrders from './Slices/AdminGetOrders';
 import AdminUpDelOrder from './Slices/AdminUpDelOrder';
 import AdminGetUsers from './Slices/AdminGetUsers';
 import AdminUpDelUser from './Slices/AdminUpDelUser';
+import ItemReview from './Slices/ItemReview';
 
 const store = configureStore({
   reducer: {
@@ -33,6 +33,7 @@ const store = configureStore({
     AdminUpDelOrder:AdminUpDelOrder,
     AdminGetUsers:AdminGetUsers,
     AdminUpDelUser:AdminUpDelUser,
+    ItemReview:ItemReview,
   }
 });
 

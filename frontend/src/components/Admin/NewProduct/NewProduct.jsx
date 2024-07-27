@@ -87,11 +87,10 @@ const NewProduct = () => {
                 onChange={changeHandler} />
             </div>
             <div className="firsttworows">
-              <input type="text"
-                name="description" id=""
+              <textarea name="description"
                 placeholder='Product Description' required
                 value={newProduct.description}
-                onChange={changeHandler} />
+                onChange={changeHandler}></textarea>
 
               <select
                 name="category"

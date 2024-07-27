@@ -1,0 +1,84 @@
+.review{
+    height: 15rem;
+    width: 20rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem;
+    flex-shrink: 0;
+}
+.review > .reviewsub1{
+    align-self: flex-start;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    /* background-color: skyblue; */
+}
+.review > .reviewsub1 > img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.review > .reviewsub1 > .reviewusername{
+    /* background-color: tomato; */
+    display: flex;
+    flex-direction: column;
+}
+.review > .reviewsub1 > .reviewusername > h3{
+    font-size: 1.45rem;
+    text-wrap: wrap;
+}
+.review > .reviewsub1 > .reviewusername > h4{
+    font-size: 1.1rem;
+    color: lightgray;
+}
+.review > p{
+    text-wrap: wrap;
+    width: 100%;
+    /* background-color: skyblue; */
+    font-size: 1.1rem;
+    text-align: center;
+}   
+@media (max-width:1024px) {
+    .review{
+        width: 17rem;
+        height: 13rem;
+    }
+}
+@media (max-width:639px) {
+    .review{
+        /* width: 45%; */
+        gap: .3rem;
+    }
+}
+@media (max-width:570px) {
+    .review > .reviewsub1 > .reviewusername > h3{
+        font-size: 1.2rem;
+    }
+    .review > .reviewsub1 > .reviewusername > h4{
+        font-size: 1rem;
+        color: lightgray;
+    }
+    .review > .reviewsub1{
+        gap: 1rem;
+    }
+    .review > p{
+        font-size: 1rem;
+    }
+}
+@media (max-width:500px) {
+    .review > .reviewsub1 > img{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .review{
+        padding: .7rem;
+        width: 50%;
+    }
+    .review > .reviewsub1{
+        gap: .5rem;
+    }
+}

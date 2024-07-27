@@ -5,10 +5,10 @@
   scroll-behavior: smooth;
 }
 .App{
-  margin-top: 2.8rem;
+  margin-top: 3.9rem;
 }
 @media (max-width:586px) {
   .App{
-    margin-top: 5.3rem;
+    margin-top: 6.5rem;
   }
 }

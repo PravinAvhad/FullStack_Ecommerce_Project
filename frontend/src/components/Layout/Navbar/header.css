@@ -52,12 +52,12 @@
     padding-right: 2rem;
 }
 .searchbar{
-    background-color: gold;
+    /* background-color: gold; */
     width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
+    /* gap: .5rem; */
     border-radius: 5px;
     padding: 0px 8px 0px 0px;
 }
@@ -80,6 +80,9 @@
 }
 .icons{
     cursor: pointer;
+    background-color: gold;
+    padding: .28rem;
+    border-radius: 0px 5px 5px 0px;
 }
 .iconname{
     /* background-color: tomato; */
@@ -181,10 +184,10 @@
 .mobilesearchbar{
     width: 100%;
     display: flex;
-    background-color: gold;
-    justify-content: space-between;
+    /* background-color: gold; */
+    justify-content: center;
     align-items: center;
-    gap: .5rem;
+    /* gap: .5rem; */
     border-radius: 5px;
     padding: 0px 8px 0px 0px;
 }
@@ -227,17 +230,14 @@
 .selectbtn{
     display: flex;
     width: 100%;
-    /* background-color: gray; */
     justify-content: space-evenly;
     align-items: center;
+    padding: 4px 0px;
     /* font-size: 1.5rem; */
     font-weight: 600;
     cursor: pointer;
 }
-.selectbtn span{
-    font-size: 1.5rem;
-    padding-top: 4px;
-}
+
 .content{
     font-size: 1.3rem;
     /* background-color: lightcoral; */
@@ -331,6 +331,10 @@
     }
     #aside{
         top: 6.9rem;
+    }
+    .icons{
+        font-size: 1.45rem;
+        padding: .28rem .5rem;
     }
 }
 @media (max-width:450px){

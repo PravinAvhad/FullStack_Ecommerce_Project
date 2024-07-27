@@ -31,6 +31,8 @@ import AdminUpdateOrder from "./components/Admin/UpdateOrder/UpdateOrder.jsx";
 import AdminUpdateUser from "./components/Admin/UpdateUser/UpdateUser.jsx";
 
 import axios from 'axios';
+import Loader from './components/Layout/Loader/Loader.jsx';
+// import ProtectedRoute from './ProtectedRoute.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +57,8 @@ function App() {
   }, [dispatch]);
 
   return (
+    <>
+    {loading ? (<Loader/>) : (
     <div className="App">
       <ToastContainer />
       <BrowserRouter>
@@ -84,7 +88,7 @@ function App() {
           )}
           {!loading && isAuthenticated && user.user.role==="admin" && (
             <>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard/> } />
               <Route path="/admin/allproducts" element={<AdminAllProducts />} />
               <Route path="/admin/newproduct" element={<AdminNewProduct />} />
               <Route path="/admin/updateproduct/:id" element={<AdminEditItem/>} />
@@ -98,7 +102,9 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>);
+    </div>)}
+    </>
+  );
 }
 
 export default App;
