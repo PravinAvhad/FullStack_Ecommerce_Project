@@ -1,8 +1,8 @@
-import { createOrderFail, createOrderRequest, createOrderSuccess, clearError, myorderRequest, myorderFail, myorderSuccess } from "../Store/Slices/Order"
+import { createOrderFail, createOrderRequest, createOrderSuccess, clearError, myorderRequest, myorderFail, myorderSuccess } from "../ReduxStore/Slices/Order"
 import axios from "axios";
-import { OrderDetailsFail, OrderDetailsRequest, OrderDetailsSuccess } from "../Store/Slices/OrderDetails";
-import { adminOrdersFail, adminOrdersRequest, adminOrdersSuccess } from "../Store/Slices/AdminGetOrders";
-import { adminDelOrderFail, adminDelOrderRequest, adminDelOrderSuccess, adminUpdateOrderFail, adminUpdateOrderRequest, adminUpdateOrderSuccess } from "../Store/Slices/AdminUpDelOrder";
+import { OrderDetailsFail, OrderDetailsRequest, OrderDetailsSuccess } from "../ReduxStore/Slices/OrderDetails";
+import { adminOrdersFail, adminOrdersRequest, adminOrdersSuccess } from "../ReduxStore/Slices/AdminGetOrders";
+import { adminDelOrderFail, adminDelOrderRequest, adminDelOrderSuccess, adminUpdateOrderFail, adminUpdateOrderRequest, adminUpdateOrderSuccess } from "../ReduxStore/Slices/AdminUpDelOrder";
 
 //Create Order - For User
 export const createOrder = (order) => async (dispatch) => {
@@ -13,7 +13,6 @@ export const createOrder = (order) => async (dispatch) => {
         // console.log(data);
         dispatch(createOrderSuccess(data));
     } catch (error) {
-        console.log(error.response.data.message);
         dispatch(createOrderFail(error.response.data.message));
     }
 };
@@ -30,7 +29,6 @@ export const getmyallorders = () => async (dispatch) => {
         // console.log(data); 
         dispatch(myorderSuccess(data));
     } catch (error) {
-        console.log(error.response.data.message);
         dispatch(myorderFail(error.response.data.message));
     }
 };
@@ -43,7 +41,6 @@ export const getOrderDetails = (id) => async (dispatch) => {
         // console.log(data); 
         dispatch(OrderDetailsSuccess(data));
     } catch (error) {
-        console.log(error.response.data.message);
         dispatch(OrderDetailsFail(error.response.data.message));
     }
 };
@@ -67,7 +64,6 @@ export const updateOrder = (id, order) => async (dispatch) => {
         const { data } = await axios.put(`/api/v3/admin/order/${id}`, order, config);
         dispatch(adminUpdateOrderSuccess(data.success));
     } catch (error) {
-        console.log(error.response.data.message);
         dispatch(adminUpdateOrderFail(error.response.data.message));
     }
 }
@@ -80,7 +76,6 @@ export const Orderdelete = (id) => async (dispatch) => {
         // console.log(data);
         dispatch(adminDelOrderSuccess(data.success));
     } catch (error) {
-        console.log(error.response.data.message);
         dispatch(adminDelOrderFail(error.response.data.message));
     }
 };

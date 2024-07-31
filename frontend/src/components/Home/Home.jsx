@@ -1,18 +1,18 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './home.css'
 import ProductCard from "../ProductCard/ProductCard.jsx"
 import MetaData from '../Layout/MetaData.jsx'
 import { useSelector, useDispatch } from 'react-redux'
 import Loader from '../Layout/Loader/Loader.jsx'
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 import { getitems } from '../../Actions/itemAction.js'
 import Pagination from "react-js-pagination";
+import { clearError } from '../../ReduxStore/Slices/items.js'
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { loading, items, itemsCount, error,itemsPerPage } = useSelector(state => state.Items);
+  const { loading, itemsdetails, itemsCount, error, itemsPerPage } = useSelector(state => state.Items);
   const scrollfunc = () => {
     const elementToView = document.getElementById("products");
     elementToView.scrollIntoView();
@@ -22,15 +22,24 @@ const Home = () => {
     setCurrentPageNo(e);
   }
   useEffect(() => {
-    dispatch(getitems("",currentPageNo));
+    dispatch(getitems("", currentPageNo));
     if (error) {
-        toast.error(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      dispatch(clearError());
     }
-}, [dispatch, currentPageNo,error]);
+  }, [dispatch, currentPageNo, error]);
 
   return (
     <div className='home'>
-      <ToastContainer />
       {loading ? (<Loader />) :
         (
           <div className=''>
@@ -50,7 +59,7 @@ const Home = () => {
               </div>
               <div className="allproducts">
                 {
-                  items && items.map((item) => (
+                  itemsdetails && itemsdetails.map((item) => (
                     <ProductCard item={item} key={item._id} />
                   ))
                 }
@@ -74,11 +83,9 @@ const Home = () => {
                     />
                   )
                 }
-
               </div>
             </div>
-          </div>)
-      }
+          </div>)}
     </div>
   )
 }

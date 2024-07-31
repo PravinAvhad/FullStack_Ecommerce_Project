@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import "./forgetpassword.css"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
-import { clearError } from '../../Store/Slices/ForgetPassword';
+import { toast } from "react-toastify";
+import { clearError } from '../../ReduxStore/Slices/ForgetPassword';
 import { sendemail } from '../../Actions/userActions';
 import Loader from '../Layout/Loader/Loader';
 import MetaData from '../Layout/MetaData';
@@ -23,20 +22,38 @@ const ForgetPassword = () => {
 
   useEffect(()=>{
     if(error){
-      console.log(error);
-      toast.error(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
       // dispatch(clearError());
     }
     if(message){
-      console.log(message);
-      toast.success(message);
+      toast.success(message,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(message);
     }
   },[error,message,toast,dispatch]);
+  
   return (
     <>
     {loading ? (<Loader/>) : (
     <div className="forgetpassword">
-      <ToastContainer/>
       <MetaData title="Ecommerce Password Assistance"/>
       <div className="forgetpasswordsection">
         <h1>Find your Account</h1>

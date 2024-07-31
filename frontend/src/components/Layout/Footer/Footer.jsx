@@ -1,28 +1,21 @@
 import React from 'react'
 import "./footer.css"
 import { Link } from "react-router-dom"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// import  "../../imgs/googleplaystore"
-const Footer = () => {
+const Footer = ({ isAuthenticated, user }) => {
   return (
     <div className='footer'>
       <div className="footersub1">
         <div className="sub1part1">
           <h1 className='footerheading'>Ecommerce</h1>
-          {/* Remaining Social Medias */}
-          {/* <div className='socialmedias'>
-            <FontAwesomeIcon icon="fa-brands fa-x-twitter"/>
-            <FontAwesomeIcon icon="fa-brands fa-facebook" />
-            <FontAwesomeIcon icon="fa-brands fa-instagram" />
-            <FontAwesomeIcon icon="fa-brands fa-linkedin" />
-          </div> */}
         </div>
         <div className="sub1part2">
           <div className="quicklinks">QUICK LINKS</div>
           <Link to="/" className='footerlinks'>Home</Link>
+          {isAuthenticated && user.user.role === "admin" && (
+            <Link to="/admin/dashboard" className="footerlinks">Dashboard</Link>
+          )}
           <Link to="/products" className="footerlinks">Products</Link>
-          <Link to="/contact" className="footerlinks">Contact Us</Link>
           <Link to="/about" className="footerlinks">About</Link>
         </div>
         <div className="sub1part3">

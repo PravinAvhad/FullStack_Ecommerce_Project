@@ -7,16 +7,26 @@ import "./myorders.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const MyOrders = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { myorders, loading, error } = useSelector((state) => state.Order);
-  // console.log("All Orders", myorders);
 
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
       dispatch(clear());
     }
     dispatch(getmyallorders());

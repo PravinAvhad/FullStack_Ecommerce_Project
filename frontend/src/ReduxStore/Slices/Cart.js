@@ -25,6 +25,12 @@ const Cart = createSlice({
                 }
             }
         },
+        AddToCartFail(state, action){
+            return{
+                ...state,
+                error:action.payload
+            }
+        },
         RemoveFromCartRequest(state, action) {
             return {
                 ...state,
@@ -41,4 +47,4 @@ const Cart = createSlice({
 })
 
 export default Cart.reducer;
-export const { AddToCartRequest, RemoveFromCartRequest, saveShippingInfo } = Cart.actions
+export const { AddToCartRequest,AddToCartFail, RemoveFromCartRequest, saveShippingInfo } = Cart.actions

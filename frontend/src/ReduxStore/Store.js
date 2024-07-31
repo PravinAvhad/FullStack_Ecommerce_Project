@@ -15,6 +15,8 @@ import AdminUpDelOrder from './Slices/AdminUpDelOrder';
 import AdminGetUsers from './Slices/AdminGetUsers';
 import AdminUpDelUser from './Slices/AdminUpDelUser';
 import ItemReview from './Slices/ItemReview';
+import AdminReviews from './Slices/AdminReviews';
+import AdminDelReview from './Slices/AdminDelReview';
 
 const store = configureStore({
   reducer: {
@@ -26,6 +28,7 @@ const store = configureStore({
     Cart:Cart,
     Order:Order,
     OrderDetails:OrderDetails,
+    ItemReview:ItemReview,
     AdminItems:AdminItems,
     AdminNewItem:AdminNewItem,
     AdminUpDelItem:AdminUpDelItem,
@@ -33,7 +36,8 @@ const store = configureStore({
     AdminUpDelOrder:AdminUpDelOrder,
     AdminGetUsers:AdminGetUsers,
     AdminUpDelUser:AdminUpDelUser,
-    ItemReview:ItemReview,
+    AdminReviews:AdminReviews,
+    AdminDelReview:AdminDelReview
   }
 });
 

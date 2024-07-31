@@ -8,6 +8,7 @@
 }
 .myorders .ordertable{
     background-color: white;
+    border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
     border-radius: 5px;
@@ -57,14 +58,13 @@
     width: 100%;
 }
 .ordertable table thead{
-    background-color: skyblue;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
 }
 .ordertable table thead th{
     padding: .8rem 5px;
     font-size: 1.6rem;
 }
 .ordertable table tbody tr{
-    /* background-color: lightcyan; */
     border: 3px solid black;
 }
 .ordertable table tbody tr td{

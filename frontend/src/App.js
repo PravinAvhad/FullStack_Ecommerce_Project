@@ -29,10 +29,11 @@ import AdminReviews from "./components/Admin/Reviews/Reviews.jsx";
 import AdminEditItem from "./components/Admin/EditItem/EditItem.jsx";
 import AdminUpdateOrder from "./components/Admin/UpdateOrder/UpdateOrder.jsx";
 import AdminUpdateUser from "./components/Admin/UpdateUser/UpdateUser.jsx";
-
+import AboutUs from "./components/About/AboutUs.jsx";
 import axios from 'axios';
 import Loader from './components/Layout/Loader/Loader.jsx';
-// import ProtectedRoute from './ProtectedRoute.jsx';
+import { clearError } from './ReduxStore/Slices/User.js';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,68 +42,77 @@ function App() {
   const [stripeKey, setStripeKey] = useState("");
   const getStripeApiKey = async () => {
     try {
-      const { data } = await axios.get(`/api/v4/stripeapikey`); //error 
+      const { data } = await axios.get(`/api/v4/stripeapikey`);
       setStripeKey(data.StripeApiKey);
       // console.log("Stripe API Key in App.js : ",stripeKey);
     } catch (error) {
-      console.log("Stripe Api key : ", error.response.data.message);
+      console.log("Stripe Api key Error : ", error.response.data.message);
     }
   }
   useEffect(() => {
-    if (error) {
-      toast.error(error); //this is not working properly
+    if (error) {           //Error
+      toast.error(error, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // console.log(error);
+      dispatch(clearError());
     }
-    dispatch(loaduser());
+    dispatch(loaduser()); // Error
     getStripeApiKey();
   }, [dispatch]);
 
   return (
     <>
-    {loading ? (<Loader/>) : (
-    <div className="App">
-      <ToastContainer />
-      <BrowserRouter>
-        <Header isAuthenticated={isAuthenticated} user={user} />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/products' element={<Products />} />
-          {/* For Searching Product */}
-          <Route path='/products/:keyword' element={<Products />} />
-          <Route path='/products/filter/:category' element={<Products />} />
-          <Route path='/product/:id' element={<ProductDetails />} />
-          <Route path='/login' element={<LoginSignUp />} />
-          <Route path='/password/forget' element={<ForgetPassword />} />
-          <Route path='/cart' element={<Cart />} />
-          {!loading && isAuthenticated && (
-            <>
-              <Route path="/myaccount" element={<Profile />} />
-              <Route path='/myaccount/update' element={<UpdateProfile />} />
-              <Route path='/password/update' element={<UpdatePassword />} />
-              {stripeKey && (
-                <Route path='/checkout' element={<ShippingInformation stripeApiKey={stripeKey} />} />
-              )}
-              <Route path="/success" element={<SuccessOrder />} />
-              <Route path='/myorders' element={<MyOrders/>}/>
-              <Route path='/order/:id' element={<OrderDetail/>} />
-            </>
-          )}
-          {!loading && isAuthenticated && user.user.role==="admin" && (
-            <>
-              <Route path="/admin/dashboard" element={<AdminDashboard/> } />
-              <Route path="/admin/allproducts" element={<AdminAllProducts />} />
-              <Route path="/admin/newproduct" element={<AdminNewProduct />} />
-              <Route path="/admin/updateproduct/:id" element={<AdminEditItem/>} />
-              <Route path="/admin/orders" element={<AdminOrders />} />
-              <Route path="/admin/order/:id" element={<AdminUpdateOrder/>} />
-              <Route path="/admin/allusers" element={<AdminAllUsers />} />
-              <Route path="/admin/updateuser/:userid" element={<AdminUpdateUser/>} />
-              <Route path="/admin/reviews" element={<AdminReviews />} />
-            </>
-          )}
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>)}
+      {loading ? (<Loader />) : (
+        <div className="App">
+          <ToastContainer />
+          <BrowserRouter>
+            <Header isAuthenticated={isAuthenticated} user={user} />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path='/products' element={<Products />} />
+              {/* For Searching Product */}
+              <Route path='/products/:keyword' element={<Products />} />
+              <Route path='/products/filter/:category' element={<Products />} />
+              <Route path='/product/:id' element={<ProductDetails />} />
+              <Route path='/login' element={<LoginSignUp />} />
+              {/* Remaining ForgetPassword */}
+              <Route path='/password/forget' element={<ForgetPassword />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route element={<ProtectedRoute/>}>
+                  <Route path="/myaccount" element={<Profile />} />
+                  <Route path='/myaccount/update' element={<UpdateProfile />} />
+                  <Route path='/password/update' element={<UpdatePassword />} />
+                  {stripeKey && (
+                    <Route path='/checkout' element={<ShippingInformation stripeApiKey={stripeKey} />} />
+                  )}
+                  <Route path="/success" element={<SuccessOrder />} />
+                  <Route path='/myorders' element={<MyOrders />} />
+                  <Route path='/order/:id' element={<OrderDetail />} />
+              </Route>
+              <Route element={<ProtectedRoute isAdmin={true} />}>
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/admin/allproducts" element={<AdminAllProducts />} />
+                <Route path="/admin/newproduct" element={<AdminNewProduct />} />
+                <Route path="/admin/updateproduct/:id" element={<AdminEditItem />} />
+                <Route path="/admin/orders" element={<AdminOrders />} />
+                <Route path="/admin/order/:id" element={<AdminUpdateOrder />} />
+                <Route path="/admin/allusers" element={<AdminAllUsers />} />
+                <Route path="/admin/updateuser/:userid" element={<AdminUpdateUser />} />
+                <Route path="/admin/reviews" element={<AdminReviews />} />
+              </Route>
+            </Routes>
+            <Footer isAuthenticated={isAuthenticated} user={user} />
+          </BrowserRouter>
+        </div>)}
     </>
   );
 }

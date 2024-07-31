@@ -9,7 +9,9 @@ import { admingetallUsers, deleteUser } from '../../../Actions/userActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import MetaData from '../../Layout/MetaData';
-import { adminDelUserReset } from '../../../Store/Slices/AdminUpDelUser';
+import { adminDelUserReset,clearError } from '../../../ReduxStore/Slices/AdminUpDelUser';
+import { clearError as adminGetUsersClearError } from '../../../ReduxStore/Slices/AdminGetUsers';
+import { toast } from 'react-toastify';
 
 const AllUsers = () => {
   const navigate = useNavigate();
@@ -18,21 +20,50 @@ const AllUsers = () => {
   const {loading,message,isDeleted,error} = useSelector((state)=> state.AdminUpDelUser);
 
   const userdelete = (id)=>{
-    console.log(`User Deleted : ${id}`);
+    // console.log(`User Deleted : ${id}`);
     dispatch(deleteUser(id));
   }
   useEffect(() => {
     if(adminGetUsersError){
-      alert(adminGetUsersError);
-      console.log(adminGetUsersError);
+      toast.error(adminGetUsersError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(adminGetUsersError);
+      dispatch(adminGetUsersClearError());
     }
     if(error){
-      alert(error);
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
+      dispatch(clearError());
     }
     if(isDeleted){
-      alert(message);
-      console.log(message);
+      toast.success(message,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(message);
       navigate("/admin/allusers");
       dispatch(adminDelUserReset());
     }

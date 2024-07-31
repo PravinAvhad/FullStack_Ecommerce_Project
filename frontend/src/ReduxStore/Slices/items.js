@@ -13,7 +13,7 @@ const Items=createSlice({
         allItemsSuccess(state,action){
             return{
                 loading:false,
-                items: action.payload.items,
+                itemsdetails : action.payload.itemsdetails,
                 itemsCount:action.payload.itemsCount,
                 itemsFilteredCnt:action.payload.itemsFilteredCnt,
                 itemsPerPage:action.payload.resultPerPage

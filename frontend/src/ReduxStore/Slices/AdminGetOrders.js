@@ -6,17 +6,20 @@ const AdminGetOrders=createSlice({
     reducers:{
         adminOrdersRequest(state,action){
             return{
+                ...state,
                 loading:true,
             }
         },
         adminOrdersSuccess(state,action){
             return{
+                ...state,
                 loading:false,
                 adminOrders: action.payload,
             }
         },
         adminOrdersFail(state,action){
             return{
+                ...state,
                 loading:false,
                 error:action.payload
             }

@@ -1,5 +1,5 @@
 .navbar{
-    background-color: skyblue;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
     padding: 8px 1rem;
     position: fixed;
     top: 0;
@@ -108,7 +108,8 @@
     top: 4.1rem;
     right: .1rem;
     width: 200px;
-    background-color: skyblue;
+    /* background-color: skyblue; */
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
     padding: .5rem .3rem;
     display: none;
 }

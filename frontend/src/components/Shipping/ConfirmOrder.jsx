@@ -4,7 +4,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CartItem from '../CartItemPage/CartItem';
 
-const ConfirmOrder = ({ confirmorder,setconfirmorder, shippingInfo, user, cartItems,confirm }) => {
+const ConfirmOrder = ({ confirmorder, shippingInfo, user, cartItems,confirm }) => {
     return (
         <div className="shipinfo">
             <div className="shipinfoheading">

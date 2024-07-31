@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import "./updateProfile.css"
 import Loader from '../Layout/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from "react-toastify";
 import { loaduser, updateProfile } from '../../Actions/userActions';
-import { UpdateProfileReset } from '../../Store/Slices/Profile';
+import { clearError, UpdateProfileReset } from '../../ReduxStore/Slices/Profile';
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../Layout/MetaData';
+
 const UpdateProfile = () => {
     const dispatch = useDispatch();
     const { user,isAuthenticated } = useSelector((state) => state.User);
@@ -45,11 +45,29 @@ const UpdateProfile = () => {
             setAvatarPreview(user.user.profileImg.Url || "/Profile.jpeg");
         }
         if (error) {
-            toast.error(error);
-            console.log(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            dispatch(clearError());
         }
         if (isUpdated) {
-            toast.success("Profile Updated SuccessFully");
+            toast.success("Profile Updated SuccessFully",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
             dispatch(loaduser());
             navigate("/myaccount");
             dispatch(UpdateProfileReset());
@@ -60,7 +78,6 @@ const UpdateProfile = () => {
         <>
         {loading ? (<Loader/>) : (
         <div className="updateProfile">
-            <ToastContainer/>
             <MetaData title="Update Profile"/>
             <div className="updateProfileSection">
                 <h1>Update Profile</h1>

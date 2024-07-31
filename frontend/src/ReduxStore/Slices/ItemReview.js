@@ -32,7 +32,7 @@ const ItemReview=createSlice({
                 // error:null
             }
         },
-        clearError(state,action){
+        itemReviewclearError(state,action){
             return {
                 ...state,
                 error:null
@@ -41,4 +41,4 @@ const ItemReview=createSlice({
     }
 })
 export default ItemReview.reducer;
-export const {itemReviewRequest,itemReviewSuccess,itemReviewFail,itemReviewReset,clearError} = ItemReview.actions;
+export const {itemReviewRequest,itemReviewSuccess,itemReviewFail,itemReviewReset,itemReviewclearError} = ItemReview.actions;

@@ -1,10 +1,9 @@
 .admindashboard{
     display: flex;
     background-color: whitesmoke;
-    /* min-height: 100rem; */
+    min-height: 40rem;
 }
 .dashboard{
-    /* background-color: tomato; */
     width: 80%;
     padding: 1rem;
     padding-bottom: 2rem;
@@ -18,7 +17,6 @@
     font-weight: 600;
 }
 .dashboard > .sub1{
-    /* background-color:skyblue; */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -47,7 +45,6 @@
 .dashboard > .sub1 > .detailbox > div{
     display: flex;
     flex-direction: column;
-    /* background-color: tomato; */
     gap: .4rem;
 }
 .dashboard > .sub1 > .detailbox > div > h4{
@@ -59,9 +56,7 @@
 }
 .dashboard > .subsection{
     display: flex;
-    /* background-color: salmon; */
     flex-direction: column;
-    /* align-items: center; */
     gap: 1.5rem;
 }
 .dashboard > .subsection > .sub2, .dashboard >.subsection > .sub3{

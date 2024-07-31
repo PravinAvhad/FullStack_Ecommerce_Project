@@ -8,26 +8,59 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import MetaData from '../../Layout/MetaData';
-import { adminDeleteReset, clearError } from '../../../Store/Slices/AdminUpDelItem';
+import { adminDeleteReset, clearError as DelItemclearError } from '../../../ReduxStore/Slices/AdminUpDelItem';
+import { clearError as GetItemsclearError} from '../../../ReduxStore/Slices/AdminItems';
+import { toast } from 'react-toastify';
 
 const AllProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { adminItems, error, loading } = useSelector((state) => state.AdminItems);
   const {error:deleteError,Deleted}= useSelector((state)=> state.AdminUpDelItem);
+
   const deleteitem = (id)=>{
     dispatch(Itemdelete(id));
   }
   useEffect(() => {
     if(error){
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
+      dispatch(GetItemsclearError());
     }
     if(deleteError){
-      alert(deleteError);
-      dispatch(clearError());
+      toast.error(deleteError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(deleteError);
+      dispatch(DelItemclearError());
     }
     if(Deleted){
-      alert("Product Deleted");
+      toast.success("Product Deleted",{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
       navigate("/admin/allproducts");
       dispatch(adminDeleteReset());
     }

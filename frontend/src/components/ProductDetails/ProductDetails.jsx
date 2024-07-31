@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import "./productdetails.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 import Loader from '../Layout/Loader/Loader';
 import { fetchItemDetails, ItemReview } from '../../Actions/itemAction';
 import { addItemsToCart } from '../../Actions/cartItems';
 import MetaData from '../Layout/MetaData';
-import { itemReviewReset } from '../../Store/Slices/ItemReview';
+import { itemReviewclearError, itemReviewReset } from '../../ReduxStore/Slices/ItemReview';
 import StarRating from './StarRating';
 import ReviewComponent from './ReviewComponent';
 import { getmyallorders } from '../../Actions/OrderAction';
+import { clearErrors } from '../../ReduxStore/Slices/itemdetails';
+import {clearError as MyOrdersclearError} from "../../ReduxStore/Slices/Order";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -33,23 +34,62 @@ const ProductDetails = () => {
             }
         }
         if (error) {
-            console.log(error);
-            toast.error(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(error);
+            dispatch(clearErrors());
         }
         if (newItemReviewError) {
-            console.log(newItemReviewError);
-            alert(newItemReviewError);
+            toast.error(newItemReviewError,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(newItemReviewError);
+            dispatch(itemReviewclearError());
         }
         if (MyOrdersError) {
-            console.log(MyOrdersError);
-            alert(MyOrdersError);
+            toast.error(MyOrdersError,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(MyOrdersError);
+            dispatch(MyOrdersclearError());
         }
         if (itemDetails.images) {
             setcurrimg(itemDetails.images && itemDetails.images?.map(obj => obj.Url)[0]);
         }
         if (success) {
+            toast.success("Review Submitted Successfully",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
             document.getElementById("reviewsection").style.display = "none";
-            alert("Review Submitted Successfully");
             dispatch(itemReviewReset());
             dispatch(fetchItemDetails(id));
             if(isAuthenticated && user.user.role ==="user"){
@@ -78,7 +118,16 @@ const ProductDetails = () => {
     }
     const addtocart = () => {
         dispatch(addItemsToCart(id, quantity)); //working correctly
-        alert("Item Added to Cart");
+        toast.success("Item Added to Cart",{
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            }); 
     }
 
     const createreview = () => {
@@ -97,15 +146,14 @@ const ProductDetails = () => {
                 <Loader />
             ) : (
                 <div className='productDetails'>
-                    <ToastContainer />
                     <MetaData title={itemDetails.name} />
                     <div className="mainsection" id="mainsection">
                         <div className="subsection1">
-                            <img src={currimg} alt="Main Img" className='part1' />
+                            <img loading='lazy' src={currimg} alt="Main Img" className='part1' />
                             <div className='part2'>
                                 <div className="imgsarray" id="imgsarray">
                                     {itemDetails.images?.map((img, index) => (
-                                        <img src={img.Url} alt={`img${index}`} className='img' key={index} onClick={() => { setcurrimg(img.Url) }} />
+                                        <img loading='lazy' src={img.Url} alt={`img${index}`} className='img' key={index} onClick={() => { setcurrimg(img.Url) }} />
                                     ))}
                                 </div>
                             </div>
@@ -140,16 +188,16 @@ const ProductDetails = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="subsection4">
+                            {itemDetails.stock >= 1 ? (<div className="subsection4">
                                 <div className="quantity">
                                     <button onClick={decrement}>-</button>
-                                    {quantity}
+                                    {itemDetails.stock < 1 ? 0 : quantity}
                                     <button onClick={increment}>+</button>
                                 </div>
                                 <div className="addcart">
                                     <button disabled={itemDetails.stock < 1 ? true : false} onClick={addtocart}>Add to cart</button>
                                 </div>
-                            </div>
+                            </div>) : (<></>)}
                             <div className="description"><b>Description :</b>  {itemDetails.description}.</div>
 
                             {isAuthenticated && user.user.role === "user" && myorders.orders && myorders.orders.map((order) => 

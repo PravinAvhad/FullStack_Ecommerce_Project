@@ -23,6 +23,10 @@ import { admingetallOrders } from '../../../Actions/OrderAction.js'
 import Loader from "../../Layout/Loader/Loader.jsx";
 import MetaData from "../../Layout/MetaData.jsx";
 import { admingetallUsers } from '../../../Actions/userActions.js'
+import { clearError as GetItemsclearError } from '../../../ReduxStore/Slices/AdminItems.js'
+import { clearError as GetOrdersclearError } from '../../../ReduxStore/Slices/AdminGetOrders.js'
+import { clearError as GetUsersclearError } from '../../../ReduxStore/Slices/AdminGetUsers.js'
+import { toast } from 'react-toastify'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -41,7 +45,7 @@ const AdminDashboard = () => {
   })
   const totalsales = ()=>{
     let total = 0;
-    adminOrders.orders && adminOrders.orders.map((ord)=>{
+    adminOrders.orders && adminOrders.orders.forEach((ord)=>{
       if(ord.orderStatus === "Delivered"){
           total += ord.totalPrice;
       }
@@ -50,21 +54,50 @@ const AdminDashboard = () => {
   }
   useEffect(() => {
     if (error) {
-      alert(error);
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
+      dispatch(GetItemsclearError());
     }
     if (admingetError) {
-      alert(admingetError);
-      console.log(admingetError);
+      toast.error(admingetError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(admingetError);
+      dispatch(GetOrdersclearError());
     }
     if (adminGetUsersError) {
-      alert(adminGetUsersError);
-      console.log(adminGetUsersError);
+      toast.error(adminGetUsersError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(adminGetUsersError);
+      dispatch(GetUsersclearError());
     }
     dispatch(admingetItems());
     dispatch(admingetallOrders());
     dispatch(admingetallUsers());
-    // console.log("total Sales : ",totalsales());
   }, [dispatch, error, admingetError,adminGetUsersError]);
   
   const linestate = {
@@ -84,7 +117,7 @@ const AdminDashboard = () => {
       {
         backgroundColor: ["rgb(135,206,235)", "rgb(128,128,128)"],
         hoverBackgroundColor: ["rgb(255,75,43)", "rgb(34, 139, 34)"],
-        data: [outOfStock, adminItems.length - outOfStock],
+        data: [outOfStock,adminItems && adminItems.length - outOfStock],
       }
     ],
   }

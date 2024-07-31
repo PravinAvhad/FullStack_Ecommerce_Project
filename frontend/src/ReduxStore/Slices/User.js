@@ -6,6 +6,7 @@ const User = createSlice({
     reducers: {
         loginRequest(state, action) {
             return {
+                ...state,
                 loading: true,
                 isAuthenticated: false
             }
@@ -30,12 +31,13 @@ const User = createSlice({
         clearError(state, action) {
             return {
                 ...state,
-                isAuthenticated: false,
+                // isAuthenticated: false,
                 error: null
             }
         },
         registerRequest(state, action) {
             return {
+                ...state,
                 loading: true,
                 isAuthenticated: false
             }
@@ -59,24 +61,24 @@ const User = createSlice({
         },
         loadUserRequest(state, action) {
             return {
+                ...state,
                 loading: true,
-                isAuthenticated: false
             }
         },
         loadUserSuccess(state, action) {
             return {
                 ...state,
                 loading: false,
+                user: action.payload,
                 isAuthenticated: true,
-                user: action.payload
             }
         },
         loadUserFail(state, action) {
             return {
                 loading: false,
-                isAuthenticated: false,
                 user: null,
-                error: action.payload
+                error: action.payload,
+                isAuthenticated: false,
             }
         },
         logoutUserSuccess(state, action) {

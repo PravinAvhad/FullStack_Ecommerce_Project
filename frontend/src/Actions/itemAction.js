@@ -1,27 +1,24 @@
-// import { useSelector, useDispatch } from 'react-redux'
-import { allItemsFail, allItemsRequest, allItemsSuccess} from '../Store/Slices/items'
+import { allItemsFail, allItemsRequest, allItemsSuccess} from '../ReduxStore/Slices/items'
 import axios from "axios"
-import { itemDetailFail, itemDetailRequest, itemDetailSuccess } from '../Store/Slices/itemdetails';
-import { adminItemsFail, adminItemsRequest, adminItemsSuccess } from '../Store/Slices/AdminItems';
-import { adminNewItemFail, adminNewItemRequest, adminNewItemReset, adminNewItemSuccess } from '../Store/Slices/AdminNewItem';
-import { adminUpdateRequest,adminUpdateSuccess,adminUpdateFail,adminDeleteRequest,adminDeleteSuccess,adminDeleteFail } from '../Store/Slices/AdminUpDelItem';
-import { itemReviewFail, itemReviewRequest, itemReviewSuccess } from '../Store/Slices/ItemReview';
+import { itemDetailFail, itemDetailRequest, itemDetailSuccess } from '../ReduxStore/Slices/itemdetails';
+import { adminItemsFail, adminItemsRequest, adminItemsSuccess } from '../ReduxStore/Slices/AdminItems';
+import { adminNewItemFail, adminNewItemRequest, adminNewItemReset, adminNewItemSuccess } from '../ReduxStore/Slices/AdminNewItem';
+import { adminUpdateRequest,adminUpdateSuccess,adminUpdateFail,adminDeleteRequest,adminDeleteSuccess,adminDeleteFail } from '../ReduxStore/Slices/AdminUpDelItem';
+import { itemReviewFail, itemReviewRequest, itemReviewSuccess } from '../ReduxStore/Slices/ItemReview';
+import { adminReviewsFail, adminReviewsRequest, adminReviewsSuccess } from '../ReduxStore/Slices/AdminReviews';
+import { adminDeleteReviewFail, adminDeleteReviewRequest, adminDeleteReviewSuccess } from '../ReduxStore/Slices/AdminDelReview';
 
 //Get all Items - For Users
 export const getitems = (keyword="",page=1,category) => async (dispatch) => {
     try {
-        // console.log(keyword,category,page);
         dispatch(allItemsRequest());
         let apilink = `/api/v1/items?keyword=${keyword}&page=${page}`;
         if(category){
             apilink = `/api/v1/items?keyword=${keyword}&category=${category}&page=${page}`;
         }
         const { data } = await axios.get(apilink);
-        // console.log(data);
         dispatch(allItemsSuccess(data));
     } catch (error) {
-        // console.log(error);
-        console.log(error);
         dispatch(allItemsFail(error.response.data.message));
     }
 }
@@ -58,7 +55,6 @@ export const createItem = (itemdata,navigate) => async(dispatch)=>{
         const {data} = await axios.post(`/api/v1/admin/item/create`,itemdata,config);
         dispatch(adminNewItemSuccess(data));
         if(data.success){
-            console.log("Product Created Successfully");
             navigate('/admin/dashboard');
             dispatch(adminNewItemReset());
         }
@@ -104,5 +100,29 @@ export const ItemReview = (reviewData)=> async (dispatch) => {
         dispatch(itemReviewSuccess(data.success));
     } catch (error) {
         dispatch(itemReviewFail(error.response.data.message));
+    }
+}
+
+//Get All Reviews of One Item Input is Name - For Admin
+export const getallReviews = (name)=>async(dispatch)=>{
+    try {
+        dispatch(adminReviewsRequest());
+        const { data } = await axios.get(`/api/v1/reviews?itemname=${name}`);
+        // console.log(data);
+        dispatch(adminReviewsSuccess(data));
+    } catch (error) {
+        dispatch(adminReviewsFail(error.response.data.message));
+    }
+}
+
+//Delete Review - For Admin
+export const deletereview = (itemid,reviewid)=>async(dispatch)=>{
+    try {
+        dispatch(adminDeleteReviewRequest());
+        const {data} = await axios.delete(`/api/v1/reviews?itemId=${itemid}&reviewId=${reviewid}`);
+        // console.log(data);
+        dispatch(adminDeleteReviewSuccess(data));
+    } catch (error) {
+        dispatch(adminDeleteReviewFail(error.response.data.message));
     }
 }

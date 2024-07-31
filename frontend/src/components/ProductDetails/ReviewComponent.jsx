@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import StarRating from '../ProductCard/StarRating'
 import "./review.css";
 
@@ -8,7 +8,7 @@ const ReviewComponent = ({ userReview }) => {
     let month = date.getUTCMonth() + 1;
     let year = date.getUTCFullYear();
     let createdAt = `${day}/${month}/${year}`
-    const [data, setData] = useState("Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus enim fugit expedita, labore veritatis");
+    
     return (
         <div className="review">
             <div className="reviewsub1">

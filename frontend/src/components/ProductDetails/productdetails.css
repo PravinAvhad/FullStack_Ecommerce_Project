@@ -34,7 +34,6 @@
 
 .part2 {
     height: 20%;
-    /* background-color: tomato; */
     display: flex;
     padding: .5rem 1rem;
     justify-content: center;
@@ -43,7 +42,6 @@
 }
 
 .imgsarray {
-    /* background-color: lightgray; */
     display: flex;
     align-items: center;
     max-width: 100%;
@@ -78,17 +76,14 @@
 }
 
 .subsection2 {
-    /* background-color: tomato; */
     padding: 1rem;
     width: 50%;
     display: flex;
     flex-direction: column;
-    /* gap: 1rem; */
     align-items: center;
 }
 
 .subsection2 h1 {
-    /* background-color: skyblue; */
     width: 100%;
     border-bottom: 2px solid lightgrey;
     margin: 0px;
@@ -96,14 +91,11 @@
 
 .ratings {
     display: flex;
-    /* background-color: skyblue; */
     width: 100%;
     align-items: center;
     gap: 1rem;
-    /* border-bottom: 2px solid lightgrey; */
 }
 .ratings > span{
-    /* background-color: tomato; */
     font-size: 1.3rem;
     color:gray;
 }
@@ -111,7 +103,6 @@
     color: tomato;
 }
 .pricesection {
-    /* background-color: tomato; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -126,11 +117,9 @@
 
 .subsection3 {
     width: 100%;
-    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* border-bottom: 2px solid lightgrey; */
 }
 
 .allprices {
@@ -140,7 +129,6 @@
     align-items: center;
     gap: 1rem;
     border-bottom: 2px solid lightgrey;
-    /* background-color: skyblue; */
 }
 
 .allprices span:first-child {
@@ -154,7 +142,6 @@
 }
 
 .description {
-    /* background-color: skyblue; */
     width: 100%;
     font-size: 1.2rem;
     font-weight: 400;
@@ -162,8 +149,6 @@
 }
 
 .statusSection {
-    /* background-color: skyblue; */
-    /* width: 40%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,7 +163,6 @@
 
 .subsection4 {
     width: 100%;
-    /* background-color: aqua; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -187,7 +171,6 @@
 
 .quantity {
     display: flex;
-    /* background-color: skyblue; */
     align-items: center;
     font-size: 2rem;
     gap: 1rem;
@@ -195,14 +178,12 @@
 }
 
 .addcart {
-    /* background-color: skyblue; */
     font-size: 12px;
     padding: 4px;
 }
 
 .submitreview {
     align-self: flex-start;
-    /* background-color: gray; */
     margin-top: 1rem;
 }
 
@@ -268,7 +249,6 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    /* gap: 1rem; */
 }
 
 .productDetails>.reviewsection>.reviewbox>h3 {
@@ -292,7 +272,6 @@
 }
 
 .productDetails>.reviewsection>.reviewbox>.reviewbtns {
-    /* background-color: skyblue; */
     display: flex;
     justify-content: end;
     gap: 1rem;
@@ -305,7 +284,6 @@
     height: 50px;
     line-height: 50px;
     font-size: 50px;
-    /* background-color: skyblue; */
 }
 
 .rating label {
@@ -383,7 +361,6 @@
     border-bottom: 2px solid black;
 }
 .productDetails > .allreviewsection > .reviewsarray{
-    /* background-color: lightgray; */
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -407,7 +384,6 @@
 }
 .productDetails > .allreviewsection > .noreview{
     padding: 1rem;
-    /* background-color: skyblue; */
     font-size: 2rem;
 }
 @media (max-width:1200px) {
@@ -468,10 +444,10 @@
     }
 
     .subsection1 {
-        /* width: 90%; */
         width: 60%;
         position: relative;
         margin-left: -2rem;
+        padding: .5rem 0rem;
     }
 
     .subsection2 {
@@ -512,13 +488,6 @@
 @media (max-width:500px) {
     .subsection1 {
         width: 80%;
-    }
-    /* .productDetails > .allreviewsection{
-        padding: 0rem;
-        padding-bottom: 1rem;
-    } */
-    .productDetails > .allreviewsection > .reviewsarray{
-        /* gap: .5rem; */
     }
 }
 @media (max-width:450px) {

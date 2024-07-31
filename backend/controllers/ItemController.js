@@ -102,9 +102,20 @@ exports.getAllItems = AsyncErrors(async (req, res, next) => {
     let itemsFilteredCnt = items.length;
     apiFeature.pagination(resultPerPage);
     items = await apiFeature.query;
+    let itemsdetails = items.map((item) => {
+        return {
+            _id: item._id,
+            name: item.name,
+            price: item.price,
+            discount: item.discount,
+            ratings: item.ratings,
+            image: item.images[0],
+            numOfReviews: item.numOfReviews,
+        };
+    });
     res.status(200).json({
         success: true,
-        items,
+        itemsdetails,
         itemsCount,
         itemsFilteredCnt,
         resultPerPage
@@ -136,9 +147,9 @@ exports.itemReview = AsyncErrors(async (req, res, next) => {
     const isReviewed = item.reviews.find(rev => rev.user.toString() === req.user._id.toString());
     if (isReviewed) {
         item.reviews.forEach((rev) => {
-            if (rev.user.toString() === req.user._id.toString()){
+            if (rev.user.toString() === req.user._id.toString()) {
                 rev.rating = req.body.rating,
-                rev.comment = req.body.comment
+                    rev.comment = req.body.comment
                 rev.createdAt = req.body.createdAt
             }
         })
@@ -163,12 +174,14 @@ exports.itemReview = AsyncErrors(async (req, res, next) => {
 
 //Get All Reviews of Single Item
 exports.getItemsReviews = AsyncErrors(async (req, res, next) => {
-    const item = await Item.findById(req.query.itemid);
+    // const item = await Item.findById(req.query.itemid);
+    const item = await Item.findOne({ name: { $regex: req.query.itemname } });
     if (!item) {
         return next(new Errorhandler("Item not Found", 404));
     }
     res.status(200).json({
         success: true,
+        itemId: item._id,
         Reviews: item.reviews
     })
 })
@@ -181,11 +194,15 @@ exports.deleteItemReview = AsyncErrors(async (req, res, next) => {
     }
     const reviews = item.reviews.filter(rev => rev._id.toString() !== req.query.reviewId.toString());
     let avg = 0;
-    reviews.forEach((rev) => {
-        avg += rev.rating;
-    });
-    const ratings = avg / reviews.length;
-    const numOfReviews = reviews.length;
+    let ratings = 0;
+    let numOfReviews = 0;
+    if (reviews.length !== 0) {
+        reviews.forEach((rev) => {
+            avg += rev.rating;
+        });
+        ratings = avg / reviews.length;
+        numOfReviews = reviews.length;
+    }
     await Item.findByIdAndUpdate(req.query.itemId,
         { reviews, ratings, numOfReviews },
         { new: true, runValidators: true, runValidators: true });

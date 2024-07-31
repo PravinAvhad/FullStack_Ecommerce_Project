@@ -37,7 +37,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="section2">
-                    <Link to="/orders" className='section2btns'>My Orders</Link>
+                    <Link to="/myorders" className='section2btns'>My Orders</Link>
                     <Link to="/password/update" className='section2btns'>Change Password</Link>
                 </div>
             </div>

@@ -4,10 +4,10 @@ import Loader from '../Layout/Loader/Loader'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginuser, registeruser } from '../../Actions/userActions'
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../Layout/MetaData'
+import { clearError } from '../../ReduxStore/Slices/User'
+import { toast } from 'react-toastify'
 
 const LoginSignUp = () => {
     const dispatch = useDispatch();
@@ -41,24 +41,42 @@ const LoginSignUp = () => {
     }
     const login = (e) => {
         e.preventDefault();
-        // console.log("Login Form Submitterd");
-        // console.log(`LoginEmail : ${loginemail} & LoginPassword : ${loginpassword}`);
         dispatch(loginuser(loginemail, loginpassword));
     }
     const register = (e) => {
         e.preventDefault();
-        console.log("Form Registered");
+        // console.log("Form Registered");
         dispatch(registeruser(name,email,password,avatar));
     }
     const { loading, isAuthenticated, error,user } = useSelector((state) => state.User);
 
     useEffect(() => {
         if (error) {
-            console.log(error);
-            toast.error(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(error);
+            dispatch(clearError());
         }
         if(isAuthenticated && user.user.role ==="admin"){
-            navigate("/admin/dashboard"); //Atlast Change to Dashboard 
+            navigate("/admin/dashboard"); 
+            toast.success("Sign In Successfully",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
         }
         else if(isAuthenticated && user.user.role==="user"){
             if(window.location.href){
@@ -68,10 +86,30 @@ const LoginSignUp = () => {
                 }
                 else{
                     navigate("/products");
+                    toast.success("Sign In Successfully",{
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        }); 
                 }
             }
             else{
                 navigate("/products");
+                toast.success("Sign In Successfully",{
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    }); 
             }
         }
     }, [dispatch,error,navigate,isAuthenticated,user]);
@@ -80,19 +118,12 @@ const LoginSignUp = () => {
         <>
         {loading ? (<Loader/>) : (
             <>
-        <ToastContainer />
         <MetaData title="Ecommerce Sign In"/>
         <div className="loginsignup">
             <div className="container" id="container">
                 <div className="form-container sign-up-container">
-                    <form action="#">
+                    <form onSubmit={register}>
                         <h1>Create Account</h1>
-                        {/* <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-                        </div> */}
-                        {/* <span>or use your email for registration</span> */}
                         <input type="text"
                             name='name'
                             required
@@ -119,18 +150,12 @@ const LoginSignUp = () => {
                                 accept='image/*'
                                 onChange={registerDataChange} />
                         </div>
-                        <button onClick={register}>Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
-                    <form >
-                        <h1>Sign in</h1>
-                        {/* <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-                        </div> */}
-                        {/* <span>or use your account</span> */}
+                    <form onSubmit={login}>
+                        <h1>Sign In</h1>
                         <input type='email'
                             value={loginemail} placeholder="Email" required
                             onChange={(e) => { setLoginEmail(e.target.value); }} />
@@ -138,7 +163,7 @@ const LoginSignUp = () => {
                             value={loginpassword} placeholder="Password" required
                             onChange={(e) => { setLoginPassword(e.target.value); }} />
                         <Link to="/password/forget" className="forget">Forget your password?</Link>
-                        <button onClick={login}>Sign In</button>
+                        <button type="submit">Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">

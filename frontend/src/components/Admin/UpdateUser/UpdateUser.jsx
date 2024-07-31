@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Loader from '../../Layout/Loader/Loader.jsx'
 import { useNavigate, useParams } from 'react-router-dom';
 import { admingetUserDetail, updateUser } from '../../../Actions/userActions.js';
-import { adminUpdateUserReset, clearError } from '../../../Store/Slices/AdminUpDelUser.jsx';
+import { adminUpdateUserReset, clearError } from '../../../ReduxStore/Slices/AdminUpDelUser.js';
+import { toast } from 'react-toastify';
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
@@ -30,13 +31,30 @@ const UpdateUser = () => {
       setRole( user.user.role);
     }
     if(error){
-      alert(error);
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
       dispatch(clearError());
     }
     if(isUpdated){
-      alert(message);
-      // console.log(message);
+      toast.success(message,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
       navigate("/admin/allusers");
       dispatch(adminUpdateUserReset());
       dispatch(admingetUserDetail(userid));

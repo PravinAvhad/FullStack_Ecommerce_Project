@@ -1,8 +1,8 @@
-import { adminallusersFail, adminallusersRequest, adminallusersSuccess } from "../Store/Slices/AdminGetUsers";
-import { adminDelUserFail, adminDelUserRequest, adminDelUserSuccess, adminGetUserFail, adminGetUserRequest, adminGetUserSuccess, adminUpdateUserFail, adminUpdateUserRequest, adminUpdateUserSuccess } from "../Store/Slices/AdminUpDelUser";
-import { ForgetPasswordFail, ForgetPasswordRequest, ForgetPasswordSuccess } from "../Store/Slices/ForgetPassword";
-import { UpdatePasswordFail, UpdatePasswordRequest, UpdatePasswordSuccess, UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../Store/Slices/Profile";
-import { loginRequest,loginSuccess,loginFail, clearError, registerRequest, registerSuccess, registerFail, loadUserSuccess, loadUserRequest, loadUserFail, logoutUserSuccess, logoutUserFail } from "../Store/Slices/User"; 
+import { adminallusersFail, adminallusersRequest, adminallusersSuccess } from "../ReduxStore/Slices/AdminGetUsers";
+import { adminDelUserFail, adminDelUserRequest, adminDelUserSuccess, adminGetUserFail, adminGetUserRequest, adminGetUserSuccess, adminUpdateUserFail, adminUpdateUserRequest, adminUpdateUserSuccess } from "../ReduxStore/Slices/AdminUpDelUser";
+import { ForgetPasswordFail, ForgetPasswordRequest, ForgetPasswordSuccess } from "../ReduxStore/Slices/ForgetPassword";
+import { UpdatePasswordFail, UpdatePasswordRequest, UpdatePasswordSuccess, UpdateProfileFail, UpdateProfileRequest, UpdateProfileSuccess } from "../ReduxStore/Slices/Profile";
+import { loginRequest,loginSuccess,loginFail, clearError, registerRequest, registerSuccess, registerFail, loadUserSuccess, loadUserRequest, loadUserFail, logoutUserSuccess, logoutUserFail } from "../ReduxStore/Slices/User"; 
 import axios from "axios"
 
 //For Login of User

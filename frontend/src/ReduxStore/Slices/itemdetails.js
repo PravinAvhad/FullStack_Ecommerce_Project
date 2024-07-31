@@ -12,7 +12,7 @@ const Itemdetails=createSlice({
         },
         itemDetailSuccess(state,action){
             return{
-                // ...state,
+                ...state,
                 loading:false,
                 itemDetails: action.payload,
             }
@@ -32,4 +32,4 @@ const Itemdetails=createSlice({
     }
 })
 export default Itemdetails.reducer;
-export const {itemDetailRequest,itemDetailSuccess,itemDetailFail,clearError} = Itemdetails.actions;
+export const {itemDetailRequest,itemDetailSuccess,itemDetailFail,clearErrors} = Itemdetails.actions;

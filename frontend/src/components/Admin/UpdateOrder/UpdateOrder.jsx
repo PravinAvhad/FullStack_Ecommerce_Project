@@ -5,8 +5,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderDetails, updateOrder } from '../../../Actions/OrderAction';
 import Loader from '../../Layout/Loader/Loader';
-import { adminUpdateOrderReset } from '../../../Store/Slices/AdminUpDelOrder';
+import { adminUpdateOrderReset,clearError as AdminUpdateOrderClearError} from '../../../ReduxStore/Slices/AdminUpDelOrder';
+import { clearError } from '../../../ReduxStore/Slices/OrderDetails';
 import MetaData from '../../Layout/MetaData';
+import { toast } from 'react-toastify';
 
 const UpdateOrder = () => {
     const { id } = useParams();
@@ -24,13 +26,44 @@ const UpdateOrder = () => {
     }
     useEffect(() => {
         if (error) {
-            console.log(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(error);
+            dispatch(clearError());
         }
         if (UpdateOrderError) {
-            console.log(UpdateOrderError);
+            toast.error(UpdateOrderError,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(UpdateOrderError);
+            dispatch(AdminUpdateOrderClearError());
         }
         if (isUpdatedOrder) {
-            console.log("Order Updated");
+            toast.success("Order Updated",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
             navigate("/admin/orders");
             dispatch(adminUpdateOrderReset());
         }

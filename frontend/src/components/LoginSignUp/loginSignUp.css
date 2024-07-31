@@ -1,6 +1,6 @@
 .loginsignup {
     background-color: whitesmoke;
-    height: 90vh;
+    height: 40rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -22,7 +22,6 @@
 
 h1 {
     font-weight: bold;
-    /* margin: 0; */
     margin: 1rem 0rem;
 }
 
@@ -172,9 +171,10 @@ h2 {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    /* background: #FF416C; */
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+    /* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C); */
+    /* background: linear-gradient(to right, #FF4B2B, #FF416C); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -239,7 +239,6 @@ h2 {
 }
 .registerimg{
     display: flex;
-    /* background-color: lightcyan; */
     justify-content: center;
     align-items: center;
     gap: .5rem;

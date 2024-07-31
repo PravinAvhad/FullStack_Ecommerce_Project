@@ -1,0 +1,45 @@
+.about{
+    min-height: 40rem;
+    background-color: whitesmoke;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.about > .sub1{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0rem auto;
+}
+.about > .sub1 > h1{
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0rem;
+}
+.about > .sub1 > p, .about > .sub2 > p, .about > .sub2 > ul > li{
+    font-size: 1.3rem;
+    word-spacing: 4px;
+}
+.about > .sub2{
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0rem auto;
+}
+.about > .sub2 > h2{
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+}
+.about > .sub2 > p{
+    padding-bottom: .3rem;
+}
+.about > .sub2 > ul > li{
+    list-style-position: inside;
+    padding-left: .5rem;
+}

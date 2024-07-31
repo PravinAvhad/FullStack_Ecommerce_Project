@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createItem } from '../../../Actions/itemAction';
 import MetaData from '../../Layout/MetaData';
+import { clearError } from '../../../ReduxStore/Slices/AdminNewItem';
+import { toast } from 'react-toastify';
 
 const NewProduct = () => {
   const navigate = useNavigate();
@@ -19,21 +21,32 @@ const NewProduct = () => {
   })
   const [imgs, setImgs] = useState([]);
   const [imgsPreview, setImgsPreview] = useState([]);
-  const category = ["Electronics", "Food", "Furniture", "Fashion", "Vegetables", "Women's Wear", "Men's Wear", "Grocery", "Footwear"];
+  const category = ["Electronics", "Men's Wear","Women's Wear","Footwear","Grocery", "Vegetables", "Sports","Health, Supplements"];
   const changeHandler = (e) => {
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
   }
   const { loading, error,newitem } = useSelector((state) => state.AdminNewItem);
+  
   useEffect(() => {
     if (error) {
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
+      dispatch(clearError());
     }
   }, [dispatch, newitem, error]);
 
   const createproduct = (e) => {
     e.preventDefault();
     newProduct.images = imgs;
-    console.log(`New Product :`, newProduct);
     dispatch(createItem(newProduct,navigate));
   }
 

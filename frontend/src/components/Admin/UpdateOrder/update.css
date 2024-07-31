@@ -17,11 +17,8 @@
 .processOrdersection{
     display: flex;
     gap: 1rem;
-    /* background-color: tomato; */
-    /* padding: .5rem; */
 }
 .processOrdersection > .leftsection{
-    /* background-color: skyblue; */
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -33,7 +30,6 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
     border-radius: 5px;
     width: 30%;
-    /* height: 30rem; */
     height: fit-content;
     padding: 1rem;
     display: flex;
@@ -66,7 +62,6 @@
 }
 .processOrdersection > .leftsection > .sub1 > .dateid{
     display: flex;
-    /* background-color: skyblue; */
     font-size: 1.4rem;
     padding: .3rem 0rem 0rem 1rem;
 }
@@ -136,8 +131,6 @@
     cursor: pointer;
 }
 .processOrdersection > .rightsection > form {
-    /* background-color: skyblue; */
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -222,12 +215,6 @@
     }
 }
 @media (max-width:1024px) {
-    /* .processOrdersection > .leftsection{
-        width: 73%;
-    }
-    .processOrdersection > .rightsection{
-        width: 27%;
-    } */
     .processOrdersection > .leftsection > .sub3 > .allorderitems > .orderitem > img{
         width: 33%;
         height: auto;

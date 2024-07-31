@@ -1,5 +1,5 @@
 .footer{
-    background-color: skyblue;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -12,12 +12,10 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    /* background-color: lightgrey; */
     width: 100%;
     padding: 0rem 1rem;
 }
 .footersub2{
-    /* background-color: lightgray; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -27,7 +25,6 @@
     padding-top: 1rem;
 }
 .sub1part1{
-    /* background-color: white; */
     width: 30%;
     height: 100%;
 }
@@ -40,7 +37,6 @@
     font-weight: 700;
 }
 .sub1part2{
-    /* background-color: tomato; */
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -64,7 +60,6 @@
 }
 .sub1part3{
     width: 30%;
-    /* background-color: white; */
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -92,5 +87,11 @@
     .sub1part3{
         align-self: center;
         width: 100%;
+        padding-top: .5rem;
+    }
+    .footerheading{
+        font-size: 2rem;
+        text-align: center;
+        margin: .5rem;
     }
 }

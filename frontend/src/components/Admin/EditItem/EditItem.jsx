@@ -6,7 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { fetchItemDetails, UpdateItem } from '../../../Actions/itemAction';
 import Loader from '../../Layout/Loader/Loader';
 import MetaData from '../../Layout/MetaData';
-import { adminUpdateReset } from '../../../Store/Slices/AdminUpDelItem';
+import { adminUpdateReset, clearError as UpdateItemClearError } from '../../../ReduxStore/Slices/AdminUpDelItem';
+import { clearErrors } from '../../../ReduxStore/Slices/itemdetails';
+import { toast } from 'react-toastify';
 
 const EditItem = () => {
   const navigate = useNavigate();
@@ -41,13 +43,44 @@ const EditItem = () => {
       setOldimgs(itemDetails.images);
     }
     if(error){
-      console.log(error);
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(error);
+      dispatch(clearErrors());
     }
     if (UpdateError) {
-      console.log(UpdateError);
+      toast.error(UpdateError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      // console.log(UpdateError);
+      dispatch(UpdateItemClearError());
     }
     if(Updated){
-      alert("Product Updated");
+      toast.success("Product Updated",{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
       navigate("/admin/allproducts");
       dispatch(adminUpdateReset());
       dispatch(fetchItemDetails(id));

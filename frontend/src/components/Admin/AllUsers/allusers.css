@@ -6,7 +6,6 @@
     width: 80%;
 }
 .adminallproducts > .products > .sub > table > tbody > tr > td:nth-child(2){
-    /* background-color: tomato; */
     text-align: center;
     word-break: break-all;
 }

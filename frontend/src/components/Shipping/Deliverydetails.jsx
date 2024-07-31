@@ -4,7 +4,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Country, State } from 'country-state-city';
 
-const Deliverydetails = ({setDeliverydet,deliverydet,ShippingInfoSave,shippingInfo,DataChange}) => {
+const Deliverydetails = ({deliverydet,ShippingInfoSave,shippingInfo,DataChange}) => {
     return (
         <div className="shipinfo">
             <div className="shipinfoheading">

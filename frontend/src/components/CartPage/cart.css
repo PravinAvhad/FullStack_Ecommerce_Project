@@ -71,7 +71,6 @@
 }
 .pricedetailsSection h2{
     text-align: start;
-    /* background-color: skyblue; */
     font-size: 1.6rem;
     font-weight: 600;
 }
@@ -96,12 +95,10 @@
     font-weight: 500;
 }
 .pricedetailsSection .total span, .pricedetailsSection .total h3{
-    /* background-color: skyblue; */
     font-size: 1.5rem;
     font-weight: 700;
 }
 .pricedetailsSection .placeorder{
-    /* background-color: skyblue; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -155,11 +152,9 @@
 @media (max-width:768px) {
     .cartsection{
         flex-direction: column;
-        /* min-height: 40rem; */
     } 
     .itemsSection{
         width: 100%;
-        /* min-height: 20rem; */
     }
     .pricedetailsSection{
         width: 100%;

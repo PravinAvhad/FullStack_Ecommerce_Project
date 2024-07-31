@@ -1,12 +1,12 @@
 .adminOrders{
     display: flex;
     background-color: whitesmoke;
+    min-height: 40rem;
 }
 .orders{
     width: 80%;
 }
 .products > .sub > .noOrders{
-    /* background-color: skyblue; */
     min-height: 10rem;
     display: flex;
     justify-content: center;

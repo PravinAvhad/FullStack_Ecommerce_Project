@@ -5,6 +5,8 @@ import { getOrderDetails } from '../../Actions/OrderAction';
 import "./orderdetail.css"
 import Loader from "../Layout/Loader/Loader";
 import Metadata from "../Layout/MetaData";
+import { clearError } from '../../ReduxStore/Slices/OrderDetails';
+import { toast } from 'react-toastify';
 
 const OrderDetail = () => {
     const { id } = useParams();
@@ -13,7 +15,18 @@ const OrderDetail = () => {
     const { OrderDetails, loading, error } = useSelector((state) => state.OrderDetails);
     useEffect(() => {
         if (error) {
-            console.log(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(error);
+            dispatch(clearError());
         }
         dispatch(getOrderDetails(id));
     }, [dispatch, error,id]);
@@ -35,7 +48,6 @@ const OrderDetail = () => {
                                     <p>Order Id : {id}</p>
                                 </div>
                             </div>
-                            {/* <button onClick={orderprint}>Invoice</button> */}
                         </div>
                         <div className="sub2">
                             <div className="paymentmethods">
@@ -49,23 +61,23 @@ const OrderDetail = () => {
                                 <div className="orderallprices">
                                     <div className="price">
                                         <p>SubTotal : </p>
-                                        <p>{OrderDetails.order && OrderDetails.order.itemsPrice}</p>
+                                        <p>{OrderDetails.order && OrderDetails.order.itemsPrice}/-</p>
                                     </div>
                                     <div className="price">
                                         <p>Discount : </p>
-                                        <p>{OrderDetails.order && OrderDetails.order.discountPrice ? (OrderDetails.order.discountPrice === 0 ? OrderDetails.order.discountPrice : `- ${OrderDetails.order.discountPrice}`) : 0}</p>
+                                        <p>{OrderDetails.order && OrderDetails.order.discountPrice ? (OrderDetails.order.discountPrice === 0 ? OrderDetails.order.discountPrice : `- ${OrderDetails.order.discountPrice}/-`) : 0}</p>
                                     </div>
                                     <div className="price">
                                         <p>Tax : </p>
-                                        <p>{OrderDetails.order && OrderDetails.order.taxPrice}</p>
+                                        <p>{OrderDetails.order && OrderDetails.order.taxPrice}/-</p>
                                     </div>
                                     <div className="price">
                                         <p>Shipping : </p>
-                                        <p>{OrderDetails.order && OrderDetails.order.shippingPrice ? OrderDetails.order.shippingPrice : "Free"}</p>
+                                        <p>{OrderDetails.order && OrderDetails.order.shippingPrice ? `${OrderDetails.order.shippingPrice}/-` : "Free"}</p>
                                     </div>
                                     <div className="price">
                                         <p>Total { OrderDetails.order && OrderDetails.order.paymentInfo.status === "succeeded" ? `Paid ` : `Not Paid`} : </p>
-                                        <p>{OrderDetails.order && OrderDetails.order.totalPrice}</p>
+                                        <p>Rs. {OrderDetails.order && OrderDetails.order.totalPrice}/-</p>
                                     </div>
                                 </div>
                             </div>

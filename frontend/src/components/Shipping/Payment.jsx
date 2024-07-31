@@ -7,8 +7,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useStripe, CardNumberElement, CardExpiryElement, useElements, CardCvcElement } from "@stripe/react-stripe-js";
 import { clear, createOrder } from '../../Actions/OrderAction';
+import { toast } from 'react-toastify';
 
-const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
+const Payment = ({ user, paymentopt, dispatch}) => {
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
@@ -65,10 +66,17 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
                         }
                     }
                 });
-                // console.log(result);
                 if (result.error) {
-                    console.log(result.error);
-                    alert(result.error);
+                    toast.error(result.error,{
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        }); 
                 }
                 else {
                     if (result.paymentIntent.status === "succeeded") {
@@ -76,8 +84,16 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
                             id: result.paymentIntent.id,
                             status: result.paymentIntent.status,
                         }
-                        alert(`Success`);
-                        console.log("OrderDetails:", orderdetails);
+                        toast.error("Success",{
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            }); 
                         dispatch(createOrder(orderdetails));
                         navigate("/success");
                     }
@@ -87,12 +103,31 @@ const Payment = ({ user, paymentopt, setpaymentopt, dispatch}) => {
                 }
             }
         } catch (error) {
-            console.log(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
+            // console.log(error);
         }
     }
     useEffect(() => {
         if (error) {
-            alert(error);
+            toast.error(error,{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                }); 
             dispatch(clear());
         }
     }, [error, dispatch])

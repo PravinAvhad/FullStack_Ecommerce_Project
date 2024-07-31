@@ -7,8 +7,10 @@ import Loader from "../../Layout/Loader/Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { adminDelOrderReset } from '../../../Store/Slices/AdminUpDelOrder';
+import { adminDelOrderReset,clearError as AdminDelOrderClearError } from '../../../ReduxStore/Slices/AdminUpDelOrder';
+import { clearError } from '../../../ReduxStore/Slices/AdminGetOrders';
 import MetaData from '../../Layout/MetaData';
+import { toast } from 'react-toastify';
 
 const Orders = () => {
   const navigate = useNavigate();
@@ -18,15 +20,42 @@ const Orders = () => {
 
   useEffect(() => {
     if(error){
-      alert("Get Orders Error :",error);
-      console.log(error)
+      toast.error(error,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      dispatch(clearError());
     }
     if(DelError){
-      alert("Delete Order Error : ",error);
-      console.log(error)
+      toast.error(DelError,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
+      dispatch(AdminDelOrderClearError());
     }
     if(isDeletedOrder){
-      alert("Product Deleted");
+      toast.success("Product Deleted",{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        }); 
       navigate("/admin/orders");
       dispatch(adminDelOrderReset());
     }

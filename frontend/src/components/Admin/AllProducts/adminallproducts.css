@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     background-color: whitesmoke;
+    min-height: 40rem;
 }
 .adminallproducts > .products{
     width: 80%;
@@ -33,7 +34,7 @@
     flex-direction: column;
 }
 .adminallproducts > .products > .sub > table > thead{
-    background-color: skyblue;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
     border-radius: 5px 5px 0px 0px;
     display: flex;
     width: 100%;
@@ -49,7 +50,6 @@
     justify-content: center;
 }
 .adminallproducts > .products > .sub > table > tbody > tr{
-    /* border: 2px solid black; */
     display: flex;
     width: 100%;
     padding: 0rem 1rem;
@@ -68,7 +68,6 @@
 .adminallproducts > .products > .sub > table > tbody > tr > .actions{
     display: flex;
     justify-content: center;
-    /* align-items: stretch; */
     flex: 1;
     gap: 2rem;
 }
@@ -87,6 +86,7 @@
 @media (max-width:768px) {
     .adminallproducts{
         flex-direction: column;
+        justify-content: start;
     }
     .adminallproducts > .products{
         width: 100%;
