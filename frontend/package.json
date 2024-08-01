@@ -53,7 +53,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.29.168:5500",
+  "proxy": "https://fullstack-ecommerce-project-backend.onrender.com",
   "devDependencies": {
     "tailwindcss": "^3.4.4"
   }
