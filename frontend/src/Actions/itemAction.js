@@ -12,9 +12,9 @@ import { adminDeleteReviewFail, adminDeleteReviewRequest, adminDeleteReviewSucce
 export const getitems = (keyword="",page=1,category) => async (dispatch) => {
     try {
         dispatch(allItemsRequest());
-        let apilink = `/api/v1/items?keyword=${keyword}&page=${page}`;
+        let apilink = `https://fullstack-ecommerce-project-backend.onrender.com/api/v1/items?keyword=${keyword}&page=${page}`;
         if(category){
-            apilink = `/api/v1/items?keyword=${keyword}&category=${category}&page=${page}`;
+            apilink = `https://fullstack-ecommerce-project-backend.onrender.com/api/v1/items?keyword=${keyword}&category=${category}&page=${page}`;
         }
         const { data } = await axios.get(apilink);
         dispatch(allItemsSuccess(data));
@@ -27,7 +27,7 @@ export const getitems = (keyword="",page=1,category) => async (dispatch) => {
 export const fetchItemDetails = (id)=> async (dispatch) => {
     try {
         dispatch(itemDetailRequest());
-        const { data } = await axios.get(`/api/v1/item/${id}`);
+        const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/item/${id}`);
         dispatch(itemDetailSuccess(data.item));
     } catch (error) {
         dispatch(itemDetailFail(error.response.data.message));
@@ -38,7 +38,7 @@ export const fetchItemDetails = (id)=> async (dispatch) => {
 export const admingetItems = ()=>async(dispatch)=>{
     try {
         dispatch(adminItemsRequest());
-        const { data } = await axios.get("/api/v1/admin/allitems");
+        const { data } = await axios.get("https://fullstack-ecommerce-project-backend.onrender.com/api/v1/admin/allitems");
         dispatch(adminItemsSuccess(data));
     } catch (error) {
         dispatch(adminItemsFail(error.response.data.message));
@@ -52,7 +52,7 @@ export const createItem = (itemdata,navigate) => async(dispatch)=>{
         const config = {
             headers:{"Content-Type":"application/json"},
         };
-        const {data} = await axios.post(`/api/v1/admin/item/create`,itemdata,config);
+        const {data} = await axios.post(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/admin/item/create`,itemdata,config);
         dispatch(adminNewItemSuccess(data));
         if(data.success){
             navigate('/admin/dashboard');
@@ -67,7 +67,7 @@ export const createItem = (itemdata,navigate) => async(dispatch)=>{
 export const Itemdelete = (id)=>async(dispatch)=>{
     try {
         dispatch(adminDeleteRequest());
-        const {data} = await axios.delete(`/api/v1/admin/item/${id}`);
+        const {data} = await axios.delete(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/admin/item/${id}`);
         dispatch(adminDeleteSuccess(data));
     } catch (error) {
         dispatch(adminDeleteFail());
@@ -81,7 +81,7 @@ export const UpdateItem = (id,itemData) => async(dispatch)=>{
         const config = {
             headers:{"Content-Type":"application/json"},
         };
-        const {data} = await axios.put(`/api/v1/admin/item/${id}`,itemData,config);
+        const {data} = await axios.put(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/admin/item/${id}`,itemData,config);
         dispatch(adminUpdateSuccess(data));
     } catch (error) {
         dispatch(adminUpdateFail(error.response.data.message));
@@ -95,7 +95,7 @@ export const ItemReview = (reviewData)=> async (dispatch) => {
         const config = {
             headers:{"Content-Type":"application/json"},
         };
-        const { data } = await axios.put(`/api/v1/review`,reviewData,config);
+        const { data } = await axios.put(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/review`,reviewData,config);
         // console.log(data);
         dispatch(itemReviewSuccess(data.success));
     } catch (error) {
@@ -107,7 +107,7 @@ export const ItemReview = (reviewData)=> async (dispatch) => {
 export const getallReviews = (name)=>async(dispatch)=>{
     try {
         dispatch(adminReviewsRequest());
-        const { data } = await axios.get(`/api/v1/reviews?itemname=${name}`);
+        const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/reviews?itemname=${name}`);
         // console.log(data);
         dispatch(adminReviewsSuccess(data));
     } catch (error) {
@@ -119,7 +119,7 @@ export const getallReviews = (name)=>async(dispatch)=>{
 export const deletereview = (itemid,reviewid)=>async(dispatch)=>{
     try {
         dispatch(adminDeleteReviewRequest());
-        const {data} = await axios.delete(`/api/v1/reviews?itemId=${itemid}&reviewId=${reviewid}`);
+        const {data} = await axios.delete(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/reviews?itemId=${itemid}&reviewId=${reviewid}`);
         // console.log(data);
         dispatch(adminDeleteReviewSuccess(data));
     } catch (error) {

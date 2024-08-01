@@ -9,7 +9,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
         dispatch(createOrderRequest());
         const config = { headers: { "Content-Type": "application/json" } };
-        const { data } = await axios.post("/api/v3/order/new", order, config);
+        const { data } = await axios.post("https://fullstack-ecommerce-project-backend.onrender.com/api/v3/order/new", order, config);
         // console.log(data);
         dispatch(createOrderSuccess(data));
     } catch (error) {
@@ -25,7 +25,7 @@ export const clear = () => async (dispatch) => {
 export const getmyallorders = () => async (dispatch) => {
     try {
         dispatch(myorderRequest());
-        const { data } = await axios.get("/api/v3/myorders");
+        const { data } = await axios.get("https://fullstack-ecommerce-project-backend.onrender.com/api/v3/myorders");
         // console.log(data); 
         dispatch(myorderSuccess(data));
     } catch (error) {
@@ -37,7 +37,7 @@ export const getmyallorders = () => async (dispatch) => {
 export const getOrderDetails = (id) => async (dispatch) => {
     try {
         dispatch(OrderDetailsRequest());
-        const { data } = await axios.get(`/api/v3/order/${id}`);
+        const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v3/order/${id}`);
         // console.log(data); 
         dispatch(OrderDetailsSuccess(data));
     } catch (error) {
@@ -49,7 +49,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
 export const admingetallOrders = () => async (dispatch) => {
     try {
         dispatch(adminOrdersRequest());
-        const { data } = await axios.get(`/api/v3/admin/allorders`);
+        const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v3/admin/allorders`);
         dispatch(adminOrdersSuccess(data));
     } catch (error) {
         dispatch(adminOrdersFail(error.response.data.message));
@@ -61,7 +61,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
     try {
         dispatch(adminUpdateOrderRequest());
         const config = { headers: { "Content-Type": "application/json" } };
-        const { data } = await axios.put(`/api/v3/admin/order/${id}`, order, config);
+        const { data } = await axios.put(`https://fullstack-ecommerce-project-backend.onrender.com/api/v3/admin/order/${id}`, order, config);
         dispatch(adminUpdateOrderSuccess(data.success));
     } catch (error) {
         dispatch(adminUpdateOrderFail(error.response.data.message));
@@ -72,7 +72,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
 export const Orderdelete = (id) => async (dispatch) => {
     try {
         dispatch(adminDelOrderRequest());
-        const { data } = await axios.delete(`/api/v3/admin/order/${id}`);
+        const { data } = await axios.delete(`https://fullstack-ecommerce-project-backend.onrender.com/api/v3/admin/order/${id}`);
         // console.log(data);
         dispatch(adminDelOrderSuccess(data.success));
     } catch (error) {
