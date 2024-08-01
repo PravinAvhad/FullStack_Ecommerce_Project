@@ -96,7 +96,7 @@ export const sendemail = (email)=> async(dispatch)=>{
         dispatch(ForgetPasswordRequest());
         const config = {headers:{"Content-Type":"application/json"}};
         const data = await axios.post("/api/v2/password/forget",email,config);
-        console.log(data);
+        // console.log(data);
         dispatch(ForgetPasswordSuccess(data));
     } catch (error) {
         dispatch(ForgetPasswordFail(error.response.data.message));

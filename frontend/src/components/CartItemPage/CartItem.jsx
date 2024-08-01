@@ -37,8 +37,8 @@ const CartItem = ({ item }) => {
                         <div className="prices">
                             {item.data.item.discount ? (
                                 <>
-                                <span className='orignalprice'>Rs. {item.data.item.price * item.quantity} /- </span>
-                                <span>Rs. {(item.data.item.price - item.data.item.price*`0.${item.data.item.discount}`)*item.quantity} /-</span>
+                                <span className='orignalprice'>Rs. {Math.round(item.data.item.price * item.quantity)} /- </span>
+                                <span>Rs. {Math.round((item.data.item.price - item.data.item.price*`0.${item.data.item.discount}`)*item.quantity)} /-</span>
                                 <span style={{ color: "green" }}>{item.data.item.discount}% off</span>
                                 </>
                             ) : (

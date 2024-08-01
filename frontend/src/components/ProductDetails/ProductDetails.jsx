@@ -105,7 +105,17 @@ const ProductDetails = () => {
             setquantity(quantity - 1);
         }
         if (quantity === 1) {
-            console.log("Minimum 1 quantity");
+            toast.warn("Minimum 1 Quantity",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+            // console.log("Minimum 1 quantity");
         }
     }
     const increment = () => {
@@ -113,7 +123,17 @@ const ProductDetails = () => {
             setquantity(quantity + 1);
         }
         if (quantity === itemDetails.stock) {
-            console.log(`You can order this much quantity`);
+            toast.warn("You can order this much quantity",{
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+            // console.log(`You can order this much quantity`);
         }
     }
     const addtocart = () => {
@@ -173,9 +193,9 @@ const ProductDetails = () => {
                                     <div className="allprices">
                                         {itemDetails.discount ? (
                                             <>
-                                                <span>Rs. {itemDetails.price - itemDetails.price * `0.${itemDetails.discount}`}/-</span>
-                                                <span className='orignalprice'>Rs. {itemDetails.price}/-</span>
-                                                {itemDetails.discount > 0 && (<span className='discount'>{itemDetails.discount}% off</span>)}
+                                                <span>Rs. {Math.round(itemDetails.price - itemDetails.price * `0.${itemDetails.discount}`)}/-</span>
+                                                <span className='orignalprice'>Rs. {Math.round(itemDetails.price)}/-</span>
+                                                {itemDetails.discount > 0 && (<span className='discount'>{Math.round(itemDetails.discount)}% off</span>)}
                                             </>
                                         ) : (
                                             <span>Rs. {itemDetails.price}/-</span>

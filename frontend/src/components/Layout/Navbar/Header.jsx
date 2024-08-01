@@ -37,8 +37,18 @@ const Header = ({ isAuthenticated, user }) => {
         }
     }
     const logout = () => {
+        sidebartoogle();
         dispatch(logoutuser());
-        toast.success("Logout User Successfully");
+        toast.success("Log Out SuccessFully",{
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            }); 
         navigate("/");
     }
     const togglefunc = () => {

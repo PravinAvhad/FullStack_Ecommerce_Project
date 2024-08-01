@@ -5,8 +5,10 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const dotenv = require("dotenv");
+const path = require("path");
+
 //Config
-dotenv.config({path:"backend/config.env"});
+dotenv.config({path:"config.env"});
 
 app.use(express.json({limit:'100mb'}));
 app.use(cookieParser());
@@ -22,6 +24,12 @@ app.use("/api/v1",itemRoute);
 app.use("/api/v2",userRoute);
 app.use("/api/v3",OrderRoute);
 app.use("/api/v4",PaymentRoute);
+
+app.use(express.static(path.join(__dirname,"../frontend/build")));
+
+app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"));
+});
 //Error Middlerware
 app.use(ErrorMiddleware);
 

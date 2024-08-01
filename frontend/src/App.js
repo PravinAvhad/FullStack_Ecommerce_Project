@@ -32,12 +32,12 @@ import AdminUpdateUser from "./components/Admin/UpdateUser/UpdateUser.jsx";
 import AboutUs from "./components/About/AboutUs.jsx";
 import axios from 'axios';
 import Loader from './components/Layout/Loader/Loader.jsx';
-import { clearError } from './ReduxStore/Slices/User.js';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, user, error } = useSelector((state) => state.User);
+  const { isAuthenticated, loading, user } = useSelector((state) => state.User);
 
   const [stripeKey, setStripeKey] = useState("");
   const getStripeApiKey = async () => {
@@ -46,24 +46,10 @@ function App() {
       setStripeKey(data.StripeApiKey);
       // console.log("Stripe API Key in App.js : ",stripeKey);
     } catch (error) {
-      console.log("Stripe Api key Error : ", error.response.data.message);
+      console.log(error.response.data.message);
     }
   }
   useEffect(() => {
-    if (error) {           //Error
-      toast.error(error, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      // console.log(error);
-      dispatch(clearError());
-    }
     dispatch(loaduser()); // Error
     getStripeApiKey();
   }, [dispatch]);
@@ -87,6 +73,7 @@ function App() {
               {/* Remaining ForgetPassword */}
               <Route path='/password/forget' element={<ForgetPassword />} />
               <Route path='/cart' element={<Cart />} />
+
               <Route element={<ProtectedRoute/>}>
                   <Route path="/myaccount" element={<Profile />} />
                   <Route path='/myaccount/update' element={<UpdateProfile />} />
@@ -98,6 +85,7 @@ function App() {
                   <Route path='/myorders' element={<MyOrders />} />
                   <Route path='/order/:id' element={<OrderDetail />} />
               </Route>
+              
               <Route element={<ProtectedRoute isAdmin={true} />}>
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
                 <Route path="/admin/allproducts" element={<AdminAllProducts />} />
@@ -109,6 +97,7 @@ function App() {
                 <Route path="/admin/updateuser/:userid" element={<AdminUpdateUser />} />
                 <Route path="/admin/reviews" element={<AdminReviews />} />
               </Route>
+              <Route path="*" element={<NotFound/>}/>
             </Routes>
             <Footer isAuthenticated={isAuthenticated} user={user} />
           </BrowserRouter>

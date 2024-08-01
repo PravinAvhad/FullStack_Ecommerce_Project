@@ -11,6 +11,7 @@ import { clearError } from '../../../ReduxStore/Slices/AdminReviews';
 import { adminDeleteReviewReset, clearReviewError } from '../../../ReduxStore/Slices/AdminDelReview';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import MetaData from '../../Layout/MetaData';
 
 const Reviews = () => {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ const Reviews = () => {
   return (<>
     {loading || DelLoading ? (<Loader />) : (
       <div className="adminReviews">
+        <MetaData title="Ecommerce : Admin All Reviews"/>
         <Aside />
         <div className="reviews">
           <h2>All Reviews</h2>

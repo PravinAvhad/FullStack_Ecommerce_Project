@@ -11,7 +11,7 @@ process.on("uncaughtException",(err)=>{
 
 const connectDB = require("./config/database");
 //Config
-dotenv.config({path:"backend/config.env"});
+dotenv.config({path:"config.env"});
 
 //Connect MongoDb 
 connectDB();

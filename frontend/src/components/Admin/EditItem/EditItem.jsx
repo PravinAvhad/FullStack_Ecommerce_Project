@@ -97,7 +97,7 @@ const EditItem = () => {
     updatedItem.stock = stock;
     updatedItem.category = category;
     updatedItem.images = imgs;
-    console.log(`Updated Item :`, updatedItem);
+    // console.log(`Updated Item :`, updatedItem);
     dispatch(UpdateItem(id,updatedItem));
   }
 

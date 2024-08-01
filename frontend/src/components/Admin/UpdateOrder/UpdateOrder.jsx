@@ -22,7 +22,7 @@ const UpdateOrder = () => {
     const updatestatus = (e) => {
         e.preventDefault();
         dispatch(updateOrder(id, order));
-        console.log(order);
+        // console.log(order);
     }
     useEffect(() => {
         if (error) {

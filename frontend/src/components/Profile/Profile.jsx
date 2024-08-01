@@ -9,7 +9,7 @@ const Profile = () => {
     const {loading,isAuthenticated,user} = useSelector((state)=> state.User);
     return (
         <div className='account'>
-            <MetaData title="Your Account"/>
+            <MetaData title="Ecommerce Your Account"/>
             {loading ? (<Loader/>) :(
             <div className="accountsubsection">
                 <div className="section1">

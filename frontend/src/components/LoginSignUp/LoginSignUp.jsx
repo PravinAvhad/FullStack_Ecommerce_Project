@@ -162,7 +162,7 @@ const LoginSignUp = () => {
                         <input type='password'
                             value={loginpassword} placeholder="Password" required
                             onChange={(e) => { setLoginPassword(e.target.value); }} />
-                        <Link to="/password/forget" className="forget">Forget your password?</Link>
+                        {/* <Link to="/password/forget" className="forget">Forget your password?</Link> */}
                         <button type="submit">Sign In</button>
                     </form>
                 </div>
