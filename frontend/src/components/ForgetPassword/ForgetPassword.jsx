@@ -33,7 +33,7 @@ const ForgetPassword = () => {
         theme: "light",
         }); 
       // console.log(error);
-      // dispatch(clearError());
+      dispatch(clearError());
     }
     if(message){
       toast.success(message,{
@@ -48,7 +48,7 @@ const ForgetPassword = () => {
         }); 
       // console.log(message);
     }
-  },[error,message,toast,dispatch]);
+  },[error,message,dispatch]);
   
   return (
     <>

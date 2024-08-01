@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./loginSignUp.css"
 import Loader from '../Layout/Loader/Loader'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginuser, registeruser } from '../../Actions/userActions'
 import { useNavigate } from 'react-router-dom'

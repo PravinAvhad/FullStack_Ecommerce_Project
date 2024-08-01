@@ -71,7 +71,7 @@ const Reviews = () => {
       dispatch(getallReviews(pname));
       dispatch(adminDeleteReviewReset());
     }
-  }, [dispatch,error,isDeleted,DelError]);
+  }, [dispatch,error,isDeleted,DelError,pname]);
 
   return (<>
     {loading || DelLoading ? (<Loader />) : (

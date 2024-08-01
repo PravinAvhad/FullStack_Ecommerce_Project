@@ -9,7 +9,7 @@ import LoginSignUp from "./components/LoginSignUp/LoginSignUp.jsx"
 import { useEffect, useState } from 'react';
 import { loaduser } from './Actions/userActions.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import Profile from './components/Profile/Profile.jsx';

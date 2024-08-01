@@ -29,7 +29,7 @@ const CartItem = ({ item }) => {
     return (
         <div className="cartItem">
             <div className="cartItemsub1">
-                <img onClick={()=>navigate(`/product/${item.data.item._id}`)} src={item.data.item.images ? item.data.item.images[0].Url : "./Profile.jpeg"} alt="Item Image" />
+                <img onClick={()=>navigate(`/product/${item.data.item._id}`)} src={item.data.item.images ? item.data.item.images[0].Url : "./Profile.jpeg"} alt="Product Img" />
                 <div className="itemdetails">
                     <h2 onClick={()=>navigate(`/product/${item.data.item._id}`)}>{item.data.item.name}</h2>
                     <div className="pricessection">
