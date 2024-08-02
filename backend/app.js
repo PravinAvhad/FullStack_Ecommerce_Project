@@ -6,11 +6,15 @@ const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors");
 
 if(process.env.NODE_ENV !== "PRODUCTION"){
 //Config
 dotenv.config({path:"config.env"});
 }
+app.use(cors({
+    origin:["https://full-stack-ecommerce-project-delta.vercel.app/","http://localhost:5500"]
+}));
 app.use(express.json({limit:'100mb'}));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
