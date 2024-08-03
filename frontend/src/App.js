@@ -42,7 +42,7 @@ function App() {
   const [stripeKey, setStripeKey] = useState("");
   const getStripeApiKey = async () => {
     try {
-      const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v4/stripeapikey`);
+      const { data } = await axios.get(`${window.location.origin}/api/v4/stripeapikey`);
       setStripeKey(data.StripeApiKey);
       // console.log("Stripe API Key in App.js : ",stripeKey);
     } catch (error) {

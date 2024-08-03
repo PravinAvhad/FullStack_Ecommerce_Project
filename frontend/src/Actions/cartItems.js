@@ -4,7 +4,7 @@ import { AddToCartFail, AddToCartRequest, RemoveFromCartRequest, saveShippingInf
 //Add Items To Cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
     try {
-        const { data } = await axios.get(`https://fullstack-ecommerce-project-backend.onrender.com/api/v1/item/${id}`);
+        const { data } = await axios.get(`${window.location.origin}/api/v1/item/${id}`);
         dispatch(AddToCartRequest({ data, quantity }));
         localStorage.setItem("cartItems", JSON.stringify(getState().Cart.cartItems));
     } catch (error) {

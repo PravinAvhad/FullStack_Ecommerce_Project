@@ -81,7 +81,7 @@ const LoginSignUp = () => {
             if(window.location.href){
                 if(window.location.href.split("=")[1]){
                     navigate(window.location.href.split("=")[1]); 
-                    window.location.reload();  //temporary used
+                    // window.location.reload();  //temporary used
                 }
                 else{
                     navigate("/products");
