@@ -84,7 +84,7 @@ const Payment = ({ user, paymentopt, dispatch}) => {
                             id: result.paymentIntent.id,
                             status: result.paymentIntent.status,
                         }
-                        toast.error("Success",{
+                        toast.success("Success",{
                             position: "top-center",
                             autoClose: 3000,
                             hideProgressBar: false,
